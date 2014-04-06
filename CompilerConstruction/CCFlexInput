@@ -1,0 +1,50 @@
+%{
+	
+#import "CCScanner.h"
+
+int chars = 0;
+int words = 0;
+int lines = 0;
+
+%}
+%option noyywrap
+
+
+%%
+
+
+[a-zA-Z]+ {
+	words++; 
+	chars += strlen(yytext);
+}
+
+\n {
+	chars++; 
+	lines++;
+}
+
+. {
+	chars++;
+}
+
+
+%%
+
+
+void reset_statistics()
+{
+    chars = 0;
+    words = 0;
+    lines = 0;
+}
+
+
+void start_scanning(const char *input, id<CCOutput> output)
+{
+    reset_statistics();
+    yy_scan_string(input);
+    yylex();
+    char result[50];
+	sprintf(result, "wc: %8d%8d%8d\n", lines, words, chars);
+    [output cprintResult:result];
+}
