@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F1D3EDCD18F18ACC0063EC76"
-               BuildableName = "GenerateScanner"
-               BlueprintName = "GenerateScanner"
+               BuildableName = "FlexAndBison"
+               BlueprintName = "FlexAndBison"
                ReferencedContainer = "container:CompilerConstruction.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

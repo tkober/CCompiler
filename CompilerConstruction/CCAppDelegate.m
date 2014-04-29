@@ -15,4 +15,13 @@
     // Insert code here to initialize your application
 }
 
+/*
+ 
+ #import "CCOutput.h"
+ 
+ 
+ void start_parser(const char *input, id<CCOutput> output);
+ 
+ */
+
 @end

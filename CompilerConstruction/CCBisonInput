@@ -1,0 +1,56 @@
+%{
+
+#include <stdio.h>
+
+#import "CCParser.h"
+#import "CCScanner.h"
+
+
+id<CCOutput> _output;
+
+%}
+
+%token NUMBER
+%token ADD SUB MUL DIV ABSOLUTE
+%token EOL
+
+
+%%
+
+
+calclist: /* nothing */
+| calclist exp EOL { [_output printResult:[NSString stringWithFormat:@"= %d\n", $2]]; }
+;
+
+exp: factor
+| exp ADD factor { $$ = $1 + $3; }
+| exp SUB factor { $$ = $1 - $3; }
+;
+
+factor: term
+| factor MUL term { $$ = $1 * $3; }
+| factor DIV term { $$ = $1 / $3; }
+;
+
+term: NUMBER
+| ABSOLUTE term { $$ = $2 >= 0 ? $2 : -$2; }
+;
+
+
+%%
+
+
+void start_scanning(const char *input, id<CCOutput> output)
+{
+    _output = output;
+    YY_BUFFER_STATE buffer=yy_scan_string(input);
+    yyparse();
+    yy_delete_buffer(buffer);
+}
+
+
+int yyerror(char *s)
+{
+    [_output printError:[NSString stringWithFormat:@"error: %s\n", s]];
+    return 0;
+}

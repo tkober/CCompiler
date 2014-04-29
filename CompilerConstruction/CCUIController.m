@@ -8,6 +8,7 @@
 
 #import "CCUIController.h"
 #import "CCScanner.h"
+#import "CCParser.h"
 
 
 @interface CCUIController ()
@@ -20,6 +21,7 @@
 
 
 #pragma mark | Logging
+- (void)clearLog;
 - (void)logAttributedString:(NSAttributedString *)attributedString;
 
 
@@ -34,13 +36,20 @@
 #pragma mark | IB Actions
 - (IBAction)startCompilerButtonPressed:(id)sender
 {
+    [self clearLog];
     char input [self.inputTextView.textStorage.string.length];
-    sprintf(input, "%s%s", self.inputTextView.textStorage.string.UTF8String, "\0");
+    sprintf(input, "%s%s", self.inputTextView.textStorage.string.UTF8String, "\n");
     start_scanning(input, self);
 }
 
 
 #pragma mark | Logging
+- (void)clearLog
+{
+    [self.outputTextView setString:@""];
+}
+
+
 - (void)logAttributedString:(NSAttributedString *)attributedString
 {
     dispatch_async(dispatch_get_main_queue(), ^{

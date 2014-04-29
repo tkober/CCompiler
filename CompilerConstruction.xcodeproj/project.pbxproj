@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		F1D3EDCD18F18ACC0063EC76 /* GenerateScanner */ = {
+		F1D3EDCD18F18ACC0063EC76 /* FlexAndBison */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = F1D3EDCE18F18ACC0063EC76 /* Build configuration list for PBXAggregateTarget "GenerateScanner" */;
+			buildConfigurationList = F1D3EDCE18F18ACC0063EC76 /* Build configuration list for PBXAggregateTarget "FlexAndBison" */;
 			buildPhases = (
-				F1D3EDD318F18ADD0063EC76 /* ShellScript */,
+				F1C3CAE019103AD400608EDD /* Generate Bison */,
+				F1D3EDD318F18ADD0063EC76 /* Generate Flex */,
 			);
 			dependencies = (
 			);
-			name = GenerateScanner;
+			name = FlexAndBison;
 			productName = GenerateScanner;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		F1C3CAE219103D0B00608EDD /* CCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CAE119103D0B00608EDD /* CCParser.m */; };
 		F1C7C46218F1864100A4D911 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C7C46118F1864100A4D911 /* Cocoa.framework */; };
 		F1C7C46C18F1864100A4D911 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1C7C46A18F1864100A4D911 /* InfoPlist.strings */; };
 		F1C7C46E18F1864100A4D911 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C7C46D18F1864100A4D911 /* main.m */; };
@@ -54,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F1BA354B191040D8004992EC /* CCParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCParser.h; sourceTree = "<group>"; };
+		F1BA354C1910442E004992EC /* CCParserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCParserInterface.h; sourceTree = "<group>"; };
+		F1C3CADF19103A9200608EDD /* CCBisonInput */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCBisonInput; sourceTree = "<group>"; };
+		F1C3CAE119103D0B00608EDD /* CCParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCParser.m; sourceTree = "<group>"; };
 		F1C7C45E18F1864100A4D911 /* CompilerConstruction.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompilerConstruction.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1C7C46118F1864100A4D911 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F1C7C46418F1864100A4D911 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -102,6 +108,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1C3CADC191039CE00608EDD /* Bison */ = {
+			isa = PBXGroup;
+			children = (
+				F1C3CADE191039F100608EDD /* Output */,
+				F1C3CADD191039E200608EDD /* Input */,
+			);
+			name = Bison;
+			sourceTree = "<group>";
+		};
+		F1C3CADD191039E200608EDD /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				F1C3CADF19103A9200608EDD /* CCBisonInput */,
+				F1BA354C1910442E004992EC /* CCParserInterface.h */,
+			);
+			name = Input;
+			sourceTree = "<group>";
+		};
+		F1C3CADE191039F100608EDD /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				F1BA354B191040D8004992EC /* CCParser.h */,
+				F1C3CAE119103D0B00608EDD /* CCParser.m */,
+			);
+			name = Output;
+			sourceTree = "<group>";
+		};
 		F1C7C45518F1864100A4D911 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +180,7 @@
 				F1C7C47318F1864100A4D911 /* CCAppDelegate.h */,
 				F1C7C47418F1864100A4D911 /* CCAppDelegate.m */,
 				F1D3EDDF18F1988E0063EC76 /* Core */,
+				F1C3CADC191039CE00608EDD /* Bison */,
 				F1D3EDC618F1898E0063EC76 /* Flex */,
 				F1D3EDDE18F198690063EC76 /* Views */,
 				F1D3EDDD18F198610063EC76 /* Controllers */,
@@ -314,7 +348,7 @@
 			targets = (
 				F1C7C45D18F1864100A4D911 /* CompilerConstruction */,
 				F1C7C47E18F1864100A4D911 /* CompilerConstructionTests */,
-				F1D3EDCD18F18ACC0063EC76 /* GenerateScanner */,
+				F1D3EDCD18F18ACC0063EC76 /* FlexAndBison */,
 			);
 		};
 /* End PBXProject section */
@@ -342,18 +376,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F1D3EDD318F18ADD0063EC76 /* ShellScript */ = {
+		F1C3CAE019103AD400608EDD /* Generate Bison */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Generate Bison";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "flex -o \"$SRCROOT/CompilerConstruction/CCScanner.m\" \"$SRCROOT/CompilerConstruction/CCFlexInput\"";
+			shellScript = "bison -d -o \"$SRCROOT/CompilerConstruction/CCParser.h\" \"$SRCROOT/CompilerConstruction/CCBisonInput\"\ncat \"$SRCROOT/CompilerConstruction/CCParserInterface.h\" \"$SRCROOT/CompilerConstruction/CCParser.h\" > \"$SRCROOT/CompilerConstruction/_CCParser.h\"\nrm \"$SRCROOT/CompilerConstruction/CCParser.h\"\nmv \"$SRCROOT/CompilerConstruction/_CCParser.h\" \"$SRCROOT/CompilerConstruction/CCParser.h\"\n\nbison -o \"$SRCROOT/CompilerConstruction/CCParser.m\" \"$SRCROOT/CompilerConstruction/CCBisonInput\"";
+			showEnvVarsInLog = 0;
+		};
+		F1D3EDD318F18ADD0063EC76 /* Generate Flex */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Flex";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "flex -o \"$SRCROOT/CompilerConstruction/CCScanner.m\" --header-file=\"$SRCROOT/CompilerConstruction/CCScanner.h\" \"$SRCROOT/CompilerConstruction/CCFlexInput\"";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -363,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C3CAE219103D0B00608EDD /* CCParser.m in Sources */,
 				F1C7C47518F1864100A4D911 /* CCAppDelegate.m in Sources */,
 				F1D3EDCB18F189C10063EC76 /* CCScanner.m in Sources */,
 				F1C7C46E18F1864100A4D911 /* main.m in Sources */,
@@ -388,7 +439,7 @@
 		};
 		F1D3EDD218F18AD40063EC76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F1D3EDCD18F18ACC0063EC76 /* GenerateScanner */;
+			target = F1D3EDCD18F18ACC0063EC76 /* FlexAndBison */;
 			targetProxy = F1D3EDD118F18AD40063EC76 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -609,13 +660,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1D3EDCE18F18ACC0063EC76 /* Build configuration list for PBXAggregateTarget "GenerateScanner" */ = {
+		F1D3EDCE18F18ACC0063EC76 /* Build configuration list for PBXAggregateTarget "FlexAndBison" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1D3EDCF18F18ACC0063EC76 /* Debug */,
 				F1D3EDD018F18ACC0063EC76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,10 +1,6 @@
 %{
 	
-#import "CCScanner.h"
-
-int chars = 0;
-int words = 0;
-int lines = 0;
+#import "CCParser.h"
 
 %}
 %option noyywrap
@@ -13,38 +9,20 @@ int lines = 0;
 %%
 
 
-[a-zA-Z]+ {
-	words++; 
-	chars += strlen(yytext);
+"+"     { return ADD; }
+"-"     { return SUB; }
+"*"     { return MUL; }
+"/"     { return DIV; }
+"|"     { return ABSOLUTE; }
+[0-9]+  { 
+    yylval = atoi(yytext); 
+    return NUMBER;
 }
-
-\n {
-	chars++; 
-	lines++;
-}
-
-. {
-	chars++;
-}
+\n      { return EOL; }
+[ \t]   {}
+.       { printf("Unkown character %c\n", *yytext); }
 
 
 %%
 
 
-void reset_statistics()
-{
-    chars = 0;
-    words = 0;
-    lines = 0;
-}
-
-
-void start_scanning(const char *input, id<CCOutput> output)
-{
-    reset_statistics();
-    yy_scan_string(input);
-    yylex();
-    char result[50];
-	sprintf(result, "wc: %8d%8d%8d\n", lines, words, chars);
-    [output cprintResult:result];
-}
