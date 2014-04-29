@@ -90,7 +90,7 @@
           onLevel:(CCOutputLevel)level
 {
     switch (level) {
-        case CCOutputLevelInfor:
+        case CCOutputLevelInfo:
             [self printInfo:text];
             break;
             

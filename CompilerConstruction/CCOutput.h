@@ -10,7 +10,7 @@
 
 
 typedef NS_ENUM(NSUInteger, CCOutputLevel) {
-    CCOutputLevelInfor = 0,
+    CCOutputLevelInfo = 0,
     CCOutputLevelWarning,
     CCOutputLevelError,
     CCOutputLevelResult
