@@ -72,8 +72,8 @@
      MUL = 261,
      DIV = 262,
      ABSOLUTE = 263,
-     LEFT_BRACE = 264,
-     RIGHT_BRACE = 265,
+     OB = 264,
+     CB = 265,
      EOL = 266
    };
 #endif
@@ -84,8 +84,8 @@
 #define MUL 261
 #define DIV 262
 #define ABSOLUTE 263
-#define LEFT_BRACE 264
-#define RIGHT_BRACE 265
+#define OB 264
+#define CB 265
 #define EOL 266
 
 
@@ -432,8 +432,8 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "NUMBER", "ADD", "SUB", "MUL", "DIV",
-  "ABSOLUTE", "LEFT_BRACE", "RIGHT_BRACE", "EOL", "$accept",
-  "arithmetic_expression", "expr", "op", 0
+  "ABSOLUTE", "OB", "CB", "EOL", "$accept", "arithmetic_expression",
+  "expr", "op", 0
 };
 #endif
 

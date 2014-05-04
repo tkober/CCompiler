@@ -12,7 +12,7 @@ id<CCOutput> _output;
 
 %token NUMBER
 %token ADD SUB MUL DIV ABSOLUTE
-%token LEFT_BRACE RIGHT_BRACE
+%token OB CB
 %token EOL
 
 
@@ -25,7 +25,7 @@ arithmetic_expression: /* nothing */
 
 expr: NUMBER
 | expr op expr
-| LEFT_BRACE expr RIGHT_BRACE
+| OB expr CB
 ;
 
 op: ADD
