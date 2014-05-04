@@ -12,28 +12,27 @@ id<CCOutput> _output;
 
 %token NUMBER
 %token ADD SUB MUL DIV ABSOLUTE
+%token LEFT_BRACE RIGHT_BRACE
 %token EOL
 
 
 %%
 
 
-calclist: /* nothing */
-| calclist exp EOL { [_output printResult:[NSString stringWithFormat:@"= %d\n", $2]]; }
+arithmetic_expression: /* nothing */
+| arithmetic_expression expr EOL { [_output printResult:@"valid\n"]; }
 ;
 
-exp: factor
-| exp ADD factor { $$ = $1 + $3; }
-| exp SUB factor { $$ = $1 - $3; }
+expr: NUMBER
+| expr op expr
+| LEFT_BRACE expr RIGHT_BRACE
 ;
 
-factor: term
-| factor MUL term { $$ = $1 * $3; }
-| factor DIV term { $$ = $1 / $3; }
-;
-
-term: NUMBER
-| ABSOLUTE term { $$ = $2 >= 0 ? $2 : -$2; }
+op: ADD
+| SUB
+| MUL
+| DIV
+| ABSOLUTE
 ;
 
 

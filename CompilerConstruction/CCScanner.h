@@ -314,7 +314,7 @@ extern int yylex (void);
 #undef YY_DECL
 #endif
 
-#line 26 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCFlexInput"
+#line 28 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCFlexInput"
 
 
 #line 321 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCScanner.h"

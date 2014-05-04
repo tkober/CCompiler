@@ -62,7 +62,9 @@ extern void start_scanning(const char *input, id<CCOutput> output);
      MUL = 261,
      DIV = 262,
      ABSOLUTE = 263,
-     EOL = 264
+     LEFT_BRACE = 264,
+     RIGHT_BRACE = 265,
+     EOL = 266
    };
 #endif
 /* Tokens.  */
@@ -72,7 +74,9 @@ extern void start_scanning(const char *input, id<CCOutput> output);
 #define MUL 261
 #define DIV 262
 #define ABSOLUTE 263
-#define EOL 264
+#define LEFT_BRACE 264
+#define RIGHT_BRACE 265
+#define EOL 266
 
 
 

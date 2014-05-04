@@ -72,7 +72,9 @@
      MUL = 261,
      DIV = 262,
      ABSOLUTE = 263,
-     EOL = 264
+     LEFT_BRACE = 264,
+     RIGHT_BRACE = 265,
+     EOL = 266
    };
 #endif
 /* Tokens.  */
@@ -82,7 +84,9 @@
 #define MUL 261
 #define DIV 262
 #define ABSOLUTE 263
-#define EOL 264
+#define LEFT_BRACE 264
+#define RIGHT_BRACE 265
+#define EOL 266
 
 
 
@@ -132,7 +136,7 @@ typedef int YYSTYPE;
 
 
 /* Line 216 of yacc.c.  */
-#line 136 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCParser.m"
+#line 140 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCParser.m"
 
 #ifdef short
 # undef short
@@ -347,20 +351,20 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   16
+#define YYLAST   30
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  10
+#define YYNTOKENS  12
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  5
+#define YYNNTS  4
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  11
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  18
+#define YYNSTATES  16
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   264
+#define YYMAXUTOK   266
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -394,7 +398,7 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9
+       5,     6,     7,     8,     9,    10,    11
 };
 
 #if YYDEBUG
@@ -402,24 +406,23 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     4,     8,    10,    14,    18,    20,    24,
-      28,    30
+       0,     0,     3,     4,     8,    10,    14,    18,    20,    22,
+      24,    26
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-      11,     0,    -1,    -1,    11,    12,     9,    -1,    13,    -1,
-      12,     4,    13,    -1,    12,     5,    13,    -1,    14,    -1,
-      13,     6,    14,    -1,    13,     7,    14,    -1,     3,    -1,
-       8,    14,    -1
+      13,     0,    -1,    -1,    13,    14,    11,    -1,     3,    -1,
+      14,    15,    14,    -1,     9,    14,    10,    -1,     4,    -1,
+       5,    -1,     6,    -1,     7,    -1,     8,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    21,    21,    22,    25,    26,    27,    30,    31,    32,
-      35,    36
+       0,    22,    22,    23,    26,    27,    28,    31,    32,    33,
+      34,    35
 };
 #endif
 
@@ -429,7 +432,8 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "NUMBER", "ADD", "SUB", "MUL", "DIV",
-  "ABSOLUTE", "EOL", "$accept", "calclist", "exp", "factor", "term", 0
+  "ABSOLUTE", "LEFT_BRACE", "RIGHT_BRACE", "EOL", "$accept",
+  "arithmetic_expression", "expr", "op", 0
 };
 #endif
 
@@ -438,22 +442,23 @@ static const char *const yytname[] =
    token YYLEX-NUM.  */
 static const yytype_uint16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,   260,   261,   262,   263,   264
+       0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
+     265,   266
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    10,    11,    11,    12,    12,    12,    13,    13,    13,
-      14,    14
+       0,    12,    13,    13,    14,    14,    14,    15,    15,    15,
+      15,    15
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     0,     3,     1,     3,     3,     1,     3,     3,
-       1,     2
+       0,     2,     0,     3,     1,     3,     3,     1,     1,     1,
+       1,     1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -461,29 +466,29 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       2,     0,     1,    10,     0,     0,     4,     7,    11,     0,
-       0,     3,     0,     0,     5,     6,     8,     9
+       2,     0,     1,     4,     0,     0,     0,     7,     8,     9,
+      10,    11,     3,     0,     6,     5
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1,     5,     6,     7
+      -1,     1,     5,    13
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -5
+#define YYPACT_NINF -4
 static const yytype_int8 yypact[] =
 {
-      -5,     2,    -5,    -5,    -2,     7,    -3,    -5,    -5,    -2,
-      -2,    -5,    -2,    -2,    -3,    -3,    -5,    -5
+      -4,     0,    -4,    -4,    -1,     7,    15,    -4,    -4,    -4,
+      -4,    -4,    -4,    -1,    -4,    22
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -5,    -5,    -5,     4,    -4
+      -4,    -4,    -3,    -4
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -493,22 +498,26 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       8,     3,     2,    12,    13,     3,     4,     0,    16,    17,
-       4,     9,    10,    14,    15,     0,    11
+       2,     6,     3,     3,     0,     0,     0,     0,     4,     4,
+      15,     7,     8,     9,    10,    11,     0,     0,    12,     7,
+       8,     9,    10,    11,     0,    14,     7,     8,     9,    10,
+      11
 };
 
 static const yytype_int8 yycheck[] =
 {
-       4,     3,     0,     6,     7,     3,     8,    -1,    12,    13,
-       8,     4,     5,     9,    10,    -1,     9
+       0,     4,     3,     3,    -1,    -1,    -1,    -1,     9,     9,
+      13,     4,     5,     6,     7,     8,    -1,    -1,    11,     4,
+       5,     6,     7,     8,    -1,    10,     4,     5,     6,     7,
+       8
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    11,     0,     3,     8,    12,    13,    14,    14,     4,
-       5,     9,     6,     7,    13,    13,    14,    14
+       0,    13,     0,     3,     9,    14,    14,     4,     5,     6,
+       7,     8,    11,    15,    10,    14
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1323,38 +1332,13 @@ yyreduce:
   switch (yyn)
     {
         case 3:
-#line 22 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
-    { [_output printResult:[NSString stringWithFormat:@"= %d\n", (yyvsp[(2) - (3)])]]; ;}
-    break;
-
-  case 5:
-#line 26 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
-    { (yyval) = (yyvsp[(1) - (3)]) + (yyvsp[(3) - (3)]); ;}
-    break;
-
-  case 6:
-#line 27 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
-    { (yyval) = (yyvsp[(1) - (3)]) - (yyvsp[(3) - (3)]); ;}
-    break;
-
-  case 8:
-#line 31 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
-    { (yyval) = (yyvsp[(1) - (3)]) * (yyvsp[(3) - (3)]); ;}
-    break;
-
-  case 9:
-#line 32 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
-    { (yyval) = (yyvsp[(1) - (3)]) / (yyvsp[(3) - (3)]); ;}
-    break;
-
-  case 11:
-#line 36 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
-    { (yyval) = (yyvsp[(2) - (2)]) >= 0 ? (yyvsp[(2) - (2)]) : -(yyvsp[(2) - (2)]); ;}
+#line 23 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
+    { [_output printResult:@"valid\n"]; ;}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1358 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCParser.m"
+#line 1342 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCParser.m"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1568,7 +1552,7 @@ yyreturn:
 }
 
 
-#line 40 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
+#line 39 "/Users/thorstenkober/Code/Xcode/Mac OS X/CompilerConstruction/CompilerConstruction/CCBisonInput"
 
 
 
