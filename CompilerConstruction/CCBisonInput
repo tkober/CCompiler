@@ -10,9 +10,22 @@ id<CCOutput> _output;
 
 %}
 
-%token NUMBER
-%token ADD SUB MUL DIV ABSOLUTE
-%token OB CB
+// Identifier
+%token NUMBER 
+%token VARIABLE
+
+// Operators
+%token ADD 
+%token SUB 
+%token MUL 
+%token DIV 
+%token ABSOLUTE
+
+// Braces
+%token OB 
+%token CB
+
+// File
 %token EOL
 
 
@@ -34,6 +47,7 @@ factor: term
 ;
 
 term: NUMBER
+| VARIABLE
 | ABSOLUTE term
 | OB expr CB
 ;
