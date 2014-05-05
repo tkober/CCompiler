@@ -1,6 +1,10 @@
 %{
 	
 #import "CCParser.h"
+#import "CCSymbolTable.h"
+
+
+void addSymbolReference(char *name);
 
 %}
 
@@ -45,6 +49,7 @@
 }
 
 [a-zA-Z_][a-zA-Z_0-9]* {
+    addSymbolReference(yytext);
     return VARIABLE;
 }
 
@@ -61,6 +66,13 @@
 
 
 %%
+
+void addSymbolReference(char *name)
+{
+    [[CCSymbolTable sharedInstance] addReferenceSymbol:name
+                                                  file:"<EDITOR>" 
+                                                  line:yylineno];
+}
 
 // NUMBER sollte eigentlich [-+]?([0.9]*\.?[0-9]+|[0-9]+\.)((E+|E-)[0-9]+)? sein
 

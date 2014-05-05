@@ -4,6 +4,7 @@
 
 #import "CCParser.h"
 #import "CCScanner.h"
+#import "CCSymbolTable.h"
 
 
 id<CCOutput> _output;
@@ -62,6 +63,7 @@ void start_scanning(const char *input, id<CCOutput> output)
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
     yyparse();
+    [[CCSymbolTable sharedInstance] printSymbolTable:output];
     yy_delete_buffer(buffer);
 }
 
