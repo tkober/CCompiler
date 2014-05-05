@@ -23,16 +23,19 @@ arithmetic_expression: /* nothing */
 | arithmetic_expression expr EOL { [_output printResult:@"valid\n"]; }
 ;
 
-expr: NUMBER
-| expr op expr
-| OB expr CB
+expr: factor
+| expr ADD factor
+| expr SUB factor
 ;
 
-op: ADD
-| SUB
-| MUL
-| DIV
-| ABSOLUTE
+factor: term
+| factor MUL term
+| factor DIV term
+;
+
+term: NUMBER
+| ABSOLUTE term
+| OB expr CB
 ;
 
 
