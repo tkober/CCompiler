@@ -33,7 +33,7 @@ id<CCOutput> _output;
 
 
 arithmetic_expression: /* nothing */
-| arithmetic_expression expr EOL { [_output printResult:@"valid\n"]; }
+| arithmetic_expression expr EOL { [_output printResult:[NSString stringWithFormat:@"[Line %i] valid\n", yylineno]]; }
 ;
 
 expr: factor
@@ -58,6 +58,7 @@ term: NUMBER
 
 void start_scanning(const char *input, id<CCOutput> output)
 {
+    yylineno = 0;
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
     yyparse();
