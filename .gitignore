@@ -2,3 +2,7 @@ CCScanner.h
 CCScanner.m
 CCParser.h
 CCParser.m
+CompilerConstruction.xcodeproj/project.xcworkspace/xcshareddata/CompilerConstruction.xccheckout
+CompilerConstruction.xcodeproj/xcuserdata/kober.xcuserdatad/xcschemes/CompilerConstruction.xcscheme
+CompilerConstruction.xcodeproj/xcuserdata/kober.xcuserdatad/xcschemes/FlexAndBison.xcscheme
+CompilerConstruction.xcodeproj/xcuserdata/kober.xcuserdatad/xcschemes/xcschememanagement.plist
