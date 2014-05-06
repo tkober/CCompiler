@@ -15,50 +15,36 @@ void addSymbolReference(char *name);
 %%
 
 
-"+" {
-    return ADD;
-}
+"void"      { return VOID;      }
+"char"      { return CHAR;      }
+"short"     { return SHORT;     }
+"int"       { return INT;       }
+"long"      { return LONG;      }
+"float"     { return FLOAT;     }
+"double"    { return DOUBLE;    }
+"signed"    { return SIGNED;    }
+"unsigned"  { return UNSIGNED;  }
 
-"-" {
-    return SUB;
-}
+"="         { return ASSIGN_OP; }
 
-"*" { 
-    return MUL; 
-}
+";"         { return LINE_END;  }
 
-"/" { 
-    return DIV; 
-}
 
-"|" {
-    return ABSOLUTE; 
-}
-
-"(" { 
-    return OB; 
-}
-
-")" { 
-    return CB; 
+[a-zA-Z_][a-zA-Z_0-9]* {
+    addSymbolReference(yytext);
+    return ID;
 }
 
 
 ([0.9]*\.?[0-9]+|[0-9]+\.)((E+|E-)[0-9]+)? {
-    yylval.number = atof(yytext);
     return NUMBER;
 }
 
-[a-zA-Z_][a-zA-Z_0-9]* {
-    addSymbolReference(yytext);
-    return VARIABLE;
-}
-
-\n { 
-    return EOL; 
-}
 
 [ \t] {
+}
+\n { 
+    return EOL; 
 }
 
 . { 

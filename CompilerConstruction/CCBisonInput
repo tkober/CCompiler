@@ -12,64 +12,62 @@ id<CCOutput> _output;
 
 %}
 
-%union {
-    struct CCAbstractSyntaxTree *ast;
-    double number;
-}
-
-
-%type <ast> expr 
-%type <ast> factor 
-%type <ast> term
-
+// Type Specifiers
+%token VOID
+%token CHAR
+%token SHORT
+%token INT
+%token LONG
+%token FLOAT
+%token DOUBLE
+%token SIGNED
+%token UNSIGNED
 
 // Identifier
-%token <number> NUMBER
-%token VARIABLE
+%token ID
+%token NUMBER
 
 // Operators
-%token ADD 
-%token SUB 
-%token MUL 
-%token DIV 
-%token ABSOLUTE
+%token ASSIGN_OP
 
-// Braces
-%token OB 
-%token CB
+// Punctations
+%token LINE_END
 
-// File
+// Whitespace
 %token EOL
-
 
 %%
 
 
-arithmetic_expression: /* nothing */
-//| arithmetic_expression expr EOL { [_output printResult:[NSString stringWithFormat:@"[Line %i] valid\n", yylineno]]; }
-| arithmetic_expression expr EOL { 
-    [_output printResult:[NSString stringWithFormat:@"%4.4g\n", evaluateAST($2)]]; 
-    freeAST($2);
-    [_output printResult:@"> "];
-}
-
-| arithmetic_expression EOL { [_output printResult:@"> "] }
+document:
+| document statement
+| document EOL
 ;
 
-expr: factor
-| expr ADD factor   { $$ = newAST('+', $1, $3); }
-| expr SUB factor   { $$ = newAST('-', $1, $3); }
+
+statement: LINE_END
+| declaration LINE_END
 ;
 
-factor: term
-| factor MUL term   { $$ = newAST('*', $1, $3); }
-| factor DIV term   { $$ = newAST('/', $1, $3); }
+
+declaration: type_specification
+| type_specification ID
+| type_specification ID assignment
 ;
 
-term: NUMBER        { $$ = newNumberNode($1); }
-//| VARIABLE
-| ABSOLUTE term     { $$ = newAST('|', $2, NULL ); }
-| OB expr CB        { $$ = $2; }
+
+assignment: ASSIGN_OP NUMBER;
+
+
+type_specification: VOID
+| CHAR
+| SHORT
+| INT
+| LONG
+| FLOAT
+| DOUBLE
+| SIGNED
+| UNSIGNED
 ;
 
 
@@ -82,7 +80,7 @@ void start_scanning(const char *input, id<CCOutput> output)
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
     yyparse();
-    [[CCSymbolTable sharedInstance] printSymbolTable:output];
+//    [[CCSymbolTable sharedInstance] printSymbolTable:output];
     yy_delete_buffer(buffer);
 }
 
