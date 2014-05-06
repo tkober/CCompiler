@@ -23,6 +23,7 @@
 
 /* Begin PBXBuildFile section */
 		DC8050AA1917BEB600B7C594 /* CCSymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8050A91917BEB600B7C594 /* CCSymbolTable.m */; };
+		F17728A11918E86B005AE753 /* CCAbstractSyntaxTree.c in Sources */ = {isa = PBXBuildFile; fileRef = F17728A01918E86B005AE753 /* CCAbstractSyntaxTree.c */; };
 		F1C3CAE219103D0B00608EDD /* CCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CAE119103D0B00608EDD /* CCParser.m */; };
 		F1C7C46218F1864100A4D911 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C7C46118F1864100A4D911 /* Cocoa.framework */; };
 		F1C7C46C18F1864100A4D911 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1C7C46A18F1864100A4D911 /* InfoPlist.strings */; };
@@ -59,6 +60,8 @@
 /* Begin PBXFileReference section */
 		DC8050A81917BEB600B7C594 /* CCSymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSymbolTable.h; sourceTree = "<group>"; };
 		DC8050A91917BEB600B7C594 /* CCSymbolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSymbolTable.m; sourceTree = "<group>"; };
+		F177289F1918E85A005AE753 /* CCAbstractSyntaxTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAbstractSyntaxTree.h; sourceTree = "<group>"; };
+		F17728A01918E86B005AE753 /* CCAbstractSyntaxTree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CCAbstractSyntaxTree.c; sourceTree = "<group>"; };
 		F1BA354B191040D8004992EC /* CCParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCParser.h; sourceTree = "<group>"; };
 		F1BA354C1910442E004992EC /* CCParserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCParserInterface.h; sourceTree = "<group>"; };
 		F1C3CADF19103A9200608EDD /* CCBisonInput */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCBisonInput; sourceTree = "<group>"; };
@@ -118,6 +121,15 @@
 				DC8050A91917BEB600B7C594 /* CCSymbolTable.m */,
 			);
 			name = SymbolTable;
+			sourceTree = "<group>";
+		};
+		F177289E1918E839005AE753 /* SyntaxTree */ = {
+			isa = PBXGroup;
+			children = (
+				F177289F1918E85A005AE753 /* CCAbstractSyntaxTree.h */,
+				F17728A01918E86B005AE753 /* CCAbstractSyntaxTree.c */,
+			);
+			name = SyntaxTree;
 			sourceTree = "<group>";
 		};
 		F1C3CADC191039CE00608EDD /* Bison */ = {
@@ -278,6 +290,7 @@
 		F1D3EDDF18F1988E0063EC76 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F177289E1918E839005AE753 /* SyntaxTree */,
 				DC8050A71917BE9700B7C594 /* SymbolTable */,
 				F1D3EDE018F199500063EC76 /* Output */,
 			);
@@ -427,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1C3CAE219103D0B00608EDD /* CCParser.m in Sources */,
+				F17728A11918E86B005AE753 /* CCAbstractSyntaxTree.c in Sources */,
 				F1C7C47518F1864100A4D911 /* CCAppDelegate.m in Sources */,
 				DC8050AA1917BEB600B7C594 /* CCSymbolTable.m in Sources */,
 				F1D3EDCB18F189C10063EC76 /* CCScanner.m in Sources */,

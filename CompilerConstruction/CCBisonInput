@@ -5,14 +5,26 @@
 #import "CCParser.h"
 #import "CCScanner.h"
 #import "CCSymbolTable.h"
+#import "CCAbstractSyntaxTree.h"
 
 
 id<CCOutput> _output;
 
 %}
 
+%union {
+    struct CCAbstractSyntaxTree *ast;
+    double number;
+}
+
+
+%type <ast> expr 
+%type <ast> factor 
+%type <ast> term
+
+
 // Identifier
-%token NUMBER 
+%token <number> NUMBER
 %token VARIABLE
 
 // Operators
@@ -34,23 +46,30 @@ id<CCOutput> _output;
 
 
 arithmetic_expression: /* nothing */
-| arithmetic_expression expr EOL { [_output printResult:[NSString stringWithFormat:@"[Line %i] valid\n", yylineno]]; }
+//| arithmetic_expression expr EOL { [_output printResult:[NSString stringWithFormat:@"[Line %i] valid\n", yylineno]]; }
+| arithmetic_expression expr EOL { 
+    [_output printResult:[NSString stringWithFormat:@"%4.4g\n", evaluateAST($2)]]; 
+    freeAST($2);
+    [_output printResult:@"> "];
+}
+
+| arithmetic_expression EOL { [_output printResult:@"> "] }
 ;
 
 expr: factor
-| expr ADD factor
-| expr SUB factor
+| expr ADD factor   { $$ = newAST('+', $1, $3); }
+| expr SUB factor   { $$ = newAST('-', $1, $3); }
 ;
 
 factor: term
-| factor MUL term
-| factor DIV term
+| factor MUL term   { $$ = newAST('*', $1, $3); }
+| factor DIV term   { $$ = newAST('/', $1, $3); }
 ;
 
-term: NUMBER
-| VARIABLE
-| ABSOLUTE term
-| OB expr CB
+term: NUMBER        { $$ = newNumberNode($1); }
+//| VARIABLE
+| ABSOLUTE term     { $$ = newAST('|', $2, NULL ); }
+| OB expr CB        { $$ = $2; }
 ;
 
 
