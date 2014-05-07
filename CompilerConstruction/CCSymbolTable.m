@@ -7,6 +7,8 @@
 //
 
 #import "CCSymbolTable.h"
+#import "CCSymbolNew.h"
+#import "CCSymbolReference.h"
 
 
 struct CCSymbolRef {
@@ -41,10 +43,14 @@ NSUInteger const HASH_TABLE_SIZE = 9997;
 
 
 #pragma mark | Symbol Table
-CCSymbol *lookUp(char *name);
-void addReference(char *name, char *filename, unsigned int line);
-unsigned int symbolHash(char *name);
-int symbolCompare(const void *xa, const void *xb);
+- (void)addReferenceWithName:(NSString *)name
+                      inFile:(NSString *)filename
+                      atLine:(NSNumber *)line;
+- (CCSymbolNew *)lookUpSymbolWithName:(NSString *)name;
+- (NSUInteger)hashForSymbolWithName:(const char *)name;
+
+
+
 
 @end
 
@@ -54,7 +60,7 @@ int symbolCompare(const void *xa, const void *xb);
 
 
 static CCSymbolTable *_sharedInstance = nil;
-CCSymbol _symbolTable[HASH_TABLE_SIZE];
+CCSymbolNew *_symbolTableNew[HASH_TABLE_SIZE];
 
 
 #pragma mark - Private methods
@@ -66,71 +72,52 @@ CCSymbol _symbolTable[HASH_TABLE_SIZE];
 
 
 #pragma mark | Symbol Table
-CCSymbol *lookUp(char *name)
+- (void)addReferenceWithName:(NSString *)name
+                      inFile:(NSString *)filename
+                      atLine:(NSNumber *)line
 {
-    CCSymbol *symbol = &_symbolTable[symbolHash(name)%HASH_TABLE_SIZE];
-    int symbolCount = HASH_TABLE_SIZE;
+    CCSymbolReference *reference;
+    CCSymbolNew *symbol = [self lookUpSymbolWithName:name];
+    if (symbol.references &&
+        [symbol.references.fileName isEqualToString:filename] &&
+        [symbol.references.line isEqualToNumber:line]) return;
     
+    reference = [CCSymbolReference symbolReferenceInFile:filename
+                                                  atLine:line];
+    [reference setSuccessor:symbol.references];
+    [symbol setReferences:reference];
+}
+
+
+- (CCSymbolNew *)lookUpSymbolWithName:(NSString *)name
+{
+    NSInteger hash = [self hashForSymbolWithName:name.UTF8String] % HASH_TABLE_SIZE;
+    NSInteger symbolCount = HASH_TABLE_SIZE;
     while (--symbolCount >= 0) {
         // Match
-        if (symbol->name && !strcasecmp(symbol->name, name)) return symbol;
-        // New enty
-        if (!symbol->name) {
-            symbol->name = strdup(name);
-            symbol->referenceList = NULL;
-            return symbol;
-        }
+        if ([_symbolTableNew[hash].name isEqualToString:name]) return _symbolTableNew[hash];
+        // New Entry
+        if (!_symbolTableNew[hash]) {
+            _symbolTableNew[hash] = [CCSymbolNew symbolWithName:name];
+            return _symbolTableNew[hash];
+        };
         // Collision: Next!
-        if (++symbol >= _symbolTable+HASH_TABLE_SIZE) symbol = _symbolTable;
+        hash = (hash+1) % HASH_TABLE_SIZE;
     }
-    [NSException raise:@"SymbolTableException"
-                format:@"Symbol table is full!"];
-    return NULL;
+    @throw [NSException exceptionWithName:@"SymbolTableException"
+                                   reason:@"Symbol table is full!"
+                                 userInfo:nil];
+
 }
 
 
-void addReference(char *name, char *filename, unsigned int line)
+- (NSUInteger)hashForSymbolWithName:(const char *)name
 {
-    CCSymbolRef *reference;
-    CCSymbol *symbol = lookUp(name);
-    
-    if (symbol->referenceList &&
-        symbol->referenceList->filename == filename &&
-        symbol->referenceList->line == line) return;
-    
-    reference = malloc(sizeof(CCSymbolRef));
-    if (!reference) {
-        [NSException raise:NSMallocException
-                    format:@"Out of space!"];
-    }
-    reference->successor = symbol->referenceList;
-    reference->filename = filename;
-    reference->line = line;
-    symbol->referenceList = reference;
-}
-
-
-unsigned int symbolHash(char *name)
-{
-    unsigned int hash = 0;
+    NSUInteger hash = 0;
     unsigned int c;
     while ((c = *name++))
         hash = hash*9 ^ c;
     return hash;
-}
-
-
-int symbolCompare(const void *xa, const void *xb)
-{
-    const CCSymbol *a = xa;
-    const CCSymbol *b = xb;
-    
-    if (!a->name) {
-        if (!b->name) return 0;     // Both empty
-        return 1;                   // b > empty a
-    }
-    if (!b->name) return -1;        // a > empty b
-    return strcmp(a->name, b->name);
 }
 
 
@@ -161,7 +148,9 @@ int symbolCompare(const void *xa, const void *xb)
                       line:(unsigned int)line
 {
     @try {
-        addReference(name, filename, line);
+        [self addReferenceWithName:[[NSString alloc] initWithUTF8String:name]
+                            inFile:[[NSString alloc] initWithUTF8String:filename]
+                            atLine:@(line)];
     }
     @catch (NSException *exception) {
         [self.output printError:exception.description];
@@ -173,36 +162,21 @@ int symbolCompare(const void *xa, const void *xb)
 - (void)printSymbolTable:(id<CCOutput>)output
 {
     output = output ? output : self.output;
-    CCSymbol *symbol;
-    qsort(_symbolTable, HASH_TABLE_SIZE, sizeof(CCSymbol), symbolCompare);
-    [output printInfo:@"\n\nSymbol Table\n"];
-    [output printInfo:@"========================================================================\n"];
-    [output printInfo:@"Symbol\t\tFile\t\t\t\t\tLines\n"];
-    for (symbol = _symbolTable; symbol->name && symbol < _symbolTable+HASH_TABLE_SIZE; symbol++) {
-        char *previousFilename = NULL;
-        CCSymbolRef *reference = symbol->referenceList;
-        CCSymbolRef *previousReference = 0;
-        CCSymbolRef *nextReference;
-        
-        do {
-            nextReference = reference->successor;
-            reference->successor = previousReference;
-            previousReference = reference;
-            reference = nextReference;
-        } while (reference);
-        
-        [output printInfo:[NSString stringWithFormat:@"%s", symbol->name]];
-        for (reference = previousReference; reference; reference = reference->successor) {
-            if (reference->filename  == previousFilename) {
-                [output printInfo:[NSString stringWithFormat:@"  %d", reference->line]];
-            } else {
-                [output printInfo:[NSString stringWithFormat:@"\t\t\t%s\t\t\t%d", reference->filename, reference->line]];
-                previousFilename = reference->filename;
-            }
-        }
-        [output printInfo:@"\n"];
+    NSMutableArray *symbols = [NSMutableArray array];
+    for (NSUInteger i = 0; i < HASH_TABLE_SIZE; i++) {
+        if (_symbolTableNew[i]) [symbols addObject:_symbolTableNew[i]];
     }
-    [output printInfo:@"========================================================================\n\n"];
+    [symbols sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                                  ascending:YES]]];
+    [output printInfo:@"\nSYMBOL TABLE\n\n"];
+    [output printInfo:@"Symbol\t\tFile\t\t\t\tLines\n"];
+    [output printInfo:@"=======================================================\n"];
+    for (CCSymbolNew *symbol in symbols) {
+        [symbol printSymbolToOutput:output];
+        [output printInfo:@"\n-------------------------------------------------------\n"];
+    }
+    [output printInfo:@"\n"];
 }
+
 
 @end

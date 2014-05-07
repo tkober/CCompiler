@@ -54,6 +54,8 @@
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[self.outputTextView textStorage] appendAttributedString:attributedString];
+        [[self.outputTextView textStorage] setFont:[NSFont fontWithName:@"Menlo"
+                                                                   size:11]];
         [self.outputTextView scrollRangeToVisible:NSMakeRange([[self.outputTextView string] length], 0)];
     });
 }
