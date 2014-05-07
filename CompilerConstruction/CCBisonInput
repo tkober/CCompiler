@@ -43,24 +43,21 @@ id<CCOutput> _output;
 %token ASSIGN_BITWISE_XOR_OP
 %token ASSIGN_BITWISE_OR_OP
 
-// Unary Operators
+// Other Operators
 %token UNARY_INCREMENT_OP
 %token UNARY_DECREMENT_OP
-%token BITWISE_AND_OP
+%token BITWISE_NOT_OP
 %token MUL_OP
+%token DIV_OP
 %token ADD_OP
 %token SUB_OP
-%token BITWISE_NOT_OP
 %token NOT_OP
 %token MOD_OP
-%token DIV_OP
-
-// Logical Operators
+%token AND_OP
+%token OR_OP
 %token LOGICAL_OR_OP
 %token LOGICAL_AND_OP
-%token INCLUSIVE_OR_OP
 %token EXCLUSIVE_OR_OP
-%token AND_OP
 
 
 // Comparison Operator
@@ -185,7 +182,7 @@ logical_and_expression: inclusive_or_expression
 
 
 inclusive_or_expression: exclusive_or_expression
-| inclusive_or_expression INCLUSIVE_OR_OP exclusive_or_expression
+| inclusive_or_expression  OR_OP exclusive_or_expression
 ;
 
 
@@ -263,7 +260,7 @@ const: CHAR_CONST
 ;
 
 
-unary_operator: BITWISE_AND_OP
+unary_operator: AND_OP
 | MUL_OP
 | ADD_OP
 | SUB_OP
