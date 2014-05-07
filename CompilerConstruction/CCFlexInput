@@ -31,8 +31,8 @@ void addSymbolReference(char *name);
                                                 return ID;
                                             }
 ([0.9]*\.?[0-9]+|[0-9]+\.)((E+|E-)[0-9]+)?  { return FLOAT_CONST; }
-([0-9]+)                                    { return INT_CONST; }
-([0-9]+\.[0-9]*)                            { return DOUBLE_CONST; }
+([0-9]+)?                                   { return INT_CONST; }
+([0-9]+\.[0-9]*)?                           { return DOUBLE_CONST; }
 
 
 
