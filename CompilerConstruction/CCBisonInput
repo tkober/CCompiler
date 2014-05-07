@@ -23,40 +23,96 @@ id<CCOutput> _output;
 %token SIGNED
 %token UNSIGNED
 
-// Identifier
+// Symbols
 %token ID
-%token NUMBER
+%token STRING
+%token CHAR_CONST
+%token INT_CONST
+%token FLOAT_CONST
 
-// Operators
+// Assignement Operators
 %token ASSIGN_OP
+%token ASSIGN_MUL_OP
+%token ASSIGN_DIV_OP
+%token ASSIGN_MOD_OP
+%token ASSIGN_ADD_OP
+%token ASSIGN_SUB_OP
+%token ASSIGN_SHIFT_LEFT_OP
+%token ASSIGN_SHIFT_RIGHT_OP
+%token ASSIGN_BITWISE_AND_OP
+%token ASSIGN_BITWISE_XOR_OP
+%token ASSIGN_BITWISE_OR_OP
+
+// Unary Operators
+%token UNARY_INCREMENT_OP
+%token UNARY_DECREMENT_OP
+%token BITWISE_AND_OP
+%token MUL_OP
+%token ADD_OP
+%token SUB_OP
+%token BITWISE_NOT_OP
+%token NOT_OP
+%token MOD_OP
+%token DIV_OP
+
+// Logical Operators
+%token LOGICAL_OR_OP
+%token LOGICAL_AND_OP
+%token INCLUSIVE_OR_OP
+%token EXCLUSIVE_OR_OP
+%token AND_OP
+
+
+// Comparison Operator
+%token EQUAL_OP
+%token NOT_EQUAL_OP
+%token LT_OP
+%token GT_OP
+%token LE_OP
+%token GE_OP
+
+// Shift Operators
+%token SHIFT_LEFT_OP
+%token SHIFT_RIGHT_OP
 
 // Punctations
 %token LINE_END
+%token COLON
+%token COMMA
+%token QUESTION_MARK
 
 // Whitespace
 %token EOL
 
+// Braces
+%token OB
+%token CB
+
 %%
 
 
-document:
-| document statement
-| document EOL
+translation_unit: external_declaration
+| translation_unit external_declaration
 ;
 
 
-statement: LINE_END
-| declaration LINE_END
+external_declaration: function_definition
+| declaration
 ;
 
 
-declaration: type_specification
-| type_specification ID
-| type_specification ID assignment
+// TODO
+function_definition:;
+
+
+declaration: declaration_specification LINE_END
+| declaration_specification init_declarator_list LINE_END
 ;
 
 
-assignment: ASSIGN_OP NUMBER;
+declaration_specification: type_specification
+| type_specification declaration_specification
+;
 
 
 type_specification: VOID
@@ -68,6 +124,151 @@ type_specification: VOID
 | DOUBLE
 | SIGNED
 | UNSIGNED
+;
+
+
+init_declarator_list: init_declarator
+| init_declarator_list COMMA init_declarator
+;
+
+
+init_declarator: declarator
+| declarator ASSIGN_OP initializer
+;
+
+
+declarator: ID;
+
+
+initializer: assignment_expression;
+
+
+assignment_expression: conditional_expression
+| unary_expression assignment_operator assignment_expression
+;
+
+
+conditional_expression: logical_or_expression
+| logical_or_expression QUESTION_MARK expression COLON conditional_expression
+;
+
+
+unary_expression: postfix_expression
+| UNARY_INCREMENT_OP unary_expression
+| UNARY_DECREMENT_OP unary_expression
+| unary_operator
+;
+
+
+assignment_operator: ASSIGN_OP
+| ASSIGN_MUL_OP
+| ASSIGN_DIV_OP
+| ASSIGN_MOD_OP
+| ASSIGN_ADD_OP
+| ASSIGN_SUB_OP
+| ASSIGN_SHIFT_LEFT_OP
+| ASSIGN_SHIFT_RIGHT_OP
+| ASSIGN_BITWISE_AND_OP
+| ASSIGN_BITWISE_XOR_OP
+| ASSIGN_BITWISE_OR_OP
+;
+
+
+logical_or_expression: logical_and_expression
+| logical_or_expression LOGICAL_OR_OP logical_and_expression
+;
+
+
+logical_and_expression: inclusive_or_expression
+| logical_and_expression LOGICAL_AND_OP inclusive_or_expression
+;
+
+
+inclusive_or_expression: exclusive_or_expression
+| inclusive_or_expression INCLUSIVE_OR_OP exclusive_or_expression
+;
+
+
+exclusive_or_expression: and_expression
+| exclusive_or_expression EXCLUSIVE_OR_OP and_expression
+;
+
+
+and_expression: equality_expression
+| and_expression AND_OP equality_expression
+;
+
+
+equality_expression: relational_expression
+| equality_expression EQUAL_OP relational_expression
+| equality_expression NOT_EQUAL_OP relational_expression
+;
+
+
+relational_expression: shift_expression
+| relational_expression LT_OP shift_expression
+| relational_expression GT_OP shift_expression
+| relational_expression LE_OP shift_expression
+| relational_expression GE_OP shift_expression
+;
+
+
+shift_expression: additive_expression
+| shift_expression SHIFT_LEFT_OP additive_expression
+| shift_expression SHIFT_RIGHT_OP additive_expression
+;
+
+
+additive_expression: multiplicative_expression
+| additive_expression ADD_OP multiplicative_expression
+| additive_expression SUB_OP multiplicative_expression
+;
+
+
+multiplicative_expression: unary_expression
+| multiplicative_expression MUL_OP unary_expression
+| multiplicative_expression DIV_OP unary_expression
+| multiplicative_expression MOD_OP unary_expression
+;
+
+
+expression: assignment_expression
+| expression COMMA assignment_expression
+;
+
+
+postfix_expression: primary_expression
+| postfix_expression OB argument_expression_list CB
+| postfix_expression OB CB
+| postfix_expression UNARY_INCREMENT_OP
+| postfix_expression UNARY_DECREMENT_OP
+;
+
+
+primary_expression: ID
+| const
+| STRING
+| OB expression CB
+;
+
+
+argument_expression_list: assignment_expression
+| argument_expression_list COMMA assignment_expression
+;
+
+
+const: CHAR_CONST
+| INT_CONST
+| FLOAT_CONST
+;
+
+
+unary_operator: BITWISE_AND_OP
+| MUL_OP
+| ADD_OP
+| SUB_OP
+| BITWISE_NOT_OP
+| NOT_OP
 ;
 
 
