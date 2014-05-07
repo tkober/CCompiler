@@ -85,6 +85,16 @@ id<CCOutput> _output;
 %token OB
 %token CB
 
+//Keywords
+%token BREAK
+%token CONTINUE
+%token WHILE
+%token RETURN
+%token IF
+%token THEN
+%token ELSE
+%token GOTO
+
 %%
 
 
