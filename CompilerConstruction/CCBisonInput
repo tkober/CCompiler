@@ -88,185 +88,187 @@ id<CCOutput> _output;
 %%
 
 
-translation_unit: external_declaration
-| translation_unit external_declaration
-;
+translation_unit            : external_declaration
+                            | translation_unit external_declaration
+                            ;
 
 
-external_declaration: function_definition
-| declaration
-;
+external_declaration        : function_definition
+                            | declaration
+                            ;
 
 
 // TODO
-function_definition:;
+function_definition         :
+                            ;
 
 
-declaration: declaration_specification LINE_END
-| declaration_specification init_declarator_list LINE_END
-;
+declaration                 : declaration_specification LINE_END
+                            | declaration_specification init_declarator_list LINE_END
+                            ;
 
 
-declaration_specification: type_specification
-| type_specification declaration_specification
-;
+declaration_specification   : type_specification
+                            | type_specification declaration_specification
+                            ;
 
 
-type_specification: VOID
-| CHAR
-| SHORT
-| INT
-| LONG
-| FLOAT
-| DOUBLE
-| SIGNED
-| UNSIGNED
-;
+type_specification          : VOID
+                            | CHAR
+                            | SHORT
+                            | INT
+                            | LONG
+                            | FLOAT
+                            | DOUBLE
+                            | SIGNED
+                            | UNSIGNED
+                            ;
 
 
-init_declarator_list: init_declarator
-| init_declarator_list COMMA init_declarator
-;
+init_declarator_list        : init_declarator
+                            | init_declarator_list COMMA init_declarator
+                            ;
 
 
-init_declarator: declarator
-| declarator ASSIGN_OP initializer
-;
+init_declarator             : declarator
+                            | declarator ASSIGN_OP initializer
+                            ;
 
 
 declarator: ID;
 
 
-initializer: assignment_expression;
+initializer                 : assignment_expression
+                            ;
 
 
-assignment_expression: conditional_expression
-| unary_expression assignment_operator assignment_expression
-;
+assignment_expression       : conditional_expression
+                            | unary_expression assignment_operator assignment_expression
+                            ;
 
 
-conditional_expression: logical_or_expression
-| logical_or_expression QUESTION_MARK expression COLON conditional_expression
-;
+conditional_expression      : logical_or_expression
+                            | logical_or_expression QUESTION_MARK expression COLON conditional_expression
+                            ;
 
 
-unary_expression: postfix_expression
-| UNARY_INCREMENT_OP unary_expression
-| UNARY_DECREMENT_OP unary_expression
-| unary_operator
-;
+unary_expression            : postfix_expression
+                            | UNARY_INCREMENT_OP unary_expression
+                            | UNARY_DECREMENT_OP unary_expression
+                            | unary_operator
+                            ;
 
 
-assignment_operator: ASSIGN_OP
-| ASSIGN_MUL_OP
-| ASSIGN_DIV_OP
-| ASSIGN_MOD_OP
-| ASSIGN_ADD_OP
-| ASSIGN_SUB_OP
-| ASSIGN_SHIFT_LEFT_OP
-| ASSIGN_SHIFT_RIGHT_OP
-| ASSIGN_BITWISE_AND_OP
-| ASSIGN_BITWISE_XOR_OP
-| ASSIGN_BITWISE_OR_OP
-;
+assignment_operator         : ASSIGN_OP
+                            | ASSIGN_MUL_OP
+                            | ASSIGN_DIV_OP
+                            | ASSIGN_MOD_OP
+                            | ASSIGN_ADD_OP
+                            | ASSIGN_SUB_OP
+                            | ASSIGN_SHIFT_LEFT_OP
+                            | ASSIGN_SHIFT_RIGHT_OP
+                            | ASSIGN_BITWISE_AND_OP
+                            | ASSIGN_BITWISE_XOR_OP
+                            | ASSIGN_BITWISE_OR_OP
+                            ;
 
 
-logical_or_expression: logical_and_expression
-| logical_or_expression LOGICAL_OR_OP logical_and_expression
-;
+logical_or_expression       : logical_and_expression
+                            | logical_or_expression LOGICAL_OR_OP logical_and_expression
+                            ;
 
 
-logical_and_expression: inclusive_or_expression
-| logical_and_expression LOGICAL_AND_OP inclusive_or_expression
-;
+logical_and_expression      : inclusive_or_expression
+                            | logical_and_expression LOGICAL_AND_OP inclusive_or_expression
+                            ;
 
 
-inclusive_or_expression: exclusive_or_expression
-| inclusive_or_expression  OR_OP exclusive_or_expression
-;
+inclusive_or_expression     : exclusive_or_expression
+                            | inclusive_or_expression  OR_OP exclusive_or_expression
+                            ;
 
 
-exclusive_or_expression: and_expression
-| exclusive_or_expression EXCLUSIVE_OR_OP and_expression
-;
+exclusive_or_expression     : and_expression
+                            | exclusive_or_expression EXCLUSIVE_OR_OP and_expression
+                            ;
 
 
-and_expression: equality_expression
-| and_expression AND_OP equality_expression
-;
+and_expression              : equality_expression
+                            | and_expression AND_OP equality_expression
+                            ;
 
 
-equality_expression: relational_expression
-| equality_expression EQUAL_OP relational_expression
-| equality_expression NOT_EQUAL_OP relational_expression
-;
+equality_expression         : relational_expression
+                            | equality_expression EQUAL_OP relational_expression
+                            | equality_expression NOT_EQUAL_OP relational_expression
+                            ;
 
 
-relational_expression: shift_expression
-| relational_expression LT_OP shift_expression
-| relational_expression GT_OP shift_expression
-| relational_expression LE_OP shift_expression
-| relational_expression GE_OP shift_expression
-;
+relational_expression       : shift_expression
+                            | relational_expression LT_OP shift_expression
+                            | relational_expression GT_OP shift_expression
+                            | relational_expression LE_OP shift_expression
+                            | relational_expression GE_OP shift_expression
+                            ;
 
 
-shift_expression: additive_expression
-| shift_expression SHIFT_LEFT_OP additive_expression
-| shift_expression SHIFT_RIGHT_OP additive_expression
-;
+shift_expression            : additive_expression
+                            | shift_expression SHIFT_LEFT_OP additive_expression
+                            | shift_expression SHIFT_RIGHT_OP additive_expression
+                            ;
 
 
-additive_expression: multiplicative_expression
-| additive_expression ADD_OP multiplicative_expression
-| additive_expression SUB_OP multiplicative_expression
-;
+additive_expression         : multiplicative_expression
+                            | additive_expression ADD_OP multiplicative_expression
+                            | additive_expression SUB_OP multiplicative_expression
+                            ;
 
 
-multiplicative_expression: unary_expression
-| multiplicative_expression MUL_OP unary_expression
-| multiplicative_expression DIV_OP unary_expression
-| multiplicative_expression MOD_OP unary_expression
-;
+multiplicative_expression   : unary_expression
+                            | multiplicative_expression MUL_OP unary_expression
+                            | multiplicative_expression DIV_OP unary_expression
+                            | multiplicative_expression MOD_OP unary_expression
+                            ;
 
 
-expression: assignment_expression
-| expression COMMA assignment_expression
-;
+expression                  : assignment_expression
+                            | expression COMMA assignment_expression
+                            ;
 
 
-postfix_expression: primary_expression
-| postfix_expression OB argument_expression_list CB
-| postfix_expression OB CB
-| postfix_expression UNARY_INCREMENT_OP
-| postfix_expression UNARY_DECREMENT_OP
-;
+postfix_expression          : primary_expression
+                            | postfix_expression OB argument_expression_list CB
+                            | postfix_expression OB CB
+                            | postfix_expression UNARY_INCREMENT_OP
+                            | postfix_expression UNARY_DECREMENT_OP
+                            ;
 
 
-primary_expression: ID
-| const
-| STRING
-| OB expression CB
-;
+primary_expression          : ID
+                            | const
+                            | STRING
+                            | OB expression CB
+                            ;
 
 
-argument_expression_list: assignment_expression
-| argument_expression_list COMMA assignment_expression
-;
+argument_expression_list    : assignment_expression
+                            | argument_expression_list COMMA assignment_expression
+                            ;
 
 
-const: CHAR_CONST
-| INT_CONST
-| FLOAT_CONST
-;
+const                       : CHAR_CONST
+                            | INT_CONST
+                            | FLOAT_CONST
+                            ;
 
 
-unary_operator: AND_OP
-| MUL_OP
-| ADD_OP
-| SUB_OP
-| BITWISE_NOT_OP
-| NOT_OP
-;
+unary_operator              : AND_OP
+                            | MUL_OP
+                            | ADD_OP
+                            | SUB_OP
+                            | BITWISE_NOT_OP
+                            | NOT_OP
+                            ;
 
 
 %%
@@ -278,7 +280,7 @@ void start_scanning(const char *input, id<CCOutput> output)
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
     yyparse();
-//    [[CCSymbolTable sharedInstance] printSymbolTable:output];
+    [[CCSymbolTable sharedInstance] printSymbolTable:output];
     yy_delete_buffer(buffer);
 }
 
