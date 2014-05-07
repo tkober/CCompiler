@@ -15,82 +15,80 @@ void addSymbolReference(char *name);
 %%
 
 
-"void"      { return VOID;      }
-"char"      { return CHAR;      }
-"short"     { return SHORT;     }
-"int"       { return INT;       }
-"long"      { return LONG;      }
-"float"     { return FLOAT;     }
-"double"    { return DOUBLE;    }
-"signed"    { return SIGNED;    }
-"unsigned"  { return UNSIGNED;  }
+"void"                                      { return VOID;      }
+"char"                                      { return CHAR;      }
+"short"                                     { return SHORT;     }
+"int"                                       { return INT;       }
+"long"                                      { return LONG;      }
+"float"                                     { return FLOAT;     }
+"double"                                    { return DOUBLE;    }
+"signed"                                    { return SIGNED;    }
+"unsigned"                                  { return UNSIGNED;  }
 
 
-[a-zA-Z_][a-zA-Z_0-9]* {
-    addSymbolReference(yytext);
-    return ID;
-}
-([0.9]*\.?[0-9]+|[0-9]+\.)((E+|E-)[0-9]+)? {
-    return FLOAT_CONST;
-}
+[a-zA-Z_][a-zA-Z_0-9]*                      {
+                                                addSymbolReference(yytext);
+                                                return ID;
+                                            }
+([0.9]*\.?[0-9]+|[0-9]+\.)((E+|E-)[0-9]+)?  { return FLOAT_CONST; }
 
 
 
-"="         { return ASSIGN_OP; }
-"*="        { return ASSIGN_MUL_OP; }
-"/="        { return ASSIGN_DIV_OP; }
-"%="        { return ASSIGN_MOD_OP; }
-"+="        { return ASSIGN_ADD_OP; }
-"-="        { return ASSIGN_SUB_OP; }
-"<<="       { return ASSIGN_SHIFT_LEFT_OP; }
-">>="       { return ASSIGN_SHIFT_RIGHT_OP; }
-"&="        { return ASSIGN_BITWISE_AND_OP; }
-"^="        { return ASSIGN_BITWISE_XOR_OP; }
-"|="        { return ASSIGN_BITWISE_OR_OP; }
+"="                                         { return ASSIGN_OP; }
+"*="                                        { return ASSIGN_MUL_OP; }
+"/="                                        { return ASSIGN_DIV_OP; }
+"%="                                        { return ASSIGN_MOD_OP; }
+"+="                                        { return ASSIGN_ADD_OP; }
+"-="                                        { return ASSIGN_SUB_OP; }
+"<<="                                       { return ASSIGN_SHIFT_LEFT_OP; }
+">>="                                       { return ASSIGN_SHIFT_RIGHT_OP; }
+"&="                                        { return ASSIGN_BITWISE_AND_OP; }
+"^="                                        { return ASSIGN_BITWISE_XOR_OP; }
+"|="                                        { return ASSIGN_BITWISE_OR_OP; }
 
 
-"++"        { return UNARY_INCREMENT_OP; }
-"--"        { return UNARY_DECREMENT_OP; }
-"~"         { return BITWISE_NOT_OP; }
-"*"         { return MUL_OP; }
-"/"         { return DIV_OP; }
-"+"         { return ADD_OP; }
-"-"         { return SUB_OP; }
-"!"         { return NOT_OP; }
-"%"         { return MOD_OP; }
-"|"         { return OR_OP; }
-"&"         { return AND_OP; }
-"||"        { return LOGICAL_OR_OP; }
-"&&"        { return LOGICAL_AND_OP; }
-"^"         { return EXCLUSIVE_OR_OP; }
+"++"                                        { return UNARY_INCREMENT_OP; }
+"--"                                        { return UNARY_DECREMENT_OP; }
+"~"                                         { return BITWISE_NOT_OP; }
+"*"                                         { return MUL_OP; }
+"/"                                         { return DIV_OP; }
+"+"                                         { return ADD_OP; }
+"-"                                         { return SUB_OP; }
+"!"                                         { return NOT_OP; }
+"%"                                         { return MOD_OP; }
+"|"                                         { return OR_OP; }
+"&"                                         { return AND_OP; }
+"||"                                        { return LOGICAL_OR_OP; }
+"&&"                                        { return LOGICAL_AND_OP; }
+"^"                                         { return EXCLUSIVE_OR_OP; }
 
 
-"=="        { return EQUAL_OP; }
-"!="        { return NOT_EQUAL_OP; }
-"<"         { return LT_OP; }
-">"         { return GT_OP; }
-"<="        { return LE_OP; }
-">="        { return GE_OP; }
+"=="                                        { return EQUAL_OP; }
+"!="                                        { return NOT_EQUAL_OP; }
+"<"                                         { return LT_OP; }
+">"                                         { return GT_OP; }
+"<="                                        { return LE_OP; }
+">="                                        { return GE_OP; }
 
 
-";"         { return LINE_END;  }
-":"         { return COLON;  }
-","         { return COMMA;  }
-"?"         { return QUESTION_MARK;  }
+";"                                         { return LINE_END;  }
+":"                                         { return COLON;  }
+","                                         { return COMMA;  }
+"?"                                         { return QUESTION_MARK;  }
 
 
-"<<"        { return SHIFT_LEFT_OP; }
-">>"        { return SHIFT_RIGHT_OP; }
+"<<"                                        { return SHIFT_LEFT_OP; }
+">>"                                        { return SHIFT_RIGHT_OP; }
 
 
-"("         { return OB; }
-")"         { return CB; }
+"("                                         { return OB; }
+")"                                         { return CB; }
 
 
-[ \t]       { }
-\n          { }
+[ \t]                                       { }
+\n                                          { }
 
-.           { printf("Unkown character %c\n", *yytext); }
+.                                           { printf("Unkown character %c\n", *yytext); }
 
 
 %%
@@ -101,6 +99,4 @@ void addSymbolReference(char *name)
                                                   file:"<EDITOR>" 
                                                   line:yylineno];
 }
-
-// NUMBER sollte eigentlich [-+]?([0.9]*\.?[0-9]+|[0-9]+\.)((E+|E-)[0-9]+)? sein
 
