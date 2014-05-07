@@ -176,6 +176,7 @@ CCSymbolNew *_symbolTableNew[HASH_TABLE_SIZE];
         [output printInfo:@"\n-------------------------------------------------------\n"];
     }
     [output printInfo:@"\n"];
+    [output printInfo:@"=======================================================\n"];
 }
 
 
