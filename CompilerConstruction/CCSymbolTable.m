@@ -7,23 +7,8 @@
 //
 
 #import "CCSymbolTable.h"
-#import "CCSymbolNew.h"
+#import "CCSymbol.h"
 #import "CCSymbolReference.h"
-
-
-struct CCSymbolRef {
-    struct CCSymbolRef *successor;
-    char *filename;
-    unsigned int line;
-};
-typedef struct CCSymbolRef CCSymbolRef;
-
-
-struct CCSymbol {
-    char *name;
-    CCSymbolRef *referenceList;
-};
-typedef struct CCSymbol CCSymbol;
 
 
 NSUInteger const HASH_TABLE_SIZE = 9997;
@@ -46,7 +31,7 @@ NSUInteger const HASH_TABLE_SIZE = 9997;
 - (void)addReferenceWithName:(NSString *)name
                       inFile:(NSString *)filename
                       atLine:(NSNumber *)line;
-- (CCSymbolNew *)lookUpSymbolWithName:(NSString *)name;
+- (CCSymbol *)lookUpSymbolWithName:(NSString *)name;
 - (NSUInteger)hashForSymbolWithName:(const char *)name;
 
 
@@ -60,7 +45,7 @@ NSUInteger const HASH_TABLE_SIZE = 9997;
 
 
 static CCSymbolTable *_sharedInstance = nil;
-CCSymbolNew *_symbolTableNew[HASH_TABLE_SIZE];
+CCSymbol *_symbolTable[HASH_TABLE_SIZE];
 
 
 #pragma mark - Private methods
@@ -77,7 +62,7 @@ CCSymbolNew *_symbolTableNew[HASH_TABLE_SIZE];
                       atLine:(NSNumber *)line
 {
     CCSymbolReference *reference;
-    CCSymbolNew *symbol = [self lookUpSymbolWithName:name];
+    CCSymbol *symbol = [self lookUpSymbolWithName:name];
     if (symbol.references &&
         [symbol.references.fileName isEqualToString:filename] &&
         [symbol.references.line isEqualToNumber:line]) return;
@@ -89,17 +74,17 @@ CCSymbolNew *_symbolTableNew[HASH_TABLE_SIZE];
 }
 
 
-- (CCSymbolNew *)lookUpSymbolWithName:(NSString *)name
+- (CCSymbol *)lookUpSymbolWithName:(NSString *)name
 {
     NSInteger hash = [self hashForSymbolWithName:name.UTF8String] % HASH_TABLE_SIZE;
     NSInteger symbolCount = HASH_TABLE_SIZE;
     while (--symbolCount >= 0) {
         // Match
-        if ([_symbolTableNew[hash].name isEqualToString:name]) return _symbolTableNew[hash];
+        if ([_symbolTable[hash].name isEqualToString:name]) return _symbolTable[hash];
         // New Entry
-        if (!_symbolTableNew[hash]) {
-            _symbolTableNew[hash] = [CCSymbolNew symbolWithName:name];
-            return _symbolTableNew[hash];
+        if (!_symbolTable[hash]) {
+            _symbolTable[hash] = [CCSymbol symbolWithName:name];
+            return _symbolTable[hash];
         };
         // Collision: Next!
         hash = (hash+1) % HASH_TABLE_SIZE;
@@ -164,14 +149,14 @@ CCSymbolNew *_symbolTableNew[HASH_TABLE_SIZE];
     output = output ? output : self.output;
     NSMutableArray *symbols = [NSMutableArray array];
     for (NSUInteger i = 0; i < HASH_TABLE_SIZE; i++) {
-        if (_symbolTableNew[i]) [symbols addObject:_symbolTableNew[i]];
+        if (_symbolTable[i]) [symbols addObject:_symbolTable[i]];
     }
     [symbols sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name"
                                                                   ascending:YES]]];
     [output printInfo:@"\nSYMBOL TABLE\n\n"];
     [output printInfo:@"Symbol\t\tFile\t\t\t\tLines\n"];
     [output printInfo:@"=======================================================\n"];
-    for (CCSymbolNew *symbol in symbols) {
+    for (CCSymbol *symbol in symbols) {
         [symbol printSymbolToOutput:output];
         [output printInfo:@"\n-------------------------------------------------------\n"];
     }

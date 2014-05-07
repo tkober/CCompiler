@@ -1,20 +1,20 @@
 //
-//  CCSymbolNew.m
+//  CCSymbol.m
 //  CompilerConstruction
 //
 //  Created by Thorsten Kober on 07.05.14.
 //  Copyright (c) 2014 Thorsten Kober. All rights reserved.
 //
 
-#import "CCSymbolNew.h"
+#import "CCSymbol.h"
 
 
-@implementation CCSymbolNew
+@implementation CCSymbol
 
 
 #pragma mark - Public Methods
 #pragma mark | Creators
-+ (CCSymbolNew *)symbolWithName:(NSString *)name
++ (CCSymbol *)symbolWithName:(NSString *)name
 {
     return [[self alloc] initWithName:name];
 }

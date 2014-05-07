@@ -1,5 +1,5 @@
 //
-//  CCSymbolNew.h
+//  CCSymbol.h
 //  CompilerConstruction
 //
 //  Created by Thorsten Kober on 07.05.14.
@@ -13,13 +13,13 @@
 
 
 #pragma mark - CCSymbolNew
-@interface CCSymbolNew : NSObject
+@interface CCSymbol : NSObject
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) CCSymbolReference *references;
 
 
 #pragma mark | Creators
-+ (CCSymbolNew *)symbolWithName:(NSString *)name;
++ (CCSymbol *)symbolWithName:(NSString *)name;
 
 
 #pragma mark | Initializer
