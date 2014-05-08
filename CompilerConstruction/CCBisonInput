@@ -93,6 +93,10 @@ id<CCOutput> _output;
 %token ELSE
 %token GOTO
 
+
+%nonassoc CB
+%nonassoc ELSE
+
 %%
 
 
