@@ -124,25 +124,29 @@
 
 - (void)printInfo:(NSString *)text
 {
-    [self logAttributedString:[[NSAttributedString alloc] initWithString:text]];
+    [self logAttributedString:[[NSAttributedString alloc] initWithString:text
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor darkGrayColor]}]];
 }
 
 
 - (void)printWarning:(NSString *)text
 {
-    [self logAttributedString:[[NSAttributedString alloc] initWithString:text]];
+    [self logAttributedString:[[NSAttributedString alloc] initWithString:text
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor yellowColor]}]];
 }
 
 
 - (void)printError:(NSString *)text
 {
-    [self logAttributedString:[[NSAttributedString alloc] initWithString:text]];
+    [self logAttributedString:[[NSAttributedString alloc] initWithString:text
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor redColor]}]];
 }
 
 
 - (void)printResult:(NSString *)text
 {
-    [self logAttributedString:[[NSAttributedString alloc] initWithString:text]];
+    [self logAttributedString:[[NSAttributedString alloc] initWithString:text
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor blueColor]}]];
 }
 
 @end
