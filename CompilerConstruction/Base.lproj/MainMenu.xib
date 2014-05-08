@@ -740,7 +740,7 @@
                                             <rect key="frame" x="1" y="1" width="537" height="118"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zZu-Yi-M9w">
+                                                <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zZu-Yi-M9w">
                                                     <rect key="frame" x="0.0" y="0.0" width="537" height="118"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
@@ -794,27 +794,30 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="66d-WT-PF7"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="wE0-55-JNy"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="a1g-hP-SlH"/>
-                    <toolbarItem implicitItemIdentifier="4A97FBF9-163E-4776-A6F4-216E74D19A10" label="Start Compilation" paletteLabel="Start Compilation" id="lar-U3-Atd">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="70" height="25"/>
-                        <size key="maxSize" width="70" height="28"/>
-                        <button key="view" verticalHuggingPriority="750" id="Mbu-Qg-LBf">
-                            <rect key="frame" x="16" y="14" width="70" height="28"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" title="Compile" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vh9-Vq-oqw">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                        </button>
+                    <toolbarItem implicitItemIdentifier="55DF942A-6567-49BD-B35F-F4C532D79241" label="Compile" paletteLabel="Compile" tag="-1" image="RunButton" id="pzx-0h-Veb">
                         <connections>
-                            <action selector="startCompilerButtonPressed:" target="ncy-4E-PT5" id="LWt-b6-H1B"/>
+                            <action selector="startCompilerButtonPressed:" target="ncy-4E-PT5" id="ugf-xR-LZJ"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="40030124-36A1-41ED-BA81-69FEF02E28D1" label="Symbol Table" paletteLabel="Symbol Table" tag="-1" image="PrintSymbolTableButton" id="O3W-70-hD6">
+                        <connections>
+                            <action selector="printSymbolTableButtonPressed:" target="ncy-4E-PT5" id="HiG-02-8Wh"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8DA05B13-4FD1-4BD6-82D2-8A051FECE439" label="Syntax Trees" paletteLabel="Syntax Trees" tag="-1" image="ShowSyntaxTreesButton" id="Qz0-ZI-Icu"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
-                    <toolbarItem reference="lar-U3-Atd"/>
+                    <toolbarItem reference="pzx-0h-Veb"/>
+                    <toolbarItem reference="a1g-hP-SlH"/>
+                    <toolbarItem reference="O3W-70-hD6"/>
+                    <toolbarItem reference="Qz0-ZI-Icu"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
     </objects>
+    <resources>
+        <image name="PrintSymbolTableButton" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="RunButton" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="ShowSyntaxTreesButton" width="25.600000381469727" height="25.600000381469727"/>
+    </resources>
 </document>

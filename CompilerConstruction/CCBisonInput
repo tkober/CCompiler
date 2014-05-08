@@ -365,7 +365,7 @@ unary_operator              : AND_OP
 %%
 
 
-void start_scanning(const char *input, id<CCOutput> output)
+void start_compiling(const char *input, id<CCOutput> output)
 {
 #if BISON_DEBUG
     yydebug = 1;
@@ -374,7 +374,6 @@ void start_scanning(const char *input, id<CCOutput> output)
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
     yyparse();
-    [[CCSymbolTable sharedInstance] printSymbolTable:output];
     yy_delete_buffer(buffer);
 }
 

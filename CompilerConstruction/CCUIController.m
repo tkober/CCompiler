@@ -19,6 +19,7 @@
 
 #pragma mark | IB Actions
 - (IBAction)startCompilerButtonPressed:(id)sender;
+- (IBAction)printSymbolTableButtonPressed:(id)sender;
 
 
 #pragma mark | Logging
@@ -41,7 +42,13 @@
     char input [self.inputTextView.textStorage.string.length];
     sprintf(input, "%s%s", self.inputTextView.textStorage.string.UTF8String, "\n");
     [[CCSymbolTable sharedInstance] purge];
-    start_scanning(input, self);
+    start_compiling(input, self);
+}
+
+
+- (IBAction)printSymbolTableButtonPressed:(id)sender
+{
+    [[CCSymbolTable sharedInstance] printSymbolTable:self];
 }
 
 
@@ -124,25 +131,29 @@
 
 - (void)printInfo:(NSString *)text
 {
-    [self logAttributedString:[[NSAttributedString alloc] initWithString:text]];
+    [self logAttributedString:[[NSAttributedString alloc] initWithString:text
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor darkGrayColor]}]];
 }
 
 
 - (void)printWarning:(NSString *)text
 {
-    [self logAttributedString:[[NSAttributedString alloc] initWithString:text]];
+    [self logAttributedString:[[NSAttributedString alloc] initWithString:text
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor yellowColor]}]];
 }
 
 
 - (void)printError:(NSString *)text
 {
-    [self logAttributedString:[[NSAttributedString alloc] initWithString:text]];
+    [self logAttributedString:[[NSAttributedString alloc] initWithString:text
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor redColor]}]];
 }
 
 
 - (void)printResult:(NSString *)text
 {
-    [self logAttributedString:[[NSAttributedString alloc] initWithString:text]];
+    [self logAttributedString:[[NSAttributedString alloc] initWithString:text
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor blueColor]}]];
 }
 
 @end
