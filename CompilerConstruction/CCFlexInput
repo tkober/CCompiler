@@ -92,6 +92,8 @@ void addSymbolReference(char *name);
 
 "("                                         { return OB; }
 ")"                                         { return CB; }
+"{"                                         { return OB_CURLY; }
+"}"                                         { return CB_CURLY; }
 
 
 [ \t]                                       { }
