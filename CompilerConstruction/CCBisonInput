@@ -7,6 +7,7 @@
 #import "CCSymbolTable.h"
 #import "CCAbstractSyntaxTree.h"
 
+#define YYDEBUG 1
 
 id<CCOutput> _output;
 
@@ -201,10 +202,31 @@ init_declarator             : declarator
                             ;
 
 
-declarator: ID;
+declarator                  : ID
+                            | OB declarator CB
+                            | declarator OB parameter_list CB
+                            | declarator OB CB
+                            ;
+                            
+                            
+parameter_list              : parameter_declaration
+                            | parameter_list COMMA parameter_declaration
+                            ;
+                            
+                            
+parameter_declaration       : declaration_specification declarator
+                            | declaration_specification
+                            ;
 
 
 initializer                 : assignment_expression
+                            | OB_CURLY initializer_list         CB_CURLY
+                            | OB_CURLY initializer_list COMMA   CB_CURLY
+                            ;
+                            
+                            
+initializer_list            : initializer
+                            | initializer_list COMMA initializer
                             ;
 
 
@@ -342,6 +364,7 @@ unary_operator              : AND_OP
 
 void start_scanning(const char *input, id<CCOutput> output)
 {
+    yydebug = 1;
     yylineno = 0;
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
