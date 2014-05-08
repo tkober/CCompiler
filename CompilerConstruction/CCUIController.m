@@ -19,6 +19,7 @@
 
 #pragma mark | IB Actions
 - (IBAction)startCompilerButtonPressed:(id)sender;
+- (IBAction)printSymbolTableButtonPressed:(id)sender;
 
 
 #pragma mark | Logging
@@ -42,6 +43,12 @@
     sprintf(input, "%s%s", self.inputTextView.textStorage.string.UTF8String, "\n");
     [[CCSymbolTable sharedInstance] purge];
     start_compiling(input, self);
+}
+
+
+- (IBAction)printSymbolTableButtonPressed:(id)sender
+{
+    [[CCSymbolTable sharedInstance] printSymbolTable:self];
 }
 
 
