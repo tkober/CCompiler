@@ -143,6 +143,15 @@ CCSymbol *_symbolTable[HASH_TABLE_SIZE];
 }
 
 
+#pragma mark | Purging Table
+- (void)purge
+{
+    for (NSUInteger i = 0; i < HASH_TABLE_SIZE; i++) {
+        _symbolTable[i] = nil;
+    }
+}
+
+
 #pragma mark | Printing
 - (void)printSymbolTable:(id<CCOutput>)output
 {

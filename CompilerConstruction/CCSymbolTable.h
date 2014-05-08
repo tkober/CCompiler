@@ -39,6 +39,10 @@
                       line:(unsigned int)line;
 
 
+#pragma mark | Purging Table
+- (void)purge;
+
+
 #pragma mark | Printing
 - (void)printSymbolTable:(id<CCOutput>)output;
 
