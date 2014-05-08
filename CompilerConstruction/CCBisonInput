@@ -78,9 +78,6 @@ id<CCOutput> _output;
 %token COMMA
 %token QUESTION_MARK
 
-// Whitespace
-%token EOL
-
 // Braces
 %token OB
 %token CB
