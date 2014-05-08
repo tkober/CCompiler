@@ -29,7 +29,6 @@ void addSymbolReference(char *name);
 "else"                                      { return ELSE;      }
 "goto"                                      { return GOTO;      }
 "if"                                        { return IF;        }
-"then"                                      { return THEN;      }
 "return"                                    { return RETURN;    }
 "while"                                     { return WHILE;     }
 

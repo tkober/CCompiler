@@ -91,7 +91,6 @@ id<CCOutput> _output;
 %token WHILE
 %token RETURN
 %token IF
-%token THEN
 %token ELSE
 %token GOTO
 
