@@ -381,6 +381,6 @@ void start_scanning(const char *input, id<CCOutput> output)
 
 int yyerror(char *s)
 {
-    [_output printError:[NSString stringWithFormat:@"error: %s\n", s]];
+    [_output printError:[NSString stringWithFormat:@"[line %i] error: %s\n", yylineno, s]];
     return 0;
 }
