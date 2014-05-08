@@ -81,6 +81,8 @@ id<CCOutput> _output;
 // Braces
 %token OB
 %token CB
+%token OB_CURLY
+%token CB_CURLY
 
 //Keywords
 %token BREAK
@@ -104,13 +106,67 @@ external_declaration        : function_definition
                             ;
 
 
-// TODO
-function_definition         :
+function_definition         : declaration_specification     declarator declaration_list compound_statement
+                            |                               declarator declaration_list compound_statement
+                            | declaration_specification     declarator                  compound_statement
+                            |                               declarator                  compound_statement
                             ;
 
 
-declaration                 : declaration_specification LINE_END
-                            | declaration_specification init_declarator_list LINE_END
+declaration                 : declaration_specification init_declarator_list LINE_END
+                            | declaration_specification LINE_END
+                            ;
+                            
+
+declaration_list            : declaration
+                            | declaration_list declaration
+                            ;
+
+
+compound_statement          : OB_CURLY declaration_list statement_list  CB_CURLY
+                            | OB_CURLY                  statement_list  CB_CURLY
+                            | OB_CURLY declaration_list                 CB_CURLY
+                            | OB_CURLY                                  CB_CURLY
+                            ;
+
+
+statement_list              : statement
+                            | statement_list statement
+                            ;
+           
+
+statement                   : labeled_statement
+                            | expression_statement
+                            | compound_statement
+                            | selection_statement
+                            | iteration_statement
+                            | jump_statement
+                            ;
+                            
+
+labeled_statement           : ID COLON statement
+                            ;
+
+
+expression_statement        : expression LINE_END
+                            | LINE_END
+                            ;
+
+
+selection_statement         : IF OB expression CB statement
+                            | IF OB expression CB statement ELSE statement
+                            ;
+
+
+iteration_statement         : WHILE OB expression CB statement
+                            ;
+
+
+jump_statement              : GOTO ID LINE_END
+                            | CONTINUE LINE_END
+                            | BREAK LINE_END
+                            | RETURN expression LINE_END
+                            | RETURN LINE_END
                             ;
 
 
