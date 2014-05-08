@@ -41,7 +41,7 @@
     char input [self.inputTextView.textStorage.string.length];
     sprintf(input, "%s%s", self.inputTextView.textStorage.string.UTF8String, "\n");
     [[CCSymbolTable sharedInstance] purge];
-    start_scanning(input, self);
+    start_compiling(input, self);
 }
 
 

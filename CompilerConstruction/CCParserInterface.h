@@ -12,6 +12,6 @@
 #import "CCOutput.h"
 
 
-extern void start_scanning(const char *input, id<CCOutput> output);
+extern void start_compiling(const char *input, id<CCOutput> output);
 
 
