@@ -22,6 +22,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		DC088DF4191B76040067486B /* CCParser.output in Resources */ = {isa = PBXBuildFile; fileRef = DC088DF3191B76040067486B /* CCParser.output */; };
 		DC8050AA1917BEB600B7C594 /* CCSymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8050A91917BEB600B7C594 /* CCSymbolTable.m */; };
 		DCAE2E50191A57E5006F4F6B /* CCSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAE2E4F191A57E5006F4F6B /* CCSymbol.m */; };
 		DCAE2E54191A59A6006F4F6B /* CCSymbolReference.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAE2E53191A59A6006F4F6B /* CCSymbolReference.m */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC088DF3191B76040067486B /* CCParser.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CCParser.output; sourceTree = "<group>"; };
 		DC8050A81917BEB600B7C594 /* CCSymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSymbolTable.h; sourceTree = "<group>"; };
 		DC8050A91917BEB600B7C594 /* CCSymbolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSymbolTable.m; sourceTree = "<group>"; };
 		DCAE2E4E191A57E5006F4F6B /* CCSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSymbol.h; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				F1BA354B191040D8004992EC /* CCParser.h */,
 				F1C3CAE119103D0B00608EDD /* CCParser.m */,
+				DC088DF3191B76040067486B /* CCParser.output */,
 			);
 			name = Output;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				F1C7C47A18F1864100A4D911 /* Images.xcassets in Resources */,
 				F1C7C47218F1864100A4D911 /* Credits.rtf in Resources */,
 				F1C7C47818F1864100A4D911 /* MainMenu.xib in Resources */,
+				DC088DF4191B76040067486B /* CCParser.output in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +428,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "bison -d -o \"$SRCROOT/CompilerConstruction/CCParser.h\" \"$SRCROOT/CompilerConstruction/CCBisonInput\"\ncat \"$SRCROOT/CompilerConstruction/CCParserInterface.h\" \"$SRCROOT/CompilerConstruction/CCParser.h\" > \"$SRCROOT/CompilerConstruction/_CCParser.h\"\nrm \"$SRCROOT/CompilerConstruction/CCParser.h\"\nmv \"$SRCROOT/CompilerConstruction/_CCParser.h\" \"$SRCROOT/CompilerConstruction/CCParser.h\"\n\nbison -o \"$SRCROOT/CompilerConstruction/CCParser.m\" \"$SRCROOT/CompilerConstruction/CCBisonInput\"";
+			shellScript = "bison -d -o \"$SRCROOT/CompilerConstruction/CCParser.h\" \"$SRCROOT/CompilerConstruction/CCBisonInput\"\ncat \"$SRCROOT/CompilerConstruction/CCParserInterface.h\" \"$SRCROOT/CompilerConstruction/CCParser.h\" > \"$SRCROOT/CompilerConstruction/_CCParser.h\"\nrm \"$SRCROOT/CompilerConstruction/CCParser.h\"\nmv \"$SRCROOT/CompilerConstruction/_CCParser.h\" \"$SRCROOT/CompilerConstruction/CCParser.h\"\n\nbison -v -o \"$SRCROOT/CompilerConstruction/CCParser.m\" \"$SRCROOT/CompilerConstruction/CCBisonInput\"";
 			showEnvVarsInLog = 0;
 		};
 		F1D3EDD318F18ADD0063EC76 /* Generate Flex */ = {
