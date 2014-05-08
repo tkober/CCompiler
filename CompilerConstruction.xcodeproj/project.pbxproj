@@ -62,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		DC088DF3191B76040067486B /* CCParser.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CCParser.output; sourceTree = "<group>"; };
+		DC088DF9191B893A0067486B /* CCDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCDebug.h; sourceTree = "<group>"; };
 		DC8050A81917BEB600B7C594 /* CCSymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSymbolTable.h; sourceTree = "<group>"; };
 		DC8050A91917BEB600B7C594 /* CCSymbolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSymbolTable.m; sourceTree = "<group>"; };
 		DCAE2E4E191A57E5006F4F6B /* CCSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSymbol.h; sourceTree = "<group>"; };
@@ -216,6 +217,7 @@
 			children = (
 				F1C7C47318F1864100A4D911 /* CCAppDelegate.h */,
 				F1C7C47418F1864100A4D911 /* CCAppDelegate.m */,
+				DC088DF9191B893A0067486B /* CCDebug.h */,
 				F1D3EDDF18F1988E0063EC76 /* Core */,
 				F1C3CADC191039CE00608EDD /* Bison */,
 				F1D3EDC618F1898E0063EC76 /* Flex */,

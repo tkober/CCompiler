@@ -6,8 +6,11 @@
 #import "CCScanner.h"
 #import "CCSymbolTable.h"
 #import "CCAbstractSyntaxTree.h"
+#import "CCDebug.h"
 
-#define YYDEBUG 1
+#if BISON_DEBUG
+    #define YYDEBUG 1
+#endif
 
 id<CCOutput> _output;
 
@@ -364,7 +367,9 @@ unary_operator              : AND_OP
 
 void start_scanning(const char *input, id<CCOutput> output)
 {
+#if BISON_DEBUG
     yydebug = 1;
+#endif
     yylineno = 0;
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
