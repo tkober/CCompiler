@@ -78,6 +78,7 @@
 		F19F0503191C5BFE0054DC7B /* CCUnaryOperatorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F0502191C5BFE0054DC7B /* CCUnaryOperatorNode.m */; };
 		F19F0507191C5C820054DC7B /* CCStringNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F0506191C5C820054DC7B /* CCStringNode.m */; };
 		F19F050B191C5D700054DC7B /* CCIdentifierNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F050A191C5D700054DC7B /* CCIdentifierNode.m */; };
+		F19F0515191CCDB20054DC7B /* CCSyntaxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F0514191CCDB20054DC7B /* CCSyntaxTree.m */; };
 		F1C3CAE219103D0B00608EDD /* CCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CAE119103D0B00608EDD /* CCParser.m */; };
 		F1C7C46218F1864100A4D911 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C7C46118F1864100A4D911 /* Cocoa.framework */; };
 		F1C7C46C18F1864100A4D911 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1C7C46A18F1864100A4D911 /* InfoPlist.strings */; };
@@ -225,6 +226,8 @@
 		F19F0509191C5D700054DC7B /* CCIdentifierNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCIdentifierNode.h; sourceTree = "<group>"; };
 		F19F050A191C5D700054DC7B /* CCIdentifierNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCIdentifierNode.m; sourceTree = "<group>"; };
 		F19F050E191CBFC30054DC7B /* CCNodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNodes.h; sourceTree = "<group>"; };
+		F19F0513191CCDB20054DC7B /* CCSyntaxTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSyntaxTree.h; sourceTree = "<group>"; };
+		F19F0514191CCDB20054DC7B /* CCSyntaxTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSyntaxTree.m; sourceTree = "<group>"; };
 		F1BA354B191040D8004992EC /* CCParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCParser.h; sourceTree = "<group>"; };
 		F1BA354C1910442E004992EC /* CCParserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCParserInterface.h; sourceTree = "<group>"; };
 		F1C3CADF19103A9200608EDD /* CCBisonInput */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCBisonInput; sourceTree = "<group>"; };
@@ -293,60 +296,9 @@
 		F177289E1918E839005AE753 /* SyntaxTree */ = {
 			isa = PBXGroup;
 			children = (
-				F19F0437191C26C60054DC7B /* CCSyntaxNode.h */,
-				F19F0438191C26C60054DC7B /* CCSyntaxNode.m */,
-				F19F050E191CBFC30054DC7B /* CCNodes.h */,
-				F19F043A191C27EF0054DC7B /* TranslationUnit */,
-				F19F0440191C28720054DC7B /* ExternalDeclaration */,
-				F19F0445191C29640054DC7B /* FunctionDefinition */,
-				F19F0449191C2A370054DC7B /* Declaration */,
-				F19F044D191C2B620054DC7B /* DeclarationList */,
-				F19F0451191C2BCD0054DC7B /* CompoundStatement */,
-				F19F0455191C2C9D0054DC7B /* StatementList */,
-				F19F0459191C2D020054DC7B /* Statement */,
-				F19F045D191C2E840054DC7B /* LabeledStatement */,
-				F19F0461191C2F080054DC7B /* ExpressionStatement */,
-				F19F0465191C2F720054DC7B /* SelectionStatement */,
-				F19F0469191C2FC60054DC7B /* IterationStatement */,
-				F19F046D191C31400054DC7B /* JumpStatement */,
-				F19F0471191C327B0054DC7B /* DeclarationSpecification */,
-				F19F0476191C32E80054DC7B /* TypeSpecification */,
-				F19F047B191C33B00054DC7B /* InitDeclaratorList */,
-				F19F047F191C34420054DC7B /* InitDeclarator */,
-				F19F0483191C38BE0054DC7B /* Declarator */,
-				F19F0487191C39640054DC7B /* ParameterList */,
-				F19F048B191C39DC0054DC7B /* ParameterDeclaration */,
-				F19F048F191C3A8F0054DC7B /* Initializer */,
-				F19F0493191C3B100054DC7B /* InitializerList */,
-				F19F0497191C3B620054DC7B /* AssignmentExpression */,
-				F19F049B191C3E420054DC7B /* ConditionalExpression */,
-				F19F049F191C3FBB0054DC7B /* UnaryExpression */,
-				F19F04A3191C418F0054DC7B /* PrefixOperator */,
-				F19F04A7191C47410054DC7B /* AssignmentOperator */,
-				F19F04AB191C488D0054DC7B /* LogicalOrExpression */,
-				F19F04AF191C49280054DC7B /* LogicalAndExpression */,
-				F19F04B3191C499E0054DC7B /* InclusiveOrExpression */,
-				F19F04B7191C4A130054DC7B /* ExclusiveOrExpression */,
-				F19F04BB191C4B2C0054DC7B /* AndExpression */,
-				F19F04BF191C4BB10054DC7B /* EqualityExpression */,
-				F19F04C4191C4C8B0054DC7B /* EqualityOperator */,
-				F19F04C8191C4CF90054DC7B /* RelationalExpression */,
-				F19F04CC191C4DC70054DC7B /* CompareOperator */,
-				F19F04D0191C4E700054DC7B /* ShiftExpression */,
-				F19F04D4191C4EFB0054DC7B /* ShiftOperator */,
-				F19F04D8191C51A60054DC7B /* AdditiveExpression */,
-				F19F04DC191C523A0054DC7B /* AdditiveOperator */,
-				F19F04E0191C53910054DC7B /* MultiplicativeExpression */,
-				F19F04E4191C54B40054DC7B /* MultiplicativeOperator */,
-				F19F04E8191C56F30054DC7B /* Expression */,
-				F19F04EC191C575A0054DC7B /* PostfixExpression */,
-				F19F04F0191C58560054DC7B /* PostfixOperator */,
-				F19F04F4191C59780054DC7B /* PrimaryExpression */,
-				F19F04F8191C5AD10054DC7B /* ArgumentExpressionList */,
-				F19F04FC191C5B590054DC7B /* Const */,
-				F19F0500191C5BF00054DC7B /* UnaryOperator */,
-				F19F0504191C5C5A0054DC7B /* String */,
-				F19F0508191C5D2F0054DC7B /* Identifier */,
+				F19F0513191CCDB20054DC7B /* CCSyntaxTree.h */,
+				F19F0514191CCDB20054DC7B /* CCSyntaxTree.m */,
+				F19F050F191CCD3F0054DC7B /* Nodes */,
 			);
 			name = SyntaxTree;
 			sourceTree = "<group>";
@@ -810,6 +762,67 @@
 			name = Identifier;
 			sourceTree = "<group>";
 		};
+		F19F050F191CCD3F0054DC7B /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				F19F050E191CBFC30054DC7B /* CCNodes.h */,
+				F19F0437191C26C60054DC7B /* CCSyntaxNode.h */,
+				F19F0438191C26C60054DC7B /* CCSyntaxNode.m */,
+				F19F043A191C27EF0054DC7B /* TranslationUnit */,
+				F19F0440191C28720054DC7B /* ExternalDeclaration */,
+				F19F0445191C29640054DC7B /* FunctionDefinition */,
+				F19F0449191C2A370054DC7B /* Declaration */,
+				F19F044D191C2B620054DC7B /* DeclarationList */,
+				F19F0451191C2BCD0054DC7B /* CompoundStatement */,
+				F19F0455191C2C9D0054DC7B /* StatementList */,
+				F19F0459191C2D020054DC7B /* Statement */,
+				F19F045D191C2E840054DC7B /* LabeledStatement */,
+				F19F0461191C2F080054DC7B /* ExpressionStatement */,
+				F19F0465191C2F720054DC7B /* SelectionStatement */,
+				F19F0469191C2FC60054DC7B /* IterationStatement */,
+				F19F046D191C31400054DC7B /* JumpStatement */,
+				F19F0471191C327B0054DC7B /* DeclarationSpecification */,
+				F19F0476191C32E80054DC7B /* TypeSpecification */,
+				F19F047B191C33B00054DC7B /* InitDeclaratorList */,
+				F19F047F191C34420054DC7B /* InitDeclarator */,
+				F19F0483191C38BE0054DC7B /* Declarator */,
+				F19F0487191C39640054DC7B /* ParameterList */,
+				F19F048B191C39DC0054DC7B /* ParameterDeclaration */,
+				F19F048F191C3A8F0054DC7B /* Initializer */,
+				F19F0493191C3B100054DC7B /* InitializerList */,
+				F19F0497191C3B620054DC7B /* AssignmentExpression */,
+				F19F049B191C3E420054DC7B /* ConditionalExpression */,
+				F19F049F191C3FBB0054DC7B /* UnaryExpression */,
+				F19F04A3191C418F0054DC7B /* PrefixOperator */,
+				F19F04A7191C47410054DC7B /* AssignmentOperator */,
+				F19F04AB191C488D0054DC7B /* LogicalOrExpression */,
+				F19F04AF191C49280054DC7B /* LogicalAndExpression */,
+				F19F04B3191C499E0054DC7B /* InclusiveOrExpression */,
+				F19F04B7191C4A130054DC7B /* ExclusiveOrExpression */,
+				F19F04BB191C4B2C0054DC7B /* AndExpression */,
+				F19F04BF191C4BB10054DC7B /* EqualityExpression */,
+				F19F04C4191C4C8B0054DC7B /* EqualityOperator */,
+				F19F04C8191C4CF90054DC7B /* RelationalExpression */,
+				F19F04CC191C4DC70054DC7B /* CompareOperator */,
+				F19F04D0191C4E700054DC7B /* ShiftExpression */,
+				F19F04D4191C4EFB0054DC7B /* ShiftOperator */,
+				F19F04D8191C51A60054DC7B /* AdditiveExpression */,
+				F19F04DC191C523A0054DC7B /* AdditiveOperator */,
+				F19F04E0191C53910054DC7B /* MultiplicativeExpression */,
+				F19F04E4191C54B40054DC7B /* MultiplicativeOperator */,
+				F19F04E8191C56F30054DC7B /* Expression */,
+				F19F04EC191C575A0054DC7B /* PostfixExpression */,
+				F19F04F0191C58560054DC7B /* PostfixOperator */,
+				F19F04F4191C59780054DC7B /* PrimaryExpression */,
+				F19F04F8191C5AD10054DC7B /* ArgumentExpressionList */,
+				F19F04FC191C5B590054DC7B /* Const */,
+				F19F0500191C5BF00054DC7B /* UnaryOperator */,
+				F19F0504191C5C5A0054DC7B /* String */,
+				F19F0508191C5D2F0054DC7B /* Identifier */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
 		F1C3CADC191039CE00608EDD /* Bison */ = {
 			isa = PBXGroup;
 			children = (
@@ -1168,6 +1181,7 @@
 				F19F0482191C34500054DC7B /* CCInitDeclaratorNode.m in Sources */,
 				F19F0464191C2F230054DC7B /* CCExpressionStatementNode.m in Sources */,
 				F19F04FB191C5B100054DC7B /* CCArgumentExpressionListNode.m in Sources */,
+				F19F0515191CCDB20054DC7B /* CCSyntaxTree.m in Sources */,
 				F1C7C46E18F1864100A4D911 /* main.m in Sources */,
 				F19F0460191C2EB50054DC7B /* CCLabeledStatementNode.m in Sources */,
 				DCAE2E50191A57E5006F4F6B /* CCSymbol.m in Sources */,

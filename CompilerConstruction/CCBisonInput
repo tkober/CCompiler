@@ -5,6 +5,7 @@
 #import "CCParser.h"
 #import "CCScanner.h"
 #import "CCSymbolTable.h"
+#import "CCSyntaxTree.h"
 #import "CCNodes.h"
 #import "CCDebug.h"
 
@@ -114,8 +115,8 @@ id<CCOutput> _output;
 %%
 
 
-translation_unit            : external_declaration                      { $$ = [CCTranslationUnitNode translationUnitWith:nil translationUnit:$1]; }
-                            | translation_unit external_declaration     { $$ = [CCTranslationUnitNode translationUnitWith:$1 translationUnit:$2]; }
+translation_unit            : external_declaration                      { [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:nil translationUnit:$1]]; }
+                            | translation_unit external_declaration     { [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:$1 translationUnit:$2]]; }
                             ;
 
 

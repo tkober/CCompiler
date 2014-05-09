@@ -10,6 +10,7 @@
 #import "CCScanner.h"
 #import "CCParser.h"
 #import "CCSymbolTable.h"
+#import "CCSyntaxTree.h"
 
 
 @interface CCUIController ()
@@ -42,6 +43,7 @@
     char input [self.inputTextView.textStorage.string.length];
     sprintf(input, "%s%s", self.inputTextView.textStorage.string.UTF8String, "\n");
     [[CCSymbolTable sharedInstance] purge];
+    [[CCSyntaxTree sharedInstance] purge];
     start_compiling(input, self);
 }
 
