@@ -120,6 +120,7 @@ id<CCOutput> _output;
 %type <syntax_node> iteration_statement;
 %type <syntax_node> jump_statement;
 %type <syntax_node> expression;
+%type <syntax_node> type_specification;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -251,20 +252,26 @@ jump_statement              : GOTO ID LINE_END              { $$ = [CCJumpStatem
                             ;
 
 
-declaration_specification   : type_specification
-                            | type_specification declaration_specification
+declaration_specification   : type_specification                            { 
+                                                                                $$ = [CCDeclarationSpecificationNode declarationSpecificationNodeWithdeclarationSpecification:nil
+                                                                                                                                                            typeSpecification:$1];
+                                                                            }
+                            | type_specification declaration_specification  { 
+                                                                                $$ = [CCDeclarationSpecificationNode declarationSpecificationNodeWithdeclarationSpecification:$2
+                                                                                                                                                            typeSpecification:$1];
+                                                                            }
                             ;
 
 
-type_specification          : VOID
-                            | CHAR
-                            | SHORT
-                            | INT
-                            | LONG
-                            | FLOAT
-                            | DOUBLE
-                            | SIGNED
-                            | UNSIGNED
+type_specification          : VOID          { $$ = [CCTypeSpecificationNode CC_VOID]; }
+                            | CHAR          { $$ = [CCTypeSpecificationNode CC_CHAR]; }
+                            | SHORT         { $$ = [CCTypeSpecificationNode CC_SHORT]; }
+                            | INT           { $$ = [CCTypeSpecificationNode CC_INT]; }
+                            | LONG          { $$ = [CCTypeSpecificationNode CC_LONG]; }
+                            | FLOAT         { $$ = [CCTypeSpecificationNode CC_FLOAT]; }
+                            | DOUBLE        { $$ = [CCTypeSpecificationNode CC_DOUBLE]; }
+                            | SIGNED        { $$ = [CCTypeSpecificationNode CC_SIGNED]; }
+                            | UNSIGNED      { $$ = [CCTypeSpecificationNode CC_UNSIGNED]; }
                             ;
 
 
