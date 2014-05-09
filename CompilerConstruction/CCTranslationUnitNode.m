@@ -8,6 +8,19 @@
 
 #import "CCTranslationUnitNode.h"
 
+
 @implementation CCTranslationUnitNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
++ (CCTranslationUnitNode *)translationUnitWith:(CCExternalDeclarationNode *)externalDeclaration
+                               translationUnit:(CCTranslationUnitNode *)translationUnit
+{
+    CCTranslationUnitNode *resut = [[self alloc] init];
+    [resut setExternalDeclaration:externalDeclaration];
+    [resut setTranslationUnit:translationUnit];
+    return resut;
+}
 
 @end

@@ -17,4 +17,9 @@
 @property (strong, nonatomic) CCTranslationUnitNode *translationUnit;
 @property (strong, nonatomic) CCExternalDeclarationNode *externalDeclaration;
 
+
+#pragma mark | Creators
++ (CCTranslationUnitNode *)translationUnitWith:(CCExternalDeclarationNode *)externalDeclaration
+                               translationUnit:(CCTranslationUnitNode *)translationUnit;
+
 @end

@@ -6,6 +6,7 @@
 #import "CCScanner.h"
 #import "CCSymbolTable.h"
 #import "CCAbstractSyntaxTree.h"
+#import "CCNodes.h"
 #import "CCDebug.h"
 
 #if BISON_DEBUG
@@ -98,14 +99,22 @@ id<CCOutput> _output;
 %token GOTO
 
 
+%union {
+    __unsafe_unretained id syntax_node;
+}
+
+%type <syntax_node> translation_unit;
+%type <syntax_node> external_declaration;
+
+
 %nonassoc CB
 %nonassoc ELSE
 
 %%
 
 
-translation_unit            : external_declaration
-                            | translation_unit external_declaration
+translation_unit            : external_declaration                      { $$ = [CCTranslationUnitNode translationUnitWith:nil translationUnit:$1]; }
+                            | translation_unit external_declaration     { $$ = [CCTranslationUnitNode translationUnitWith:$1 translationUnit:$2]; }
                             ;
 
 
