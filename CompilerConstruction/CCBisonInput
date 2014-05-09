@@ -113,6 +113,7 @@ id<CCOutput> _output;
 %type <syntax_node> compound_statement;
 %type <syntax_node> init_declarator_list;
 %type <syntax_node> statement_list;
+%type <syntax_node> statement;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -184,8 +185,14 @@ compound_statement          : OB_CURLY declaration_list statement_list  CB_CURLY
                             ;
 
 
-statement_list              : statement
-                            | statement_list statement
+statement_list              : statement                 { 
+                                                            $$ = [CCStatementListNode statementListNodeWithStatementList:nil 
+                                                                                                               statement:$1];
+                                                        }
+                            | statement_list statement  { 
+                                                            $$ = [CCStatementListNode statementListNodeWithStatementList:$1
+                                                                                                               statement:$2];
+                                                        }
                             ;
            
 
