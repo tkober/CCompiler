@@ -335,8 +335,14 @@ parameter_list              : parameter_declaration                         {
                             ;
                             
                             
-parameter_declaration       : declaration_specification declarator
-                            | declaration_specification
+parameter_declaration       : declaration_specification declarator          {
+                                                                                $$ = [CCParameterDeclarationNode parameterDeclarationNodeWithDeclarationSpecification:$1
+                                                                                                                                                           declarator:$2];
+                                                                            }
+                            | declaration_specification                     {
+                                                                                $$ = [CCParameterDeclarationNode parameterDeclarationNodeWithDeclarationSpecification:$1
+                                                                                                                                                           declarator:nil];
+                                                                            }
                             ;
 
 
