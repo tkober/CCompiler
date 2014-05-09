@@ -112,6 +112,7 @@ id<CCOutput> _output;
 %type <syntax_node> declaration_list;
 %type <syntax_node> compound_statement;
 %type <syntax_node> init_declarator_list;
+%type <syntax_node> statement_list;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -164,10 +165,22 @@ declaration_list            : declaration                                       
                             ;
 
 
-compound_statement          : OB_CURLY declaration_list statement_list  CB_CURLY
-                            | OB_CURLY                  statement_list  CB_CURLY
-                            | OB_CURLY declaration_list                 CB_CURLY
-                            | OB_CURLY                                  CB_CURLY
+compound_statement          : OB_CURLY declaration_list statement_list  CB_CURLY    {
+                                                                                        $$ = [CCCompoundStatementNode compoundStatemetnNodeWithDeclarationList:$2
+                                                                                                                                                 statementList:$3];
+                                                                                    }
+                            | OB_CURLY                  statement_list  CB_CURLY    {
+                                                                                        $$ = [CCCompoundStatementNode compoundStatemetnNodeWithDeclarationList:nil
+                                                                                                                                                 statementList:$2];
+                                                                                    }
+                            | OB_CURLY declaration_list                 CB_CURLY    {
+                                                                                        $$ = [CCCompoundStatementNode compoundStatemetnNodeWithDeclarationList:$2
+                                                                                                                                                 statementList:nil];
+                                                                                    }
+                            | OB_CURLY                                  CB_CURLY    {
+                                                                                        $$ = [CCCompoundStatementNode compoundStatemetnNodeWithDeclarationList:nil
+                                                                                                                                                 statementList:nil];
+                                                                                    }
                             ;
 
 
