@@ -53,7 +53,7 @@
 		F19F049A191C3BAF0054DC7B /* CCAssignmentExpressionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F0499191C3BAF0054DC7B /* CCAssignmentExpressionNode.m */; };
 		F19F049E191C3E5B0054DC7B /* CCConditionalExpressionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F049D191C3E5B0054DC7B /* CCConditionalExpressionNode.m */; };
 		F19F04A2191C3FCF0054DC7B /* CCUnaryExpressionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F04A1191C3FCF0054DC7B /* CCUnaryExpressionNode.m */; };
-		F19F04A6191C41A10054DC7B /* CCPrefixOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F04A5191C41A10054DC7B /* CCPrefixOperator.m */; };
+		F19F04A6191C41A10054DC7B /* CCPrefixOperatorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F04A5191C41A10054DC7B /* CCPrefixOperatorNode.m */; };
 		F19F04AA191C474E0054DC7B /* CCAssignmentOperatorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F04A9191C474E0054DC7B /* CCAssignmentOperatorNode.m */; };
 		F19F04AE191C48A30054DC7B /* CCLogicalOrExpressionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F04AD191C48A30054DC7B /* CCLogicalOrExpressionNode.m */; };
 		F19F04B2191C49390054DC7B /* CCLogicalAndExpressionNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F04B1191C49390054DC7B /* CCLogicalAndExpressionNode.m */; };
@@ -175,8 +175,8 @@
 		F19F049D191C3E5B0054DC7B /* CCConditionalExpressionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCConditionalExpressionNode.m; sourceTree = "<group>"; };
 		F19F04A0191C3FCF0054DC7B /* CCUnaryExpressionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUnaryExpressionNode.h; sourceTree = "<group>"; };
 		F19F04A1191C3FCF0054DC7B /* CCUnaryExpressionNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUnaryExpressionNode.m; sourceTree = "<group>"; };
-		F19F04A4191C41A10054DC7B /* CCPrefixOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPrefixOperator.h; sourceTree = "<group>"; };
-		F19F04A5191C41A10054DC7B /* CCPrefixOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPrefixOperator.m; sourceTree = "<group>"; };
+		F19F04A4191C41A10054DC7B /* CCPrefixOperatorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCPrefixOperatorNode.h; sourceTree = "<group>"; };
+		F19F04A5191C41A10054DC7B /* CCPrefixOperatorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPrefixOperatorNode.m; sourceTree = "<group>"; };
 		F19F04A8191C474E0054DC7B /* CCAssignmentOperatorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAssignmentOperatorNode.h; sourceTree = "<group>"; };
 		F19F04A9191C474E0054DC7B /* CCAssignmentOperatorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAssignmentOperatorNode.m; sourceTree = "<group>"; };
 		F19F04AC191C48A30054DC7B /* CCLogicalOrExpressionNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLogicalOrExpressionNode.h; sourceTree = "<group>"; };
@@ -227,6 +227,7 @@
 		F19F0506191C5C820054DC7B /* CCStringNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCStringNode.m; sourceTree = "<group>"; };
 		F19F0509191C5D700054DC7B /* CCIdentifierNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCIdentifierNode.h; sourceTree = "<group>"; };
 		F19F050A191C5D700054DC7B /* CCIdentifierNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCIdentifierNode.m; sourceTree = "<group>"; };
+		F19F050E191CBFC30054DC7B /* CCNodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCNodes.h; sourceTree = "<group>"; };
 		F1BA354B191040D8004992EC /* CCParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCParser.h; sourceTree = "<group>"; };
 		F1BA354C1910442E004992EC /* CCParserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCParserInterface.h; sourceTree = "<group>"; };
 		F1C3CADF19103A9200608EDD /* CCBisonInput */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCBisonInput; sourceTree = "<group>"; };
@@ -295,8 +296,9 @@
 		F177289E1918E839005AE753 /* SyntaxTree */ = {
 			isa = PBXGroup;
 			children = (
-				F19F0438191C26C60054DC7B /* CCSyntaxNode.m */,
 				F19F0437191C26C60054DC7B /* CCSyntaxNode.h */,
+				F19F0438191C26C60054DC7B /* CCSyntaxNode.m */,
+				F19F050E191CBFC30054DC7B /* CCNodes.h */,
 				F19F043A191C27EF0054DC7B /* TranslationUnit */,
 				F19F0440191C28720054DC7B /* ExternalDeclaration */,
 				F19F0445191C29640054DC7B /* FunctionDefinition */,
@@ -589,8 +591,8 @@
 		F19F04A3191C418F0054DC7B /* PrefixOperator */ = {
 			isa = PBXGroup;
 			children = (
-				F19F04A4191C41A10054DC7B /* CCPrefixOperator.h */,
-				F19F04A5191C41A10054DC7B /* CCPrefixOperator.m */,
+				F19F04A4191C41A10054DC7B /* CCPrefixOperatorNode.h */,
+				F19F04A5191C41A10054DC7B /* CCPrefixOperatorNode.m */,
 			);
 			name = PrefixOperator;
 			sourceTree = "<group>";
@@ -1146,7 +1148,7 @@
 				F19F04F3191C58620054DC7B /* CCPostfixOperatorNode.m in Sources */,
 				F19F04AA191C474E0054DC7B /* CCAssignmentOperatorNode.m in Sources */,
 				F19F0448191C298D0054DC7B /* CCFunctionDefinitionNode.m in Sources */,
-				F19F04A6191C41A10054DC7B /* CCPrefixOperator.m in Sources */,
+				F19F04A6191C41A10054DC7B /* CCPrefixOperatorNode.m in Sources */,
 				F19F044C191C2A540054DC7B /* CCDeclarationNode.m in Sources */,
 				F19F0439191C26C60054DC7B /* CCSyntaxNode.m in Sources */,
 				F19F047A191C32FB0054DC7B /* CCTypeSpecificationNode.m in Sources */,

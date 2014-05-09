@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Thorsten Kober. All rights reserved.
 //
 
-#import "CCPrefixOperator.h"
+#import "CCPrefixOperatorNode.h"
 
-@implementation CCPrefixOperator
+@implementation CCPrefixOperatorNode
 
 @end

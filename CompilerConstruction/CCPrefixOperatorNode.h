@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, CCPrefixOperatorType) {
 
 
 #pragma mark - CCPrefixOperator
-@interface CCPrefixOperator : CCSyntaxNode
+@interface CCPrefixOperatorNode : CCSyntaxNode
 @property (assign, nonatomic) CCPrefixOperatorType operatorType;
 
 
