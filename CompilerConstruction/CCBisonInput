@@ -123,6 +123,7 @@ id<CCOutput> _output;
 %type <syntax_node> type_specification;
 %type <syntax_node> init_declarator;
 %type <syntax_node> initializer;
+%type <syntax_node> parameter_list;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -299,10 +300,26 @@ init_declarator             : declarator                        {
                             ;
 
 
-declarator                  : ID
-                            | OB declarator CB
-                            | declarator OB parameter_list CB
-                            | declarator OB CB
+declarator                  : ID                                {
+                                                                    $$ = [CCDeclaratorNode declaratorNodeWithDeclarator:nil
+                                                                                                             identifier:$1
+                                                                                                          parameterList:nil];
+                                                                }
+                            | OB declarator CB                  {
+                                                                    $$ = [CCDeclaratorNode declaratorNodeWithDeclarator:$2
+                                                                                                             identifier:nil
+                                                                                                          parameterList:nil];
+                                                                }
+                            | declarator OB parameter_list CB   {
+                                                                    $$ = [CCDeclaratorNode declaratorNodeWithDeclarator:$1
+                                                                                                             identifier:nil
+                                                                                                          parameterList:$3];
+                                                                }
+                            | declarator OB CB                  {
+                                                                    $$ = [CCDeclaratorNode declaratorNodeWithDeclarator:$1
+                                                                                                             identifier:nil
+                                                                                                          parameterList:nil];
+                                                                }
                             ;
                             
                             
