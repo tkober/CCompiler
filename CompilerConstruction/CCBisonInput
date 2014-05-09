@@ -223,8 +223,16 @@ expression_statement        : expression LINE_END       { $$ = [CCExpressionStat
                             ;
 
 
-selection_statement         : IF OB expression CB statement
-                            | IF OB expression CB statement ELSE statement
+selection_statement         : IF OB expression CB statement                 {
+                                                                                $$ = [CCSelectionStatementNode selectionStatementNodeWithExpression:$3
+                                                                                                                                      thenStatement:$5
+                                                                                                                                      elseStatement:nil];
+                                                                            }
+                            | IF OB expression CB statement ELSE statement  {
+                                                                                $$ = [CCSelectionStatementNode selectionStatementNodeWithExpression:$3
+                                                                                                                                      thenStatement:$5
+                                                                                                                                      elseStatement:$7];
+                                                                            }
                             ;
 
 
