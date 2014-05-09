@@ -145,6 +145,8 @@ id<CCOutput> _output;
 %type <syntax_node> shift_expression;
 %type <syntax_node> shift_operator;
 %type <syntax_node> additive_expression;
+%type <syntax_node> additive_operator;
+%type <syntax_node> multiplicative_expression;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -553,8 +555,16 @@ shift_operator              : SHIFT_LEFT_OP     { $$ = [CCShiftOperatorNode CC_S
                             ;
 
 
-additive_expression         : multiplicative_expression
-                            | additive_expression additive_operator multiplicative_expression
+additive_expression         : multiplicative_expression                                         {
+                                                                                                    $$ = [CCAdditiveExpressionNode additiveExpressionNodeWithMultiplicativeExpression:$1
+                                                                                                                                                                     additiveOperator:nil
+                                                                                                                                                                   additiveExpression:nil];
+                                                                                                }
+                            | additive_expression additive_operator multiplicative_expression   {
+                                                                                                    $$ = [CCAdditiveExpressionNode additiveExpressionNodeWithMultiplicativeExpression:$3
+                                                                                                                                                                     additiveOperator:$2
+                                                                                                                                                                   additiveExpression:$1];
+                                                                                                }
                             ;
                             
                             
