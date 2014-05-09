@@ -506,8 +506,8 @@ equality_expression         : relational_expression                             
                             ;
                             
                             
-equality_operator           : EQUAL_OP
-                            | NOT_EQUAL_OP
+equality_operator           : EQUAL_OP          { $$ = [CCEqualityOperatorNode CC_EQUAL_OP]; }
+                            | NOT_EQUAL_OP      { $$ = [CCEqualityOperatorNode CC_NOT_EQUAL_OP]; }
                             ;
 
 
