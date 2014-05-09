@@ -363,8 +363,14 @@ initializer                 : assignment_expression                         {
                             ;
                             
                             
-initializer_list            : initializer
-                            | initializer_list COMMA initializer
+initializer_list            : initializer                                   {  
+                                                                                $$ = [CCInitializerListNode initializerListNodeWithInitializer:$1
+                                                                                                                               initializerList:nil];
+                                                                            }
+                            | initializer_list COMMA initializer            {  
+                                                                                $$ = [CCInitializerListNode initializerListNodeWithInitializer:$3
+                                                                                                                               initializerList:$1];
+                                                                            }
                             ;
 
 
