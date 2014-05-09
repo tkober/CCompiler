@@ -111,6 +111,7 @@ id<CCOutput> _output;
 %type <syntax_node> declarator;
 %type <syntax_node> declaration_list;
 %type <syntax_node> compound_statement;
+%type <syntax_node> init_declarator_list;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -118,8 +119,14 @@ id<CCOutput> _output;
 %%
 
 
-translation_unit            : external_declaration                      { [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:nil translationUnit:$1]]; }
-                            | translation_unit external_declaration     { [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:$1 translationUnit:$2]]; }
+translation_unit            : external_declaration                      { 
+                                                                            [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:nil 
+                                                                                                                                                         translationUnit:$1]]; 
+                                                                        }
+                            | translation_unit external_declaration     { 
+                                                                            [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:$1
+                                                                                                                                                         translationUnit:$2]];
+                                                                        }
                             ;
 
 
@@ -135,8 +142,14 @@ function_definition         : declaration_specification     declarator declarati
                             ;
 
 
-declaration                 : declaration_specification init_declarator_list LINE_END
-                            | declaration_specification LINE_END
+declaration                 : declaration_specification init_declarator_list LINE_END   { 
+                                                                                            $$ = [CCDeclarationNode declarationNodeWithDeclarationSpecification:$1
+                                                                                                                                             initDeclaratorList:$2];
+                                                                                        }
+                            | declaration_specification LINE_END                        { 
+                                                                                            $$ = [CCDeclarationNode declarationNodeWithDeclarationSpecification:$1
+                                                                                                                                             initDeclaratorList:nil];
+                                                                                        }
                             ;
                             
 

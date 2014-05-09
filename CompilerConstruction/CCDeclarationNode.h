@@ -18,4 +18,9 @@
 @property (strong, nonatomic) CCDeclarationSpecificationNode *declarationSpecification;
 @property (strong, nonatomic) CCInitDeclaratorListNode *initDeclaratorList;
 
+
+#pragma mark | Creators
++ (CCDeclarationNode *)declarationNodeWithDeclarationSpecification:(CCDeclarationSpecificationNode *)declarationSpecification
+                                                initDeclaratorList:(CCInitDeclaratorListNode *)initDeclaratorList;
+
 @end
