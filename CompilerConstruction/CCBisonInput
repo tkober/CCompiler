@@ -244,9 +244,13 @@ conditional_expression      : logical_or_expression
 
 
 unary_expression            : postfix_expression
-                            | UNARY_INCREMENT_OP unary_expression
-                            | UNARY_DECREMENT_OP unary_expression
+                            | prefix_operator unary_expression
                             | unary_operator
+                            ;
+                            
+
+prefix_operator             : UNARY_INCREMENT_OP
+                            | UNARY_DECREMENT_OP
                             ;
 
 
@@ -290,35 +294,55 @@ and_expression              : equality_expression
 
 
 equality_expression         : relational_expression
-                            | equality_expression EQUAL_OP relational_expression
-                            | equality_expression NOT_EQUAL_OP relational_expression
+                            | equality_expression equality_operator relational_expression
+                            ;
+                            
+                            
+equality_operator           : EQUAL_OP
+                            | NOT_EQUAL_OP
                             ;
 
 
 relational_expression       : shift_expression
-                            | relational_expression LT_OP shift_expression
-                            | relational_expression GT_OP shift_expression
-                            | relational_expression LE_OP shift_expression
-                            | relational_expression GE_OP shift_expression
+                            | relational_expression compare_operator shift_expression
+                            ;
+                            
+                            
+compare_operator            : LT_OP
+                            | GT_OP
+                            | LE_OP
+                            | GE_OP
                             ;
 
 
 shift_expression            : additive_expression
-                            | shift_expression SHIFT_LEFT_OP additive_expression
-                            | shift_expression SHIFT_RIGHT_OP additive_expression
+                            | shift_expression shift_operator additive_expression
+                            ;
+                            
+                            
+shift_operator              : SHIFT_LEFT_OP
+                            | SHIFT_RIGHT_OP
                             ;
 
 
 additive_expression         : multiplicative_expression
-                            | additive_expression ADD_OP multiplicative_expression
-                            | additive_expression SUB_OP multiplicative_expression
+                            | additive_expression additive_operator multiplicative_expression
+                            ;
+                            
+                            
+additive_operator           : ADD_OP
+                            | SUB_OP
                             ;
 
 
 multiplicative_expression   : unary_expression
-                            | multiplicative_expression MUL_OP unary_expression
-                            | multiplicative_expression DIV_OP unary_expression
-                            | multiplicative_expression MOD_OP unary_expression
+                            | multiplicative_expression multiplicative_operator unary_expression
+                            ;
+                            
+                            
+multiplicative_operator     : MUL_OP
+                            | DIV_OP
+                            | MOD_OP
                             ;
 
 
@@ -330,8 +354,12 @@ expression                  : assignment_expression
 postfix_expression          : primary_expression
                             | postfix_expression OB argument_expression_list CB
                             | postfix_expression OB CB
-                            | postfix_expression UNARY_INCREMENT_OP
-                            | postfix_expression UNARY_DECREMENT_OP
+                            | postfix_expression postfix_operator
+                            ;
+                            
+                            
+postfix_operator            : UNARY_INCREMENT_OP
+                            | UNARY_DECREMENT_OP
                             ;
 
 
