@@ -122,6 +122,7 @@ id<CCOutput> _output;
 %type <syntax_node> expression;
 %type <syntax_node> type_specification;
 %type <syntax_node> init_declarator;
+%type <syntax_node> initializer;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -287,8 +288,14 @@ init_declarator_list        : init_declarator                               {
                             ;
 
 
-init_declarator             : declarator
-                            | declarator ASSIGN_OP initializer
+init_declarator             : declarator                        {
+                                                                    $$ = [CCInitDeclaratorNode initDeclaratorNodeWithDeclarator:$1
+                                                                                                                    initializer:nil];
+                                                                }
+                            | declarator ASSIGN_OP initializer  {
+                                                                    $$ = [CCInitDeclaratorNode initDeclaratorNodeWithDeclarator:$1
+                                                                                                                    initializer:$3];
+                                                                }
                             ;
 
 
