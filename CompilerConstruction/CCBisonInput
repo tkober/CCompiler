@@ -417,17 +417,17 @@ prefix_operator             : UNARY_INCREMENT_OP                    { $$ = [CCPr
                             ;
 
 
-assignment_operator         : ASSIGN_OP
-                            | ASSIGN_MUL_OP
-                            | ASSIGN_DIV_OP
-                            | ASSIGN_MOD_OP
-                            | ASSIGN_ADD_OP
-                            | ASSIGN_SUB_OP
-                            | ASSIGN_SHIFT_LEFT_OP
-                            | ASSIGN_SHIFT_RIGHT_OP
-                            | ASSIGN_BITWISE_AND_OP
-                            | ASSIGN_BITWISE_XOR_OP
-                            | ASSIGN_BITWISE_OR_OP
+assignment_operator         : ASSIGN_OP                             { $$ = [CCAssignmentOperatorNode CC_ASSIGN_OP]; }
+                            | ASSIGN_MUL_OP                         { $$ = [CCAssignmentOperatorNode CC_ASSIGN_MUL_OP]; }
+                            | ASSIGN_DIV_OP                         { $$ = [CCAssignmentOperatorNode CC_ASSIGN_DIV_OP]; }
+                            | ASSIGN_MOD_OP                         { $$ = [CCAssignmentOperatorNode CC_ASSIGN_MOD_OP]; }
+                            | ASSIGN_ADD_OP                         { $$ = [CCAssignmentOperatorNode CC_ASSIGN_ADD_OP]; }
+                            | ASSIGN_SUB_OP                         { $$ = [CCAssignmentOperatorNode CC_ASSIGN_SUB_OP]; }
+                            | ASSIGN_SHIFT_LEFT_OP                  { $$ = [CCAssignmentOperatorNode CC_ASSIGN_SHIFT_LEFT_OP]; }
+                            | ASSIGN_SHIFT_RIGHT_OP                 { $$ = [CCAssignmentOperatorNode CC_ASSIGN_SHIFT_RIGHT_OP]; }
+                            | ASSIGN_BITWISE_AND_OP                 { $$ = [CCAssignmentOperatorNode CC_ASSIGN_BITWISE_AND_OP]; }
+                            | ASSIGN_BITWISE_XOR_OP                 { $$ = [CCAssignmentOperatorNode CC_ASSIGN_BITWISE_XOR_OP]; }
+                            | ASSIGN_BITWISE_OR_OP                  { $$ = [CCAssignmentOperatorNode CC_ASSIGN_BITWISE_OR_OP]; }
                             ;
 
 
