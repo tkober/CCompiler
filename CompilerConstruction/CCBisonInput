@@ -124,6 +124,7 @@ id<CCOutput> _output;
 %type <syntax_node> init_declarator;
 %type <syntax_node> initializer;
 %type <syntax_node> parameter_list;
+%type <syntax_node> parameter_declaration;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -323,8 +324,14 @@ declarator                  : ID                                {
                             ;
                             
                             
-parameter_list              : parameter_declaration
-                            | parameter_list COMMA parameter_declaration
+parameter_list              : parameter_declaration                         {
+                                                                                $$ = [CCParameterListNode parameterListNodeWithParameterDeclaration:$1
+                                                                                                                                      parameterList:nil];
+                                                                            }
+                            | parameter_list COMMA parameter_declaration    {
+                                                                                $$ = [CCParameterListNode parameterListNodeWithParameterDeclaration:$3
+                                                                                                                                      parameterList:$1];
+                                                                            }
                             ;
                             
                             
