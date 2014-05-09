@@ -26,7 +26,6 @@
 		DC8050AA1917BEB600B7C594 /* CCSymbolTable.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8050A91917BEB600B7C594 /* CCSymbolTable.m */; };
 		DCAE2E50191A57E5006F4F6B /* CCSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAE2E4F191A57E5006F4F6B /* CCSymbol.m */; };
 		DCAE2E54191A59A6006F4F6B /* CCSymbolReference.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAE2E53191A59A6006F4F6B /* CCSymbolReference.m */; };
-		F17728A11918E86B005AE753 /* CCAbstractSyntaxTree.c in Sources */ = {isa = PBXBuildFile; fileRef = F17728A01918E86B005AE753 /* CCAbstractSyntaxTree.c */; };
 		F19F0439191C26C60054DC7B /* CCSyntaxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F0438191C26C60054DC7B /* CCSyntaxNode.m */; };
 		F19F043D191C28070054DC7B /* CCTranslationUnitNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F043C191C28070054DC7B /* CCTranslationUnitNode.m */; };
 		F19F0443191C289B0054DC7B /* CCExternalDeclarationNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F0442191C289B0054DC7B /* CCExternalDeclarationNode.m */; };
@@ -121,8 +120,6 @@
 		DCAE2E4F191A57E5006F4F6B /* CCSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSymbol.m; sourceTree = "<group>"; };
 		DCAE2E52191A59A6006F4F6B /* CCSymbolReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSymbolReference.h; sourceTree = "<group>"; };
 		DCAE2E53191A59A6006F4F6B /* CCSymbolReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSymbolReference.m; sourceTree = "<group>"; };
-		F177289F1918E85A005AE753 /* CCAbstractSyntaxTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAbstractSyntaxTree.h; sourceTree = "<group>"; };
-		F17728A01918E86B005AE753 /* CCAbstractSyntaxTree.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CCAbstractSyntaxTree.c; sourceTree = "<group>"; };
 		F19F0437191C26C60054DC7B /* CCSyntaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSyntaxNode.h; sourceTree = "<group>"; };
 		F19F0438191C26C60054DC7B /* CCSyntaxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSyntaxNode.m; sourceTree = "<group>"; };
 		F19F043B191C28070054DC7B /* CCTranslationUnitNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCTranslationUnitNode.h; sourceTree = "<group>"; };
@@ -352,15 +349,6 @@
 				F19F0508191C5D2F0054DC7B /* Identifier */,
 			);
 			name = SyntaxTree;
-			sourceTree = "<group>";
-		};
-		F19F0436191C26AA0054DC7B /* Primitive */ = {
-			isa = PBXGroup;
-			children = (
-				F177289F1918E85A005AE753 /* CCAbstractSyntaxTree.h */,
-				F17728A01918E86B005AE753 /* CCAbstractSyntaxTree.c */,
-			);
-			name = Primitive;
 			sourceTree = "<group>";
 		};
 		F19F043A191C27EF0054DC7B /* TranslationUnit */ = {
@@ -982,7 +970,6 @@
 		F1D3EDDF18F1988E0063EC76 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				F19F0436191C26AA0054DC7B /* Primitive */,
 				F177289E1918E839005AE753 /* SyntaxTree */,
 				DC8050A71917BE9700B7C594 /* SymbolTable */,
 				F1D3EDE018F199500063EC76 /* Output */,
@@ -1153,7 +1140,6 @@
 				F19F0439191C26C60054DC7B /* CCSyntaxNode.m in Sources */,
 				F19F047A191C32FB0054DC7B /* CCTypeSpecificationNode.m in Sources */,
 				F19F04D3191C4E800054DC7B /* CCShiftExpressionNode.m in Sources */,
-				F17728A11918E86B005AE753 /* CCAbstractSyntaxTree.c in Sources */,
 				F19F04B6191C49AC0054DC7B /* CCInclusiveOrExpressionNode.m in Sources */,
 				F19F0486191C38CF0054DC7B /* CCDeclaratorNode.m in Sources */,
 				F1C7C47518F1864100A4D911 /* CCAppDelegate.m in Sources */,

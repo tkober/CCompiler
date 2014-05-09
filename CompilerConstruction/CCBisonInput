@@ -5,7 +5,6 @@
 #import "CCParser.h"
 #import "CCScanner.h"
 #import "CCSymbolTable.h"
-#import "CCAbstractSyntaxTree.h"
 #import "CCNodes.h"
 #import "CCDebug.h"
 
