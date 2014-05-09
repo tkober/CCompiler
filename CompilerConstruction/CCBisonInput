@@ -412,8 +412,8 @@ unary_expression            : postfix_expression                    { $$ = [CCUn
                             ;
                             
 
-prefix_operator             : UNARY_INCREMENT_OP
-                            | UNARY_DECREMENT_OP
+prefix_operator             : UNARY_INCREMENT_OP                    { $$ = [CCPrefixOperatorNode prefixIncrement]; }
+                            | UNARY_DECREMENT_OP                    { $$ = [CCPrefixOperatorNode prefixDecrement]; }
                             ;
 
 
