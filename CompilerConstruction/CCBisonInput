@@ -134,6 +134,7 @@ id<CCOutput> _output;
 %type <syntax_node> postfix_expression;
 %type <syntax_node> prefix_operator;
 %type <syntax_node> unary_operator;
+%type <syntax_node> logical_and_expression;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -431,8 +432,14 @@ assignment_operator         : ASSIGN_OP                             { $$ = [CCAs
                             ;
 
 
-logical_or_expression       : logical_and_expression
-                            | logical_or_expression LOGICAL_OR_OP logical_and_expression
+logical_or_expression       : logical_and_expression                                        {   
+                                                                                                $$ = [CCLogicalOrExpressionNode logicalOrExpressionNodeWithLogicalAndExpression:$1
+                                                                                                                                                            logicalOrExpression:nil];
+                                                                                            }
+                            | logical_or_expression LOGICAL_OR_OP logical_and_expression    {   
+                                                                                                $$ = [CCLogicalOrExpressionNode logicalOrExpressionNodeWithLogicalAndExpression:$3
+                                                                                                                                                            logicalOrExpression:$1];
+                                                                                            }
                             ;
 
 
