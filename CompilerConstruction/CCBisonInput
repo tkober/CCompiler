@@ -130,6 +130,7 @@ id<CCOutput> _output;
 %type <syntax_node> conditional_expression;
 %type <syntax_node> unary_expression;
 %type <syntax_node> assignment_operator;
+%type <syntax_node> logical_or_expression;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -386,8 +387,16 @@ assignment_expression       : conditional_expression                            
                             ;
 
 
-conditional_expression      : logical_or_expression
-                            | logical_or_expression QUESTION_MARK expression COLON conditional_expression
+conditional_expression      : logical_or_expression                                                         {
+                                                                                                                $$ = [CCConditionalExpressionNode conditionalExpressionNodeWithLogicalOrExpression:$1
+                                                                                                                                                                                        expression:nil
+                                                                                                                                                                             conditionalExpression:nil];
+                                                                                                            }
+                            | logical_or_expression QUESTION_MARK expression COLON conditional_expression   {
+                                                                                                                $$ = [CCConditionalExpressionNode conditionalExpressionNodeWithLogicalOrExpression:$1
+                                                                                                                                                                                        expression:$3
+                                                                                                                                                                             conditionalExpression:$5];
+                                                                                                            }
                             ;
 
 
