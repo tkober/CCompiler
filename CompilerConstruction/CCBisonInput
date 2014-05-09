@@ -548,8 +548,8 @@ shift_expression            : additive_expression                               
                             ;
                             
                             
-shift_operator              : SHIFT_LEFT_OP
-                            | SHIFT_RIGHT_OP
+shift_operator              : SHIFT_LEFT_OP     { $$ = [CCShiftOperatorNode CC_SHIFT_LEFT_OP]; }
+                            | SHIFT_RIGHT_OP    { $$ = [CCShiftOperatorNode CC_SHIFT_RIGTH_OP]; }
                             ;
 
 
