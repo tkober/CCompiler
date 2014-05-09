@@ -79,7 +79,7 @@
 		F19F0507191C5C820054DC7B /* CCStringNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F0506191C5C820054DC7B /* CCStringNode.m */; };
 		F19F050B191C5D700054DC7B /* CCIdentifierNode.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F050A191C5D700054DC7B /* CCIdentifierNode.m */; };
 		F19F0515191CCDB20054DC7B /* CCSyntaxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F19F0514191CCDB20054DC7B /* CCSyntaxTree.m */; };
-		F1C3CAE219103D0B00608EDD /* CCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CAE119103D0B00608EDD /* CCParser.m */; };
+		F1C3CAE219103D0B00608EDD /* CCParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C3CAE119103D0B00608EDD /* CCParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F1C7C46218F1864100A4D911 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C7C46118F1864100A4D911 /* Cocoa.framework */; };
 		F1C7C46C18F1864100A4D911 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1C7C46A18F1864100A4D911 /* InfoPlist.strings */; };
 		F1C7C46E18F1864100A4D911 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C7C46D18F1864100A4D911 /* main.m */; };
