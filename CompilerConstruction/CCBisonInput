@@ -526,10 +526,10 @@ relational_expression       : shift_expression                                  
                             ;
                             
                             
-compare_operator            : LT_OP
-                            | GT_OP
-                            | LE_OP
-                            | GE_OP
+compare_operator            : LT_OP             { $$ = [CCCompareOperatorNode CC_LT]; }
+                            | GT_OP             { $$ = [CCCompareOperatorNode CC_GT]; }
+                            | LE_OP             { $$ = [CCCompareOperatorNode CC_LE]; }
+                            | GE_OP             { $$ = [CCCompareOperatorNode CC_GE]; }
                             ;
 
 
