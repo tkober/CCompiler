@@ -8,6 +8,11 @@
 
 #import "CCPrefixOperatorNode.h"
 
+
 @implementation CCPrefixOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

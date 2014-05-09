@@ -8,6 +8,11 @@
 
 #import "CCInitializerListNode.h"
 
+
 @implementation CCInitializerListNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

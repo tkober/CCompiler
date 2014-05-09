@@ -8,6 +8,11 @@
 
 #import "CCStringNode.h"
 
+
 @implementation CCStringNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

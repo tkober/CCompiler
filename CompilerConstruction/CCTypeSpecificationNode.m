@@ -8,6 +8,11 @@
 
 #import "CCTypeSpecificationNode.h"
 
+
 @implementation CCTypeSpecificationNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

@@ -8,6 +8,11 @@
 
 #import "CCConstNode.h"
 
+
 @implementation CCConstNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

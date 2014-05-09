@@ -8,6 +8,11 @@
 
 #import "CCAssignmentOperatorNode.h"
 
+
 @implementation CCAssignmentOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

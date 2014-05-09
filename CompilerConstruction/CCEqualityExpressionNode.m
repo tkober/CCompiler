@@ -8,6 +8,11 @@
 
 #import "CCEqualityExpressionNode.h"
 
+
 @implementation CCEqualityExpressionNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

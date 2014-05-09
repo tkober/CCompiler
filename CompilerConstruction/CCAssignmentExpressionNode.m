@@ -8,6 +8,11 @@
 
 #import "CCAssignmentExpressionNode.h"
 
+
 @implementation CCAssignmentExpressionNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

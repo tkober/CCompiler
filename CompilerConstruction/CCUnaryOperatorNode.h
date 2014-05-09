@@ -24,4 +24,8 @@ typedef NS_ENUM(NSUInteger, CCUnaryOperator) {
 @interface CCUnaryOperatorNode : CCSyntaxNode
 @property (assign, nonatomic) CCUnaryOperator unaryOperator;
 
+
+#pragma mark | Creators
+
+
 @end

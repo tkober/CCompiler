@@ -8,6 +8,11 @@
 
 #import "CCMultiplicativeOperatorNode.h"
 
+
 @implementation CCMultiplicativeOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

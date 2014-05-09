@@ -19,4 +19,8 @@ typedef NS_ENUM(NSUInteger, CCAdditiveOperator) {
 @interface CCAdditiveOperatorNode : CCSyntaxNode
 @property (assign, nonatomic) CCAdditiveOperator additiveOperator;
 
+
+#pragma mark | Creators
+
+
 @end

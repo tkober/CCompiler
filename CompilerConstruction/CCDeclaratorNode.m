@@ -8,6 +8,11 @@
 
 #import "CCDeclaratorNode.h"
 
+
 @implementation CCDeclaratorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

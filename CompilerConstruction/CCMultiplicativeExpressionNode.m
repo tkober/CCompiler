@@ -8,6 +8,11 @@
 
 #import "CCMultiplicativeExpressionNode.h"
 
+
 @implementation CCMultiplicativeExpressionNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

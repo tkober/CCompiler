@@ -20,4 +20,8 @@ typedef NS_ENUM(NSUInteger, CCMultiplicativeOperator) {
 @interface CCMultiplicativeOperatorNode : CCSyntaxNode
 @property (assign, nonatomic) CCMultiplicativeOperator *multiplicativeOperator;
 
+
+#pragma mark | Creators
+
+
 @end

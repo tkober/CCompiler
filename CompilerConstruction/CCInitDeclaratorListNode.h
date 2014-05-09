@@ -18,4 +18,7 @@
 @property (strong, nonatomic) CCInitDeclaratorNode *initDeclarator;
 
 
+#pragma mark | Creators
+
+
 @end

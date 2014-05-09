@@ -17,4 +17,7 @@
 @property (strong, nonatomic) CCDeclarationListNode *declarationList;
 @property (strong, nonatomic) CCDeclarationNode *declaration;
 
+
+#pragma mark | Creators
+
 @end

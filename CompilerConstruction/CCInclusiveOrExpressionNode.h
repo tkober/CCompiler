@@ -17,4 +17,7 @@
 @property (strong, nonatomic) CCExclusiveOrExpressionNode *exclusiveOrExpression;
 @property (strong, nonatomic) CCInclusiveOrExpressionNode *inclusiveOrExpression;
 
+
+#pragma mark | Creators
+
 @end

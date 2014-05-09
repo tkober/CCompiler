@@ -20,4 +20,7 @@ typedef NS_ENUM(NSUInteger, CCEqualityOperator) {
 @property (assign, nonatomic) CCEqualityOperator equalityOperator;
 
 
+#pragma mark | Creators
+
+
 @end

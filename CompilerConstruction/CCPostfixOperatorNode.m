@@ -8,6 +8,11 @@
 
 #import "CCPostfixOperatorNode.h"
 
+
 @implementation CCPostfixOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

@@ -26,4 +26,7 @@ typedef NS_ENUM(NSUInteger, CCTypeSpecification) {
 @interface CCTypeSpecificationNode : CCSyntaxNode
 @property (assign, nonatomic) CCTypeSpecification typeSpecification;
 
+
+#pragma mark | Creators
+
 @end

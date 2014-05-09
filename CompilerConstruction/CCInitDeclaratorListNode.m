@@ -8,6 +8,11 @@
 
 #import "CCInitDeclaratorListNode.h"
 
+
 @implementation CCInitDeclaratorListNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

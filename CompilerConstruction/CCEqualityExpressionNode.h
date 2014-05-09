@@ -19,4 +19,7 @@
 @property (strong, nonatomic) CCEqualityOperatorNode *equalityOperator;
 @property (strong, nonatomic) CCEqualityExpressionNode *equalityExpression;
 
+
+#pragma mark | Creators
+
 @end

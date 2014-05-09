@@ -8,6 +8,11 @@
 
 #import "CCLogicalOrExpressionNode.h"
 
+
 @implementation CCLogicalOrExpressionNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

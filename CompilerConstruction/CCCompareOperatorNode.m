@@ -8,6 +8,11 @@
 
 #import "CCCompareOperatorNode.h"
 
+
 @implementation CCCompareOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

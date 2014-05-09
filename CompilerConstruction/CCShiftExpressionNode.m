@@ -8,6 +8,11 @@
 
 #import "CCShiftExpressionNode.h"
 
+
 @implementation CCShiftExpressionNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

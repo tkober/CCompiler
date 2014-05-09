@@ -8,6 +8,11 @@
 
 #import "CCAdditiveExpressionNode.h"
 
+
 @implementation CCAdditiveExpressionNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

@@ -19,4 +19,7 @@
 @property (strong, nonatomic) CCDeclaratorNode *declaration;
 
 
+#pragma mark | Creators
+
+
 @end

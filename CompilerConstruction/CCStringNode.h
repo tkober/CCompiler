@@ -13,4 +13,8 @@
 @interface CCStringNode : CCSyntaxNode
 @property (strong, nonatomic) NSString *value;
 
+
+#pragma mark | Creators
+
+
 @end

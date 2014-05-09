@@ -8,6 +8,11 @@
 
 #import "CCCompoundStatementNode.h"
 
+
 @implementation CCCompoundStatementNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

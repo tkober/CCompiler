@@ -21,4 +21,7 @@ typedef NS_ENUM(NSUInteger, CCCompareOperator) {
 @interface CCCompareOperatorNode : CCSyntaxNode
 @property (assign, nonatomic) CCCompareOperator compareOperator;
 
+
+#pragma mark | Creators
+
 @end

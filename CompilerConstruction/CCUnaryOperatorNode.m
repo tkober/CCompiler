@@ -8,6 +8,11 @@
 
 #import "CCUnaryOperatorNode.h"
 
+
 @implementation CCUnaryOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

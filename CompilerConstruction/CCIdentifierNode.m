@@ -8,6 +8,11 @@
 
 #import "CCIdentifierNode.h"
 
+
 @implementation CCIdentifierNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

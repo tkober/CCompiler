@@ -8,6 +8,11 @@
 
 #import "CCExclusiveOrExpressionNode.h"
 
+
 @implementation CCExclusiveOrExpressionNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

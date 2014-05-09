@@ -8,6 +8,11 @@
 
 #import "CCShiftOperatorNode.h"
 
+
 @implementation CCShiftOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

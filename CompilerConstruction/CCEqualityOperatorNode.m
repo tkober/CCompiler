@@ -8,6 +8,11 @@
 
 #import "CCEqualityOperatorNode.h"
 
+
 @implementation CCEqualityOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

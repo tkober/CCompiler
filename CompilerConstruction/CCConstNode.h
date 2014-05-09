@@ -21,4 +21,8 @@ typedef NS_ENUM(NSUInteger, CCConst) {
 @property (strong, nonatomic) NSNumber *value;
 @property (assign, nonatomic) CCConst constang;
 
+
+#pragma mark | Creators
+
+
 @end

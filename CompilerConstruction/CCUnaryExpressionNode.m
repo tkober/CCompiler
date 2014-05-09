@@ -8,6 +8,11 @@
 
 #import "CCUnaryExpressionNode.h"
 
+
 @implementation CCUnaryExpressionNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

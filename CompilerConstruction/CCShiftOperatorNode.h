@@ -20,4 +20,7 @@ typedef NS_ENUM(NSUInteger, CCShiftOperator) {
 @property (assign, nonatomic) CCShiftOperator shiftOperator;
 
 
+#pragma mark | Creators
+
+
 @end

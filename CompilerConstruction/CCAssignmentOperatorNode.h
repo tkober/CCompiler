@@ -28,4 +28,7 @@ typedef NS_ENUM(NSUInteger, CCAssignmentOperator) {
 @interface CCAssignmentOperatorNode : CCSyntaxNode
 @property (assign, nonatomic) CCAssignmentOperator assignmentOperator;
 
+
+#pragma mark | Creators
+
 @end

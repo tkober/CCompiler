@@ -8,6 +8,11 @@
 
 #import "CCAdditiveOperatorNode.h"
 
+
 @implementation CCAdditiveOperatorNode
+
+
+#pragma mark - Public Methods
+#pragma mark | Creators
 
 @end

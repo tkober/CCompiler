@@ -20,4 +20,7 @@ typedef NS_ENUM(NSUInteger, CCPrefixOperatorType) {
 @property (assign, nonatomic) CCPrefixOperatorType operatorType;
 
 
+#pragma mark | Creators
+
+
 @end
