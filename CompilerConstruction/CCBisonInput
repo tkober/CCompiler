@@ -121,6 +121,7 @@ id<CCOutput> _output;
 %type <syntax_node> jump_statement;
 %type <syntax_node> expression;
 %type <syntax_node> type_specification;
+%type <syntax_node> init_declarator;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -275,8 +276,14 @@ type_specification          : VOID          { $$ = [CCTypeSpecificationNode CC_V
                             ;
 
 
-init_declarator_list        : init_declarator
-                            | init_declarator_list COMMA init_declarator
+init_declarator_list        : init_declarator                               {
+                                                                                $$ = [CCInitDeclaratorListNode initDeclaratorListNodeWithInitDeclaratorList:nil
+                                                                                                                                             initDeclarator:$1];
+                                                                            }
+                            | init_declarator_list COMMA init_declarator    {
+                                                                                $$ = [CCInitDeclaratorListNode initDeclaratorListNodeWithInitDeclaratorList:$1
+                                                                                                                                             initDeclarator:$3];
+                                                                            }
                             ;
 
 
