@@ -143,6 +143,8 @@ id<CCOutput> _output;
 %type <syntax_node> relational_expression;
 %type <syntax_node> compare_operator;
 %type <syntax_node> shift_expression;
+%type <syntax_node> shift_operator;
+%type <syntax_node> additive_expression;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -533,8 +535,16 @@ compare_operator            : LT_OP             { $$ = [CCCompareOperatorNode CC
                             ;
 
 
-shift_expression            : additive_expression
-                            | shift_expression shift_operator additive_expression
+shift_expression            : additive_expression                                           {
+                                                                                                $$ = [CCShiftExpressionNode shiftExpressionNodeWithAdditiveExpression:$1
+                                                                                                                                                        shiftOperator:nil
+                                                                                                                                                      shiftExpression:nil];
+                                                                                            }
+                            | shift_expression shift_operator additive_expression           {
+                                                                                                $$ = [CCShiftExpressionNode shiftExpressionNodeWithAdditiveExpression:$3
+                                                                                                                                                        shiftOperator:$2
+                                                                                                                                                      shiftExpression:$1];
+                                                                                            }
                             ;
                             
                             
