@@ -141,6 +141,8 @@ id<CCOutput> _output;
 %type <syntax_node> equality_expression;
 %type <syntax_node> equality_operator;
 %type <syntax_node> relational_expression;
+%type <syntax_node> compare_operator;
+%type <syntax_node> shift_expression;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -511,8 +513,16 @@ equality_operator           : EQUAL_OP          { $$ = [CCEqualityOperatorNode C
                             ;
 
 
-relational_expression       : shift_expression
-                            | relational_expression compare_operator shift_expression
+relational_expression       : shift_expression                                              {
+                                                                                                $$ = [CCRelationalExpressionNode relationalExpressionNodeWithShiftExpression:$1
+                                                                                                                                                             compareOperator:nil
+                                                                                                                                                        relationalExpression:nil];
+                                                                                            }
+                            | relational_expression compare_operator shift_expression       {
+                                                                                                $$ = [CCRelationalExpressionNode relationalExpressionNodeWithShiftExpression:$3
+                                                                                                                                                             compareOperator:$2
+                                                                                                                                                        relationalExpression:$1];
+                                                                                            }
                             ;
                             
                             
