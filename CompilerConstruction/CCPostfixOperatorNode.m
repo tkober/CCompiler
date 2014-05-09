@@ -14,5 +14,19 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCPostfixOperatorNode *)CC_UNARY_INCREMENT_OP
+{
+    CCPostfixOperatorNode *result = [self new];
+    [result setPostfixOperator:CC_UNARY_INCREMENT_OP];
+    return result;
+}
+
+
++ (CCPostfixOperatorNode *)CC_UNARY_DECREMENT_OP
+{
+    CCPostfixOperatorNode *result = [self new];
+    [result setPostfixOperator:CC_UNARY_DECREMENT_OP];
+    return result;
+}
 
 @end

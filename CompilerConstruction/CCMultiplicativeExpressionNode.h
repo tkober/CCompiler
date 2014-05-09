@@ -21,6 +21,9 @@
 
 
 #pragma mark | Creators
++ (CCMultiplicativeExpressionNode *)multiplicativeExpressionNodeWithUnaryExpression:(CCUnaryExpressionNode *)unaryExpression
+                                                             multiplicativeOperator:(CCMultiplicativeOperatorNode *)multiplicativeOperator
+                                                           multiplicativeExpression:(CCMultiplicativeExpressionNode *)multiplicativeExpression;
 
 
 @end

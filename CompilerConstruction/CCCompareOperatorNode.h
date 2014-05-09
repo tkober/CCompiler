@@ -23,5 +23,9 @@ typedef NS_ENUM(NSUInteger, CCCompareOperator) {
 
 
 #pragma mark | Creators
++ (CCCompareOperatorNode *)CC_LT;
++ (CCCompareOperatorNode *)CC_GT;
++ (CCCompareOperatorNode *)CC_LE;
++ (CCCompareOperatorNode *)CC_GE;
 
 @end

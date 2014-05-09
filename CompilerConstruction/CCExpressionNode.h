@@ -19,6 +19,8 @@
 
 
 #pragma mark | Creators
++ (CCExpressionNode *)expressionNodeWithAssignmentExpression:(CCAssignmentExpressionNode *)assignmentExpression
+                                                  expression:(CCExpressionNode *)expression;
 
 
 @end

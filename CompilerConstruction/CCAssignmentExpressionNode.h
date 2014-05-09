@@ -23,6 +23,11 @@
 
 
 #pragma mark | Creators
++ (CCAssignmentExpressionNode *)assignmentExpressionNodeWithConditionalExpression:(CCConditionalExpressionNode *)conditionalExpression;
++ (CCAssignmentExpressionNode *)assignmentExpressionNodeWithUnaryExpression:(CCUnaryExpressionNode *)unaryExpression
+                                                         assignmentOperator:(CCAssignmentOperatorNode *)assignmentOperator
+                                                       assignmentExpression:(CCAssignmentExpressionNode *)assignmentExpression;
+
 
 
 @end

@@ -21,6 +21,8 @@ typedef NS_ENUM(NSUInteger, CCPrefixOperatorType) {
 
 
 #pragma mark | Creators
++ (CCPrefixOperatorNode *)prefixIncrement;
++ (CCPrefixOperatorNode *)prefixDecrement;
 
 
 @end

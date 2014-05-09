@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCCompoundStatementNode *)compoundStatemetnNodeWithDeclarationList:(CCDeclarationListNode *)declarationList
+                                                        statementList:(CCStatementListNode *)statementList
+{
+    CCCompoundStatementNode *result;
+    [result setDeclarationList:declarationList];
+    [result setStatementList:statementList];
+    return result;
+}
 
 @end

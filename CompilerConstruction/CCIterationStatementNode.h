@@ -20,6 +20,8 @@
 
 
 #pragma mark | Creators
++ (CCIterationStatementNode *)iterationStatementWithExpression:(CCExpressionNode *)expression
+                                                     statement:(CCStatementNode *)statement;
 
 
 @end

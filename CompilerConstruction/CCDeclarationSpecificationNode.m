@@ -14,5 +14,14 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCDeclarationSpecificationNode *)declarationSpecificationNodeWithdeclarationSpecification:(CCDeclarationSpecificationNode *)declarationSpecification
+                                                                           typeSpecification:(CCTypeSpecificationNode *)typeSpecification
+{
+    CCDeclarationSpecificationNode *result = [self new];
+    [result setDeclarationSpecification:declarationSpecification];
+    [result setTypeSpecification:typeSpecification];
+    return result;
+}
+
 
 @end

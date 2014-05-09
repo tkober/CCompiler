@@ -20,6 +20,8 @@
 
 
 #pragma mark | Creators
++ (CCInitializerNode *)initializerNodeWithAssignmentExpression:(CCAssignmentExpressionNode *)assignmentExpression
+                                               initializerList:(CCInitializerListNode *)initializerList;
 
 
 @end

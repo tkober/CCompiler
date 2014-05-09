@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCExclusiveOrExpressionNode *)exclusiveOrExpressionNodeWithAndExpression:(CCAndExpressionNode *)andExpression
+                                                      exclusiveOrExpression:(CCExclusiveOrExpressionNode *)exclusiveOrExpression
+{
+    CCExclusiveOrExpressionNode *result = [self new];
+    [result setAndExpression:andExpression];
+    [result setExclusiveOrExpression:exclusiveOrExpression];
+    return result;
+}
 
 @end

@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCInitializerNode *)initializerNodeWithAssignmentExpression:(CCAssignmentExpressionNode *)assignmentExpression
+                                               initializerList:(CCInitializerListNode *)initializerList
+{
+    CCInitializerNode *result = [self new];
+    [result setAssignmentExpression:assignmentExpression];
+    [result setInitializerList:initializerList];
+    return result;
+}
 
 @end

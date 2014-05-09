@@ -21,6 +21,8 @@ typedef NS_ENUM(NSUInteger, CCAdditiveOperator) {
 
 
 #pragma mark | Creators
++ (CCAdditiveOperatorNode *)CC_ADD_OP;
++ (CCAdditiveOperatorNode *)CC_SUB_OP;
 
 
 @end

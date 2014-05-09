@@ -21,6 +21,9 @@
 
 
 #pragma mark | Creators
++ (CCRelationalExpressionNode *)relationalExpressionNodeWithShiftExpression:(CCShiftExpressionNode *)shiftExpression
+                                                            compareOperator:(CCCompareOperatorNode *)compareOperator
+                                                       relationalExpression:(CCRelationalExpressionNode *)relationalExpression;
 
 
 @end

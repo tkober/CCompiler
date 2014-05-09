@@ -14,5 +14,29 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCJumpStatementNode *)gotoStatementWithIdentifier:(CCIdentifierNode *)identifer
+{
+    CCJumpStatementNode *result = [self new];
+    return result;
+}
+
+
++ (CCJumpStatementNode *)continueStatement
+{
+    return [self new];
+}
+
+
++ (CCJumpStatementNode *)breakStatement
+{
+    return [self new];
+}
+
+
++ (CCJumpStatementNode *)returnStatementWithExpression:(CCExpressionNode *)expression
+{
+    CCJumpStatementNode *result = [self new];
+    return result;
+}
 
 @end

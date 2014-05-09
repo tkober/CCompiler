@@ -26,6 +26,12 @@ typedef NS_ENUM(NSUInteger, CCUnaryOperator) {
 
 
 #pragma mark | Creators
++ (CCUnaryOperatorNode *)CC_UNARY_AND_OP;
++ (CCUnaryOperatorNode *)CC_UNARY_MUL_OP;
++ (CCUnaryOperatorNode *)CC_UNARY_ADD_OP;
++ (CCUnaryOperatorNode *)CC_UNARY_SUB_OP;
++ (CCUnaryOperatorNode *)CC_UNARY_BITWISE_NOT_OP;
++ (CCUnaryOperatorNode *)CC_UNARY_NOT_OP;
 
 
 @end

@@ -20,6 +20,8 @@
 
 
 #pragma mark | Creators
++ (CCCompoundStatementNode *)compoundStatemetnNodeWithDeclarationList:(CCDeclarationListNode *)declarationList
+                                                        statementList:(CCStatementListNode *)statementList;
 
 
 @end

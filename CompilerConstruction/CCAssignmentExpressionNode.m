@@ -14,5 +14,23 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCAssignmentExpressionNode *)assignmentExpressionNodeWithConditionalExpression:(CCConditionalExpressionNode *)conditionalExpression
+{
+    CCAssignmentExpressionNode *result = [self new];
+    [result setConditionalExpression:conditionalExpression];
+    return result;
+}
+
+
++ (CCAssignmentExpressionNode *)assignmentExpressionNodeWithUnaryExpression:(CCUnaryExpressionNode *)unaryExpression
+                                                         assignmentOperator:(CCAssignmentOperatorNode *)assignmentOperator
+                                                       assignmentExpression:(CCAssignmentExpressionNode *)assignmentExpression
+{
+    CCAssignmentExpressionNode *result = [self new];
+    [result setUnaryExpression:unaryExpression];
+    [result setAssignmentOperator:assignmentOperator];
+    [result setAssignmentExpression:assignmentExpression];
+    return result;
+}
 
 @end

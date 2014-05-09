@@ -19,6 +19,8 @@
 
 
 #pragma mark | Creators
++ (CCExclusiveOrExpressionNode *)exclusiveOrExpressionNodeWithAndExpression:(CCAndExpressionNode *)andExpression
+                                                      exclusiveOrExpression:(CCExclusiveOrExpressionNode *)exclusiveOrExpression;
 
 
 @end

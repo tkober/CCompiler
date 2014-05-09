@@ -14,5 +14,15 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCConditionalExpressionNode *)conditionalExpressionNodeWithLogicalOrExpression:(CCLogicalOrExpressionNode *)logicalOrExpression
+                                                                       expression:(CCExpressionNode *)expression
+                                                            conditionalExpression:(CCConditionalExpressionNode *)conditionalExpression
+{
+    CCConditionalExpressionNode *result = [self new];
+    [result setLogicalOrExpression:logicalOrExpression];
+    [result setExpression:expression];
+    [result setConditionalExpression:conditionalExpression];
+    return result;
+}
 
 @end

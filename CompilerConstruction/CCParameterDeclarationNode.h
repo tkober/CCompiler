@@ -16,10 +16,12 @@
 #pragma mark - CCParameterDeclarationNode
 @interface CCParameterDeclarationNode : CCSyntaxNode
 @property (strong, nonatomic) CCDeclarationSpecificationNode *declarationSpecification;
-@property (strong, nonatomic) CCDeclaratorNode *declaration;
+@property (strong, nonatomic) CCDeclaratorNode *declarator;
 
 
 #pragma mark | Creators
++ (CCParameterDeclarationNode *)parameterDeclarationNodeWithDeclarationSpecification:(CCDeclarationSpecificationNode *)declarationSepcification
+                                                                          declarator:(CCDeclaratorNode *)declarator;
 
 
 @end

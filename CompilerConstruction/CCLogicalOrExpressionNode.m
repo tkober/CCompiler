@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCLogicalOrExpressionNode *)logicalOrExpressionNodeWithLogicalAndExpression:(CCLogicalAndExpressionNode *)logicalAndExpression
+                                                           logicalOrExpression:(CCLogicalOrExpressionNode *)logicalOrExpression
+{
+    CCLogicalOrExpressionNode *result = [self new];
+    [result setLogicalAndExpression:logicalAndExpression];
+    [result setLogicalOrExpression:logicalOrExpression];
+    return result;
+}
 
 @end

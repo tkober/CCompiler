@@ -19,5 +19,7 @@
 
 
 #pragma mark | Creators
++ (CCInclusiveOrExpressionNode *)inclusiveOrExpressionNodeWithExclusiveOrExpression:(CCExclusiveOrExpressionNode *)exclusiveOrExpression
+                                                              inclusiveOrExpression:(CCInclusiveOrExpressionNode *)inclusiveOrExpression;
 
 @end

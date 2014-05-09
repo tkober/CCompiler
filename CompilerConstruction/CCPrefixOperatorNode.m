@@ -14,5 +14,19 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCPrefixOperatorNode *)prefixIncrement
+{
+    CCPrefixOperatorNode *result = [self new];
+    [result setOperatorType:CCPrefixOperatorIncrement];
+    return result;
+}
+
+
++ (CCPrefixOperatorNode *)prefixDecrement
+{
+    CCPrefixOperatorNode *result = [self new];
+    [result setOperatorType:CCPrefixOperatorDecrement];
+    return result;
+}
 
 @end

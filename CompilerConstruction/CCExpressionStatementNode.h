@@ -18,6 +18,7 @@
 
 
 #pragma mark | Creators
++ (CCExpressionStatementNode *)expressionStatementNodeWithExpression:(CCExpressionNode *)expression;
 
 
 @end

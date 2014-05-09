@@ -29,6 +29,10 @@ typedef NS_ENUM(NSUInteger, CCJumpStatmentType) {
 
 
 #pragma mark | Creators
++ (CCJumpStatementNode *)gotoStatementWithIdentifier:(CCIdentifierNode *)identifer;
++ (CCJumpStatementNode *)continueStatement;
++ (CCJumpStatementNode *)breakStatement;
++ (CCJumpStatementNode *)returnStatementWithExpression:(CCExpressionNode *)expression;
 
 
 @end

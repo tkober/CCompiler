@@ -14,5 +14,15 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCSelectionStatementNode *)selectionStatementNodeWithExpression:(CCExpressionNode *)expression
+                                                     thenStatement:(CCStatementNode *)thenStatement
+                                                     elseStatement:(CCStatementNode *)elseStatement
+{
+    CCSelectionStatementNode *result = [self new];
+    [result setExpression:expression];
+    [result setThenStatement:thenStatement];
+    [result setElseStatement:elseStatement];
+    return result;
+}
 
 @end

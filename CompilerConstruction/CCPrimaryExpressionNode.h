@@ -24,6 +24,9 @@
 
 
 #pragma mark | Creators
-
++ (CCPrimaryExpressionNode *)primaryExpressionNodeWithIdentifier:(CCIdentifierNode *)identifier;
++ (CCPrimaryExpressionNode *)primaryExpressionNodeWithConstant:(CCConstNode *)constant;
++ (CCPrimaryExpressionNode *)primaryExpressionNodeWithString:(CCStringNode *)string;
++ (CCPrimaryExpressionNode *)primaryExpressionNodeWithExpression:(CCExpressionNode *)expression;
 
 @end

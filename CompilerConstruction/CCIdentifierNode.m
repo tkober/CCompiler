@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCIdentifierNode *)identifierNodeWithName:(char *)name
+                                   reference:(CCSymbolReference *)reference
+{
+    CCIdentifierNode *result = [self new];
+    [result setName:[NSString stringWithUTF8String:name]];
+    [result setReference:reference];
+    return result;
+}
 
 @end

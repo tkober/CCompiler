@@ -21,6 +21,9 @@
 
 
 #pragma mark | Creators
++ (CCDeclaratorNode *)declaratorNodeWithDeclarator:(CCDeclaratorNode *)declarator
+                                        identifier:(CCIdentifierNode *)identifier
+                                     parameterList:(CCParameterListNode *)parameterList;
 
 
 @end

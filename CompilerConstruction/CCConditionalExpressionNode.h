@@ -21,6 +21,9 @@
 
 
 #pragma mark | Creators
++ (CCConditionalExpressionNode *)conditionalExpressionNodeWithLogicalOrExpression:(CCLogicalOrExpressionNode *)logicalOrExpression
+                                                                       expression:(CCExpressionNode *)expression
+                                                            conditionalExpression:(CCConditionalExpressionNode *)conditionalExpression;
 
 
 @end

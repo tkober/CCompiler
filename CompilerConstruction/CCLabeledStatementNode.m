@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCLabeledStatementNode *)labeledExpressionNodeWithStatement:(CCStatementNode *)statement
+                                                    identifier:(CCIdentifierNode *)identifier
+{
+    CCLabeledStatementNode *result = [[self alloc] init];
+    [result setStatement:statement];
+    [result setIdentifier:identifier];
+    return result;
+}
 
 @end

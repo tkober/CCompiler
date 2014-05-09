@@ -14,5 +14,15 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCEqualityExpressionNode *)equalityExpressionNodeWithRelationalExpression:(CCRelationalExpressionNode *)relationalExpression
+                                                           equatlityOperator:(CCEqualityOperatorNode *)equalityOperator
+                                                          equalityExpression:(CCEqualityExpressionNode *)equalityExpression
+{
+    CCEqualityExpressionNode *result = [self new];
+    [result setRelationalExpression:relationalExpression];
+    [result setEqualityOperator:equalityOperator];
+    [result setEqualityExpression:equalityExpression];
+    return result;
+}
 
 @end

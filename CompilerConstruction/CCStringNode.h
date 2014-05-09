@@ -15,6 +15,7 @@
 
 
 #pragma mark | Creators
++ (CCStringNode *)stringNodeWithValue:(char *)value;
 
 
 @end

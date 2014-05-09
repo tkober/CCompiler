@@ -21,6 +21,9 @@
 
 
 #pragma mark | Creators
++ (CCSelectionStatementNode *)selectionStatementNodeWithExpression:(CCExpressionNode *)expression
+                                                     thenStatement:(CCStatementNode *)thenStatement
+                                                     elseStatement:(CCStatementNode *)elseStatement;
 
 
 @end

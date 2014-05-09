@@ -21,6 +21,9 @@
 
 
 #pragma mark | Creators
++ (CCAdditiveExpressionNode *)additiveExpressionNodeWithMultiplicativeExpression:(CCMultiplicativeExpressionNode *)multiplicativeExpression
+                                                                additiveOperator:(CCAdditiveOperatorNode *)additiveOperator
+                                                              additiveExpression:(CCAdditiveExpressionNode *)additiveExpression;
 
 
 @end

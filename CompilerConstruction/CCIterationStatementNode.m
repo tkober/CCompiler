@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCIterationStatementNode *)iterationStatementWithExpression:(CCExpressionNode *)expression
+                                                     statement:(CCStatementNode *)statement
+{
+    CCIterationStatementNode *result = [self new];
+    [result setExpression:expression];
+    [result setStatement:statement];
+    return result;
+}
 
 @end

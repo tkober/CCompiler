@@ -19,5 +19,7 @@
 
 
 #pragma mark | Creators
++ (CCLogicalAndExpressionNode *)logicalAndExpressionNodeWithInclusiveOrExpression:(CCInclusiveOrExpressionNode *)inclusiveOrExpression
+                                                             logicalAndExpression:(CCLogicalAndExpressionNode *)logicalAndExpression;
 
 @end

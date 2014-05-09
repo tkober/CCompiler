@@ -18,10 +18,13 @@ typedef NS_ENUM(NSUInteger, CCMultiplicativeOperator) {
 
 #pragma mark - CCMultiplicativeOperatorNode
 @interface CCMultiplicativeOperatorNode : CCSyntaxNode
-@property (assign, nonatomic) CCMultiplicativeOperator *multiplicativeOperator;
+@property (assign, nonatomic) CCMultiplicativeOperator multiplicativeOperator;
 
 
 #pragma mark | Creators
++ (CCMultiplicativeOperatorNode *)CC_MUL_OP;
++ (CCMultiplicativeOperatorNode *)CC_DIV_OP;
++ (CCMultiplicativeOperatorNode *)CC_MOD_OP;
 
 
 @end

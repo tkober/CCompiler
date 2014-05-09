@@ -14,5 +14,15 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCMultiplicativeExpressionNode *)multiplicativeExpressionNodeWithUnaryExpression:(CCUnaryExpressionNode *)unaryExpression
+                                                             multiplicativeOperator:(CCMultiplicativeOperatorNode *)multiplicativeOperator
+                                                           multiplicativeExpression:(CCMultiplicativeExpressionNode *)multiplicativeExpression
+{
+    CCMultiplicativeExpressionNode *result = [self new];
+    [result setUnaryExpression:unaryExpression];
+    [result setMultiplicativeOperator:multiplicativeOperator];
+    [result setMultiplicativeExpression:multiplicativeExpression];
+    return result;
+}
 
 @end

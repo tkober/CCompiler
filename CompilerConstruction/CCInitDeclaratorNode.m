@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCInitDeclaratorNode *)initDeclaratorNodeWithDeclarator:(CCDeclaratorNode *)declarator
+                                               initializer:(CCInitializerNode *)initializer
+{
+    CCInitDeclaratorNode *result = [self new];
+    [result setDeclarator:declarator];
+    [result setInitializer:initializer];
+    return result;
+}
 
 @end

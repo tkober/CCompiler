@@ -14,5 +14,19 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCShiftOperatorNode *)CC_SHIFT_LEFT_OP
+{
+    CCShiftOperatorNode *result = [self new];
+    [result setShiftOperator:CC_SHIFT_LEFT_OP];
+    return result;
+}
+
+
++ (CCShiftOperatorNode *)CC_SHIFT_RIGTH_OP
+{
+    CCShiftOperatorNode *result = [self new];
+    [result setShiftOperator:CC_SHIFT_RIGTH_OP];
+    return result;
+}
 
 @end

@@ -17,9 +17,12 @@ typedef NS_ENUM(NSUInteger, CCPostfixOperator) {
 
 #pragma mark - CCPostfixOperatorNode
 @interface CCPostfixOperatorNode : CCSyntaxNode
+@property (assign, nonatomic) CCPostfixOperator postfixOperator;
 
 
 #pragma mark | Creators
++ (CCPostfixOperatorNode *)CC_UNARY_INCREMENT_OP;
++ (CCPostfixOperatorNode *)CC_UNARY_DECREMENT_OP;
 
 
 @end

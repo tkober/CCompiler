@@ -19,6 +19,8 @@
 
 
 #pragma mark | Creators
++ (CCInitializerListNode *)initializerListNodeWithInitializer:(CCInitializerNode *)initializer
+                                              initializerList:(CCInitializerListNode *)initializerList;
 
 
 @end

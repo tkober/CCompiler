@@ -21,6 +21,9 @@
 
 
 #pragma mark | Creators
++ (CCShiftExpressionNode *)shiftExpressionNodeWithAdditiveExpression:(CCAdditiveExpressionNode *)additiveExpression
+                                                       shiftOperator:(CCShiftOperatorNode *)shiftOperator
+                                                     shiftExpression:(CCShiftExpressionNode *)shiftExpression;
 
 
 @end

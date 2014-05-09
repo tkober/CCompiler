@@ -26,5 +26,10 @@
 
 
 #pragma mark | Creators
++ (CCStatementNode *)statementNodeWithLabeledStatement:(CCLabeledStatementNode *)labeledStatement;
++ (CCStatementNode *)statementNodeWithCompoundStatement:(CCCompoundStatementNode *)compoundStatement;
++ (CCStatementNode *)statementNodeWithSelectionStatement:(CCSelectionStatementNode *)selectionStatement;
++ (CCStatementNode *)statementNodeWithIterationStatement:(CCIterationStatementNode *)iterationStatement;
++ (CCStatementNode *)statementNodeWithJumpStatement:(CCJumpStatementNode *)jumpStatement;
 
 @end

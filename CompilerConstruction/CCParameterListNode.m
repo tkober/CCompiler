@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCParameterListNode *)parameterListNodeWithParameterDeclaration:(CCParameterDeclaration *)parameterDeclaration
+                                                     parameterList:(CCParameterListNode *)parameterList
+{
+    CCParameterListNode *result = [self new];
+    [result setParameterDeclaration:parameterDeclaration];
+    [result setParameterList:parameterList];
+    return result;
+}
 
 @end

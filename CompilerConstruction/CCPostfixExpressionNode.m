@@ -14,5 +14,39 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCPostfixExpressionNode *)postfixExpressionNodeWithPrimaryExpression:(CCPrimaryExpressionNode *)primaryExpression
+{
+    CCPostfixExpressionNode *result = [self new];
+    [result setPrimaryExpression:primaryExpression];
+    return result;
+}
+
+
++ (CCPostfixExpressionNode *)postfixExpressionNodeWithPostfixExpression:(CCPostfixExpressionNode *)postfixExpression
+{
+    CCPostfixExpressionNode *result = [self new];
+    [result setPostfixExpression:postfixExpression];
+    return result;
+}
+
+
++ (CCPostfixExpressionNode *)postfixExpressionNodeWithPostfixExpression:(CCPostfixExpressionNode *)postfixExpression
+                                                 argumentExpressionList:(CCArgumentExpressionListNode *)argumentExpressionList
+{
+    CCPostfixExpressionNode *result = [self new];
+    [result setPostfixExpression:postfixExpression];
+    [result setArgumentExpressionList:argumentExpressionList];
+    return result;
+}
+
+
++ (CCPostfixExpressionNode *)postfixExpressionNodeWithPostfixExpression:(CCPostfixExpressionNode *)postfixExpression
+                                                        postfixOperator:(CCPostfixOperatorNode *)postfixOperator
+{
+    CCPostfixExpressionNode *result = [self new];
+    [result setPostfixExpression:postfixExpression];
+    [result setPostfixOperator:postfixOperator];
+    return result;
+}
 
 @end

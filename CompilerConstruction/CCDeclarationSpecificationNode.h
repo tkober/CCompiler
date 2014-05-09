@@ -19,6 +19,8 @@
 
 
 #pragma mark | Creators
++ (CCDeclarationSpecificationNode *)declarationSpecificationNodeWithdeclarationSpecification:(CCDeclarationSpecificationNode *)declarationSpecification
+                                                                           typeSpecification:(CCTypeSpecificationNode *)typeSpecification;
 
 
 @end

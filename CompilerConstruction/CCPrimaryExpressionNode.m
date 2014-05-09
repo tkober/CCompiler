@@ -14,5 +14,35 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCPrimaryExpressionNode *)primaryExpressionNodeWithIdentifier:(CCIdentifierNode *)identifier
+{
+    CCPrimaryExpressionNode *result = [self new];
+    [result setIdentifier:identifier];
+    return result;
+}
+
+
++ (CCPrimaryExpressionNode *)primaryExpressionNodeWithConstant:(CCConstNode *)constant
+{
+    CCPrimaryExpressionNode *result = [self new];
+    [result setConstant:constant];
+    return result;
+}
+
+
++ (CCPrimaryExpressionNode *)primaryExpressionNodeWithString:(CCStringNode *)string
+{
+    CCPrimaryExpressionNode *result = [self new];
+    [result setString:string];
+    return result;
+}
+
+
++ (CCPrimaryExpressionNode *)primaryExpressionNodeWithExpression:(CCExpressionNode *)expression
+{
+    CCPrimaryExpressionNode *result = [self new];
+    [result setExpression:expression];
+    return result;
+}
 
 @end

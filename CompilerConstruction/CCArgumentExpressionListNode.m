@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCArgumentExpressionListNode *)argumentExpressionListNodeWithAssignmentExpression:(CCAssignmentExpressionNode *)assignmentExpression
+                                                              argumentExpressionList:(CCArgumentExpressionListNode *)argumentExpressionList
+{
+    CCArgumentExpressionListNode *result = [self new];
+    [result setAssignmentExpression:assignmentExpression];
+    [result setArgumentExpressionList:argumentExpressionList];
+    return result;
+}
 
 @end

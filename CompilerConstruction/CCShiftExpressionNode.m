@@ -14,5 +14,15 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCShiftExpressionNode *)shiftExpressionNodeWithAdditiveExpression:(CCAdditiveExpressionNode *)additiveExpression
+                                                       shiftOperator:(CCShiftOperatorNode *)shiftOperator
+                                                     shiftExpression:(CCShiftExpressionNode *)shiftExpression
+{
+    CCShiftExpressionNode *result = [self new];
+    [result setAdditiveExpression:additiveExpression];
+    [result setShiftOperator:shiftOperator];
+    [result setShiftExpression:shiftExpression];
+    return result;
+}
 
 @end

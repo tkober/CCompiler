@@ -14,5 +14,15 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCRelationalExpressionNode *)relationalExpressionNodeWithShiftExpression:(CCShiftExpressionNode *)shiftExpression
+                                                            compareOperator:(CCCompareOperatorNode *)compareOperator
+                                                       relationalExpression:(CCRelationalExpressionNode *)relationalExpression
+{
+    CCRelationalExpressionNode *result = [self new];
+    [result setShiftExpression:shiftExpression];
+    [result setComareOperator:compareOperator];
+    [result setRelationalExpression:relationalExpression];
+    return result;
+}
 
 @end

@@ -19,6 +19,8 @@
 
 
 #pragma mark | Creators
++ (CCParameterListNode *)parameterListNodeWithParameterDeclaration:(CCParameterDeclaration *)parameterDeclaration
+                                                     parameterList:(CCParameterListNode *)parameterList;
 
 
 @end

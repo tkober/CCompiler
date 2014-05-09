@@ -14,5 +14,19 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCAdditiveOperatorNode *)CC_ADD_OP
+{
+    CCAdditiveOperatorNode *result = [self new];
+    [result setAdditiveOperator:CC_ADD_OP];
+    return result;
+}
+
+
++ (CCAdditiveOperatorNode *)CC_SUB_OP
+{
+    CCAdditiveOperatorNode *result = [self new];
+    [result setAdditiveOperator:CC_SUB_OP];
+    return result;
+}
 
 @end

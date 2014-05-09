@@ -14,5 +14,19 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCEqualityOperatorNode *)CC_EQUAL_OP
+{
+    CCEqualityOperatorNode *result = [self new];
+    [result setEqualityOperator:CC_EQUAL_OP];
+    return result;
+}
+
+
++ (CCEqualityOperatorNode *)CC_NOT_EQUAL_OP
+{
+    CCEqualityOperatorNode *result = [self new];
+    [result setEqualityOperator:CC_NOT_EQUAL_OP];
+    return result;
+}
 
 @end

@@ -20,6 +20,8 @@
 
 
 #pragma mark | Creators
++ (CCLabeledStatementNode *)labeledExpressionNodeWithStatement:(CCStatementNode *)statement
+                                                    identifier:(CCIdentifierNode *)identifier;
 
 
 @end

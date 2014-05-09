@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCAndExpressionNode *)andExpressionNodeWithEqualityExpression:(CCEqualityExpressionNode *)equalityExpression
+                                                   andExpression:(CCAndExpressionNode *)andExpression
+{
+    CCAndExpressionNode *result = [self new];
+    [result setEqualityExpression:equalityExpression];
+    [result setAndExpression:andExpression];
+    return result;
+}
 
 @end

@@ -21,5 +21,8 @@
 
 
 #pragma mark | Creators
++ (CCEqualityExpressionNode *)equalityExpressionNodeWithRelationalExpression:(CCRelationalExpressionNode *)relationalExpression
+                                                           equatlityOperator:(CCEqualityOperatorNode *)equalityOperator
+                                                          equalityExpression:(CCEqualityExpressionNode *)equalityExpression;
 
 @end

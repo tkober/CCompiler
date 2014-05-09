@@ -18,12 +18,16 @@
 #pragma mark - CCUnaryExpressionNode
 @interface CCUnaryExpressionNode : CCSyntaxNode
 @property (strong, nonatomic) CCPostfixExpressionNode *postfixExpression;
-@property (strong, nonatomic) CCPrefixOperatorNode *prefixExpression;
+@property (strong, nonatomic) CCPrefixOperatorNode *prefixOperator;
 @property (strong, nonatomic) CCUnaryOperatorNode *unaryOperator;
 @property (strong, nonatomic) CCUnaryExpressionNode *unaryExpression;
 
 
 #pragma mark | Creators
++ (CCUnaryExpressionNode *)unaryExpressionNodeWithPostfixExpression:(CCPostfixExpressionNode *)postfixExpression;
++ (CCUnaryExpressionNode *)unaryExpressionNodeWithPrefixOperator:(CCPrefixOperatorNode *)prefixOperator
+                                                 unaryExpression:(CCUnaryExpressionNode *)unaryExpression;
++ (CCUnaryExpressionNode *)unaryExpressionNodeWithUnaryOperator:(CCUnaryOperatorNode *)unaryOperator;
 
 
 @end

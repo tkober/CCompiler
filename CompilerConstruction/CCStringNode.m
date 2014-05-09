@@ -14,5 +14,11 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCStringNode *)stringNodeWithValue:(char *)value
+{
+    CCStringNode *result = [self new];
+    [result setValue:[NSString stringWithUTF8String:value]];
+    return result;
+}
 
 @end

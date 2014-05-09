@@ -9,12 +9,17 @@
 #import "CCSyntaxNode.h"
 
 
+@class CCSymbolReference;
+
+
 #pragma mark - CCIdentifierNode
 @interface CCIdentifierNode : CCSyntaxNode
-@property (strong, nonatomic) NSString *value;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) CCSymbolReference *reference;
 
 
 #pragma mark | Creators
-
++ (CCIdentifierNode *)identifierNodeWithName:(char *)name
+                                   reference:(CCSymbolReference *)reference;
 
 @end

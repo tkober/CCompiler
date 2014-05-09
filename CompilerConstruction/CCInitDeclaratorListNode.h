@@ -19,6 +19,8 @@
 
 
 #pragma mark | Creators
++ (CCInitDeclaratorListNode *)initDeclaratorListNodeWithInitDeclaratorList:(CCInitDeclaratorListNode *)initDeclaratorList
+                                                            initDeclarator:(CCInitDeclaratorNode *)initDeclarator;
 
 
 @end

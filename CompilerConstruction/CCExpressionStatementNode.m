@@ -14,5 +14,11 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCExpressionStatementNode *)expressionStatementNodeWithExpression:(CCExpressionNode *)expression
+{
+    CCExpressionStatementNode *result = [[self alloc] init];
+    [result setExpression:expression];
+    return result;
+}
 
 @end

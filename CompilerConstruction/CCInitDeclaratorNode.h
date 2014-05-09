@@ -20,6 +20,8 @@
 
 
 #pragma mark | Creators
++ (CCInitDeclaratorNode *)initDeclaratorNodeWithDeclarator:(CCDeclaratorNode *)declarator
+                                               initializer:(CCInitializerNode *)initializer;
 
 
 @end

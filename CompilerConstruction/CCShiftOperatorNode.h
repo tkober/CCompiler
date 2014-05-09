@@ -21,6 +21,8 @@ typedef NS_ENUM(NSUInteger, CCShiftOperator) {
 
 
 #pragma mark | Creators
++ (CCShiftOperatorNode *)CC_SHIFT_LEFT_OP;
++ (CCShiftOperatorNode *)CC_SHIFT_RIGTH_OP;
 
 
 @end

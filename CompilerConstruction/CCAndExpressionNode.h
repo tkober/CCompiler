@@ -19,6 +19,8 @@
 
 
 #pragma mark | Creators
++ (CCAndExpressionNode *)andExpressionNodeWithEqualityExpression:(CCEqualityExpressionNode *)equalityExpression
+                                                   andExpression:(CCAndExpressionNode *)andExpression;
 
 
 @end

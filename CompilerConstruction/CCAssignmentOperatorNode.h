@@ -30,5 +30,16 @@ typedef NS_ENUM(NSUInteger, CCAssignmentOperator) {
 
 
 #pragma mark | Creators
++ (CCAssignmentOperatorNode *)CC_ASSIGN_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_MUL_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_DIV_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_MOD_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_ADD_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_SUB_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_SHIFT_LEFT_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_SHIFT_RIGHT_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_BITWISE_AND_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_BITWISE_XOR_OP;
++ (CCAssignmentOperatorNode *)CC_ASSIGN_BITWISE_OR_OP;
 
 @end

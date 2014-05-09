@@ -28,5 +28,14 @@ typedef NS_ENUM(NSUInteger, CCTypeSpecification) {
 
 
 #pragma mark | Creators
++ (CCTypeSpecificationNode *)CC_VOID;
++ (CCTypeSpecificationNode *)CC_CHAR;
++ (CCTypeSpecificationNode *)CC_SHORT;
++ (CCTypeSpecificationNode *)CC_INT;
++ (CCTypeSpecificationNode *)CC_LONG;
++ (CCTypeSpecificationNode *)CC_FLOAT;
++ (CCTypeSpecificationNode *)CC_DOUBLE;
++ (CCTypeSpecificationNode *)CC_SIGNED;
++ (CCTypeSpecificationNode *)CC_UNSIGNED;
 
 @end

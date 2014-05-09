@@ -19,6 +19,8 @@
 
 
 #pragma mark | Creators
++ (CCArgumentExpressionListNode *)argumentExpressionListNodeWithAssignmentExpression:(CCAssignmentExpressionNode *)assignmentExpression
+                                                              argumentExpressionList:(CCArgumentExpressionListNode *)argumentExpressionList;
 
 
 @end

@@ -14,5 +14,13 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCStatementListNode *)statementListNodeWithStatementList:(CCStatementListNode *)statementList
+                                                  statement:(CCStatementNode *)statement
+{
+    CCStatementListNode *result = [[self alloc] init];
+    [result setStatementList:statementList];
+    [result setStatement:statement];
+    return result;
+}
 
 @end

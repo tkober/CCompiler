@@ -19,10 +19,13 @@ typedef NS_ENUM(NSUInteger, CCConst) {
 #pragma mark - CCConstNode
 @interface CCConstNode : CCSyntaxNode
 @property (strong, nonatomic) NSNumber *value;
-@property (assign, nonatomic) CCConst constang;
+@property (assign, nonatomic) CCConst constant;
 
 
 #pragma mark | Creators
++ (CCConstNode *)CC_CHAR_CONST;
++ (CCConstNode *)CC_INT_CONST;
++ (CCConstNode *)CC_FLOAT_CONST;
 
 
 @end

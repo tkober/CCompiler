@@ -14,5 +14,15 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCAdditiveExpressionNode *)additiveExpressionNodeWithMultiplicativeExpression:(CCMultiplicativeExpressionNode *)multiplicativeExpression
+                                                                additiveOperator:(CCAdditiveOperatorNode *)additiveOperator
+                                                              additiveExpression:(CCAdditiveExpressionNode *)additiveExpression
+{
+    CCAdditiveExpressionNode *result = [self new];
+    [result setMultiplicativeExpression:multiplicativeExpression];
+    [result setAdditiveOperator:additiveOperator];
+    [result setAdditiveExpression:additiveExpression];
+    return result;
+}
 
 @end

@@ -23,6 +23,12 @@
 
 
 #pragma mark | Creators
++ (CCPostfixExpressionNode *)postfixExpressionNodeWithPrimaryExpression:(CCPrimaryExpressionNode *)primaryExpression;
++ (CCPostfixExpressionNode *)postfixExpressionNodeWithPostfixExpression:(CCPostfixExpressionNode *)postfixExpression;
++ (CCPostfixExpressionNode *)postfixExpressionNodeWithPostfixExpression:(CCPostfixExpressionNode *)postfixExpression
+                                                 argumentExpressionList:(CCArgumentExpressionListNode *)argumentExpressionList;
++ (CCPostfixExpressionNode *)postfixExpressionNodeWithPostfixExpression:(CCPostfixExpressionNode *)postfixExpression
+                                                        postfixOperator:(CCPostfixOperatorNode *)postfixOperator;
 
 
 @end

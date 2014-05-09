@@ -14,5 +14,27 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
++ (CCMultiplicativeOperatorNode *)CC_MUL_OP
+{
+    CCMultiplicativeOperatorNode *result = [self new];
+    [result setMultiplicativeOperator:CC_MUL_OP];
+    return result;
+}
+
+
++ (CCMultiplicativeOperatorNode *)CC_DIV_OP
+{
+    CCMultiplicativeOperatorNode *result = [self new];
+    [result setMultiplicativeOperator:CC_DIV_OP];
+    return result;
+}
+
+
++ (CCMultiplicativeOperatorNode *)CC_MOD_OP
+{
+    CCMultiplicativeOperatorNode *result = [self new];
+    [result setMultiplicativeOperator:CC_MOD_OP];
+    return result;
+}
 
 @end
