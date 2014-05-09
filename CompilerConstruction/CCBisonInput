@@ -34,7 +34,7 @@ id<CCOutput> _output;
 
 // Symbols
 %token <syntax_node>ID
-%token STRING
+%token <syntax_node>STRING
 %token CHAR_CONST
 %token INT_CONST
 %token FLOAT_CONST
@@ -147,6 +147,11 @@ id<CCOutput> _output;
 %type <syntax_node> additive_expression;
 %type <syntax_node> additive_operator;
 %type <syntax_node> multiplicative_expression;
+%type <syntax_node> const;
+%type <syntax_node> argument_expression_list;
+%type <syntax_node> primary_expression;
+%type <syntax_node> postfix_operator;
+%type <syntax_node> multiplicative_operator;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -554,7 +559,6 @@ shift_operator              : SHIFT_LEFT_OP     { $$ = [CCShiftOperatorNode CC_S
                             | SHIFT_RIGHT_OP    { $$ = [CCShiftOperatorNode CC_SHIFT_RIGTH_OP]; }
                             ;
 
-
 additive_expression         : multiplicative_expression                                         {
                                                                                                     $$ = [CCAdditiveExpressionNode additiveExpressionNodeWithMultiplicativeExpression:$1
                                                                                                                                                                      additiveOperator:nil
@@ -566,65 +570,93 @@ additive_expression         : multiplicative_expression                         
                                                                                                                                                                    additiveExpression:$1];
                                                                                                 }
                             ;
-                            
-                            
-additive_operator           : ADD_OP
-                            | SUB_OP
+
+
+additive_operator           : ADD_OP { [CCAdditiveOperatorNode CC_ADD_OP]; }
+                            | SUB_OP { [CCAdditiveOperatorNode CC_SUB_OP]; }
                             ;
 
 
-multiplicative_expression   : unary_expression
-                            | multiplicative_expression multiplicative_operator unary_expression
-                            ;
-                            
-                            
-multiplicative_operator     : MUL_OP
-                            | DIV_OP
-                            | MOD_OP
-                            ;
-
-
-expression                  : assignment_expression
-                            | expression COMMA assignment_expression
-                            ;
-
-
-postfix_expression          : primary_expression
-                            | postfix_expression OB argument_expression_list CB
-                            | postfix_expression OB CB
-                            | postfix_expression postfix_operator
+multiplicative_expression   : unary_expression                                                      { [CCMultiplicativeExpressionNode multiplicativeExpressionNodeWithUnaryExpression:$1
+                                                                                                                                                               multiplicativeOperator:nil
+                                                                                                                                                             multiplicativeExpression:nil];
+                                                                                                    }
+                            | multiplicative_expression multiplicative_operator unary_expression    { [CCMultiplicativeExpressionNode multiplicativeExpressionNodeWithUnaryExpression:$3
+                                                                                                                                                               multiplicativeOperator:$2
+                                                                                                                                                             multiplicativeExpression:$1];
+                                                                                                    }
                             ;
                             
                             
-postfix_operator            : UNARY_INCREMENT_OP
-                            | UNARY_DECREMENT_OP
+multiplicative_operator     : MUL_OP    { [CCMultiplicativeOperatorNode CC_MUL_OP]; }
+                            | DIV_OP    { [CCMultiplicativeOperatorNode CC_DIV_OP]; }
+                            | MOD_OP    { [CCMultiplicativeOperatorNode CC_MOD_OP]; }
                             ;
 
 
-primary_expression          : ID
-                            | const
-                            | STRING
-                            | OB expression CB
+expression                  : assignment_expression                     { 
+                                                                            [CCExpressionNode expressionNodeWithAssignmentExpression:$1
+                                                                                                                          expression:nil];
+                                                                        }
+                            | expression COMMA assignment_expression    { 
+                                                                            [CCExpressionNode expressionNodeWithAssignmentExpression:$3
+                                                                                                                          expression:$1];
+                                                                        }
                             ;
 
 
-argument_expression_list    : assignment_expression
-                            | argument_expression_list COMMA assignment_expression
+postfix_expression          : primary_expression                                 { 
+                                                                                    [CCPostfixExpressionNode postfixExpressionNodeWithPrimaryExpression:$1];
+                                                                                 }
+                            | postfix_expression OB argument_expression_list CB  { 
+                                                                                    [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1
+                                                                                                            argumentExpressionList:$3];
+                                                                                 }
+                            | postfix_expression OB CB                           { 
+                                                                                    [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1];
+                                                                                 }
+                            | postfix_expression postfix_operator                { 
+                                                                                    [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1
+                                                                                                                   postfixOperator:$2 ];
+                                                                                 }
+                            ;
+                            
+                            
+postfix_operator            : UNARY_INCREMENT_OP { [CCPostfixOperatorNode CC_UNARY_INCREMENT_OP]; }
+                            | UNARY_DECREMENT_OP { [CCPostfixOperatorNode CC_UNARY_DECREMENT_OP]; }
                             ;
 
 
-const                       : CHAR_CONST
-                            | INT_CONST
-                            | FLOAT_CONST
+primary_expression          : ID                { $$ = [CCPrimaryExpressionNode primaryExpressionNodeWithIdentifier:$1]; }
+                            | const             { $$ = [CCPrimaryExpressionNode primaryExpressionNodeWithConstant:$1]; }
+                            | STRING            { $$ = [CCPrimaryExpressionNode primaryExpressionNodeWithString:$1]; }
+                            | OB expression CB  { $$ = [CCPrimaryExpressionNode primaryExpressionNodeWithExpression:$2]; }
                             ;
 
 
-unary_operator              : AND_OP
-                            | MUL_OP
-                            | ADD_OP
-                            | SUB_OP
-                            | BITWISE_NOT_OP
-                            | NOT_OP
+argument_expression_list    : assignment_expression                                 { 
+                                                                                       $$ = [CCArgumentExpressionListNode argumentExpressionListNodeWithAssignmentExpression:$1
+                                                                                                                        argumentExpressionList:nil]; 
+                                                                                    }
+                            | argument_expression_list COMMA assignment_expression  {
+                                                                                       $$ = [CCArgumentExpressionListNode argumentExpressionListNodeWithAssignmentExpression:$3
+                                                                                                                                                  argumentExpressionList:$1];
+                                                                                    }
+                            ;
+
+
+const                       : CHAR_CONST           { $$ = [CCConstNode CC_CHAR_CONST]; }
+                            | INT_CONST            { $$ = [CCConstNode CC_INT_CONST]; }
+                            | FLOAT_CONST          { $$ = [CCConstNode CC_FLOAT_CONST]; }
+                            ;
+
+
+unary_operator              : AND_OP                { $$ = [CCUnaryOperatorNode CC_UNARY_AND_OP]; }
+                            | MUL_OP                { $$ = [CCUnaryOperatorNode CC_UNARY_MUL_OP]; }
+                            | ADD_OP                { $$ = [CCUnaryOperatorNode CC_UNARY_ADD_OP]; }
+                            | SUB_OP                { $$ = [CCUnaryOperatorNode CC_UNARY_SUB_OP]; }
+                            | BITWISE_NOT_OP        { $$ = [CCUnaryOperatorNode CC_UNARY_BITWISE_NOT_OP]; }
+                            | NOT_OP                { $$ = [CCUnaryOperatorNode CC_UNARY_NOT_OP]; }
                             ;
 
 
