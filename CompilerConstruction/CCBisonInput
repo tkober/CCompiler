@@ -17,6 +17,10 @@ id<CCOutput> _output;
 
 %}
 
+%union {
+    __unsafe_unretained id syntax_node;
+}
+
 // Type Specifiers
 %token VOID
 %token CHAR
@@ -29,7 +33,7 @@ id<CCOutput> _output;
 %token UNSIGNED
 
 // Symbols
-%token ID
+%token <syntax_node>ID
 %token STRING
 %token CHAR_CONST
 %token INT_CONST
@@ -98,10 +102,6 @@ id<CCOutput> _output;
 %token ELSE
 %token GOTO
 
-
-%union {
-    __unsafe_unretained id syntax_node;
-}
 
 %type <syntax_node> translation_unit;
 %type <syntax_node> external_declaration;
@@ -210,7 +210,10 @@ statement                   : labeled_statement         { $$ = [CCStatementNode 
                             ;
                             
 
-labeled_statement           : ID COLON statement
+labeled_statement           : ID COLON statement        {
+                                                            $$ = [CCLabeledStatementNode labeledExpressionNodeWithStatement:$1
+                                                                                                                 identifier:$3];
+                                                        }
                             ;
 
 
