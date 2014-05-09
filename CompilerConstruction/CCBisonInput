@@ -127,6 +127,9 @@ id<CCOutput> _output;
 %type <syntax_node> parameter_declaration;
 %type <syntax_node> assignment_expression;
 %type <syntax_node> initializer_list;
+%type <syntax_node> conditional_expression;
+%type <syntax_node> unary_expression;
+%type <syntax_node> assignment_operator;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -374,8 +377,12 @@ initializer_list            : initializer                                   {
                             ;
 
 
-assignment_expression       : conditional_expression
-                            | unary_expression assignment_operator assignment_expression
+assignment_expression       : conditional_expression                                        { $$ = [CCAssignmentExpressionNode assignmentExpressionNodeWithConditionalExpression:$1]; }
+                            | unary_expression assignment_operator assignment_expression    {
+                                                                                                $$ = [CCAssignmentExpressionNode assignmentExpressionNodeWithUnaryExpression:$1
+                                                                                                                                                          assignmentOperator:$2
+                                                                                                                                                        assignmentExpression:$3];
+                                                                                            }
                             ;
 
 
