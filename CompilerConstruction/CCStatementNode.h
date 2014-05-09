@@ -10,6 +10,7 @@
 
 
 @class CCLabeledStatementNode;
+@class CCExpressionStatementNode;
 @class CCCompoundStatementNode;
 @class CCSelectionStatementNode;
 @class CCIterationStatementNode;
@@ -19,6 +20,7 @@
 #pragma mark - CCStatementNode
 @interface CCStatementNode : CCSyntaxNode
 @property (strong, nonatomic) CCLabeledStatementNode *labeledStatement;
+@property (strong, nonatomic) CCExpressionStatementNode *expressionStatement;
 @property (strong, nonatomic) CCCompoundStatementNode *compoundStatement;
 @property (strong, nonatomic) CCSelectionStatementNode *selectionStatement;
 @property (strong, nonatomic) CCIterationStatementNode *iterationStatement;
@@ -27,6 +29,7 @@
 
 #pragma mark | Creators
 + (CCStatementNode *)statementNodeWithLabeledStatement:(CCLabeledStatementNode *)labeledStatement;
++ (CCStatementNode *)statementNodeWithExpressionStatement:(CCExpressionStatementNode *)expressionStatement;
 + (CCStatementNode *)statementNodeWithCompoundStatement:(CCCompoundStatementNode *)compoundStatement;
 + (CCStatementNode *)statementNodeWithSelectionStatement:(CCSelectionStatementNode *)selectionStatement;
 + (CCStatementNode *)statementNodeWithIterationStatement:(CCIterationStatementNode *)iterationStatement;

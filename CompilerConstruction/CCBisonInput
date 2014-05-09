@@ -114,6 +114,11 @@ id<CCOutput> _output;
 %type <syntax_node> init_declarator_list;
 %type <syntax_node> statement_list;
 %type <syntax_node> statement;
+%type <syntax_node> labeled_statement;
+%type <syntax_node> expression_statement;
+%type <syntax_node> selection_statement;
+%type <syntax_node> iteration_statement;
+%type <syntax_node> jump_statement;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -196,12 +201,12 @@ statement_list              : statement                 {
                             ;
            
 
-statement                   : labeled_statement
-                            | expression_statement
-                            | compound_statement
-                            | selection_statement
-                            | iteration_statement
-                            | jump_statement
+statement                   : labeled_statement         { $$ = [CCStatementNode statementNodeWithLabeledStatement:$1]; }
+                            | expression_statement      { $$ = [CCStatementNode statementNodeWithExpressionStatement:$1]; }
+                            | compound_statement        { $$ = [CCStatementNode statementNodeWithCompoundStatement:$1]; }
+                            | selection_statement       { $$ = [CCStatementNode statementNodeWithSelectionStatement:$1]; }
+                            | iteration_statement       { $$ = [CCStatementNode statementNodeWithIterationStatement:$1]; }
+                            | jump_statement            { $$ = [CCStatementNode statementNodeWithJumpStatement:$1]; }
                             ;
                             
 

@@ -22,6 +22,14 @@
 }
 
 
++ (CCStatementNode *)statementNodeWithExpressionStatement:(CCExpressionStatementNode *)expressionStatement
+{
+    CCStatementNode *result = [[self alloc] init];
+    [result setExpressionStatement:expressionStatement];
+    return result;
+}
+
+
 + (CCStatementNode *)statementNodeWithCompoundStatement:(CCCompoundStatementNode *)compoundStatement
 {
     CCStatementNode *result = [[self alloc] init];
