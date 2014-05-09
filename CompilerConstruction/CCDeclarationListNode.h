@@ -19,5 +19,7 @@
 
 
 #pragma mark | Creators
++ (CCDeclarationListNode *)declarationListNodeWithDeclarationList:(CCDeclarationListNode *)declarationList
+                                                      declaration:(CCDeclarationNode *)declaration;
 
 @end

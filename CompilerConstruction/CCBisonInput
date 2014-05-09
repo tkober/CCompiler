@@ -153,8 +153,14 @@ declaration                 : declaration_specification init_declarator_list LIN
                             ;
                             
 
-declaration_list            : declaration
-                            | declaration_list declaration
+declaration_list            : declaration                                               {
+                                                                                            $$ =  [CCDeclarationListNode declarationListNodeWithDeclarationList:nil
+                                                                                                                                                    declaration:$1];
+                                                                                        }
+                            | declaration_list declaration                              {
+                                                                                            $$ =  [CCDeclarationListNode declarationListNodeWithDeclarationList:$1
+                                                                                                                                                    declaration:$2];
+                                                                                        }
                             ;
 
 
