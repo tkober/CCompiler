@@ -18,4 +18,9 @@
 @property (strong, nonatomic) CCFunctionDefinitionNode *functionDefinition;
 @property (strong, nonatomic) CCDeclarationNode *declaration;
 
+
+#pragma mark | Creators
++ (CCExternalDeclarationNode *)functionDefinition:(CCFunctionDefinitionNode *)functionDefinition;
++ (CCExternalDeclarationNode *)declaration:(CCDeclarationNode *)declaration;
+
 @end

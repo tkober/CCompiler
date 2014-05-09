@@ -105,6 +105,8 @@ id<CCOutput> _output;
 
 %type <syntax_node> translation_unit;
 %type <syntax_node> external_declaration;
+%type <syntax_node> function_definition;
+%type <syntax_node> declaration;
 
 
 %nonassoc CB
@@ -118,8 +120,8 @@ translation_unit            : external_declaration                      { $$ = [
                             ;
 
 
-external_declaration        : function_definition
-                            | declaration
+external_declaration        : function_definition                       { $$ = [CCExternalDeclarationNode functionDefinition:$1]; }
+                            | declaration                               { $$ = [CCExternalDeclarationNode declaration:$1]; }
                             ;
 
 
