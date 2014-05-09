@@ -22,4 +22,12 @@
 @property (strong, nonatomic) CCDeclarationListNode *declarationList;
 @property (strong, nonatomic) CCCompoundStatementNode *compoundStatement;
 
+
+#pragma mark | Creators
++ (CCFunctionDefinitionNode *)functionDefinitionWithDeclarationSpecification:(CCDeclarationSpecificationNode *)declarationSpecification
+                                                                  declarator:(CCDeclaratorNode *)declarator
+                                                             declarationList:(CCDeclarationListNode *)declarationList
+                                                           compoundStatement:(CCCompoundStatementNode *)compoundStatement;
+
+
 @end

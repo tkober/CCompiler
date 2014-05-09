@@ -107,7 +107,10 @@ id<CCOutput> _output;
 %type <syntax_node> external_declaration;
 %type <syntax_node> function_definition;
 %type <syntax_node> declaration;
-
+%type <syntax_node> declaration_specification;
+%type <syntax_node> declarator;
+%type <syntax_node> declaration_list;
+%type <syntax_node> compound_statement;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -125,10 +128,10 @@ external_declaration        : function_definition                       { $$ = [
                             ;
 
 
-function_definition         : declaration_specification     declarator declaration_list compound_statement
-                            |                               declarator declaration_list compound_statement
-                            | declaration_specification     declarator                  compound_statement
-                            |                               declarator                  compound_statement
+function_definition         : declaration_specification     declarator declaration_list compound_statement { $$ = [CCFunctionDefinitionNode functionDefinitionWithDeclarationSpecification:$1 declarator:$2 declarationList:$3 compoundStatement:$4]; }
+                            |                               declarator declaration_list compound_statement { $$ = [CCFunctionDefinitionNode functionDefinitionWithDeclarationSpecification:nil declarator:$1 declarationList:$2 compoundStatement:$3]; }
+                            | declaration_specification     declarator                  compound_statement { $$ = [CCFunctionDefinitionNode functionDefinitionWithDeclarationSpecification:$1 declarator:$2 declarationList:nil compoundStatement:$3]; }
+                            |                               declarator                  compound_statement { $$ = [CCFunctionDefinitionNode functionDefinitionWithDeclarationSpecification:nil declarator:$1 declarationList:nil compoundStatement:$2]; }
                             ;
 
 
