@@ -138,6 +138,7 @@ id<CCOutput> _output;
 %type <syntax_node> inclusive_or_expression;
 %type <syntax_node> exclusive_or_expression;
 %type <syntax_node> and_expression;
+%type <syntax_node> equality_expression;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -479,8 +480,14 @@ exclusive_or_expression     : and_expression                                    
                             ;
 
 
-and_expression              : equality_expression
-                            | and_expression AND_OP equality_expression
+and_expression              : equality_expression                                           {
+                                                                                                $$ = [CCAndExpressionNode andExpressionNodeWithEqualityExpression:$1
+                                                                                                                                                    andExpression:nil];
+                                                                                            }
+                            | and_expression AND_OP equality_expression                     {
+                                                                                                $$ = [CCAndExpressionNode andExpressionNodeWithEqualityExpression:$3
+                                                                                                                                                    andExpression:$1];
+                                                                                            }
                             ;
 
 
