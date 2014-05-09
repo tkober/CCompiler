@@ -236,7 +236,10 @@ selection_statement         : IF OB expression CB statement                 {
                             ;
 
 
-iteration_statement         : WHILE OB expression CB statement
+iteration_statement         : WHILE OB expression CB statement  {   
+                                                                    $$ = [CCIterationStatementNode iterationStatementWithExpression:$3
+                                                                                                                          statement:$5];
+                                                                }
                             ;
 
 
