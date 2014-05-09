@@ -125,6 +125,8 @@ id<CCOutput> _output;
 %type <syntax_node> initializer;
 %type <syntax_node> parameter_list;
 %type <syntax_node> parameter_declaration;
+%type <syntax_node> assignment_expression;
+%type <syntax_node> initializer_list;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -346,9 +348,18 @@ parameter_declaration       : declaration_specification declarator          {
                             ;
 
 
-initializer                 : assignment_expression
-                            | OB_CURLY initializer_list         CB_CURLY
-                            | OB_CURLY initializer_list COMMA   CB_CURLY
+initializer                 : assignment_expression                         {
+                                                                                $$ = [CCInitializerNode initializerNodeWithAssignmentExpression:$1
+                                                                                                                                initializerList:nil];
+                                                                            }
+                            | OB_CURLY initializer_list         CB_CURLY    {
+                                                                                $$ = [CCInitializerNode initializerNodeWithAssignmentExpression:nil
+                                                                                                                                initializerList:$2];
+                                                                            }
+                            | OB_CURLY initializer_list COMMA   CB_CURLY    {
+                                                                                $$ = [CCInitializerNode initializerNodeWithAssignmentExpression:nil
+                                                                                                                                initializerList:$2];
+                                                                            }
                             ;
                             
                             
