@@ -119,6 +119,7 @@ id<CCOutput> _output;
 %type <syntax_node> selection_statement;
 %type <syntax_node> iteration_statement;
 %type <syntax_node> jump_statement;
+%type <syntax_node> expression;
 
 %nonassoc CB
 %nonassoc ELSE
@@ -217,8 +218,8 @@ labeled_statement           : ID COLON statement        {
                             ;
 
 
-expression_statement        : expression LINE_END
-                            | LINE_END
+expression_statement        : expression LINE_END       { $$ = [CCExpressionStatementNode expressionStatementNodeWithExpression:$1]; }
+                            | LINE_END                  { $$ = [CCExpressionStatementNode expressionStatementNodeWithExpression:nil]; }
                             ;
 
 
