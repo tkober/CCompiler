@@ -243,11 +243,11 @@ iteration_statement         : WHILE OB expression CB statement  {
                             ;
 
 
-jump_statement              : GOTO ID LINE_END
-                            | CONTINUE LINE_END
-                            | BREAK LINE_END
-                            | RETURN expression LINE_END
-                            | RETURN LINE_END
+jump_statement              : GOTO ID LINE_END              { $$ = [CCJumpStatementNode gotoStatementWithIdentifier:$2]; }
+                            | CONTINUE LINE_END             { $$ = [CCJumpStatementNode continueStatement]; }
+                            | BREAK LINE_END                { $$ = [CCJumpStatementNode breakStatement]; }
+                            | RETURN expression LINE_END    { $$ = [CCJumpStatementNode returnStatementWithExpression:$2]; }
+                            | RETURN LINE_END               { $$ = [CCJumpStatementNode returnStatementWithExpression:nil]; }
                             ;
 
 
