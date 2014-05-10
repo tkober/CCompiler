@@ -8,6 +8,7 @@
 
 #import "CCInitializerListNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCInitializerNode.h"
 
 
 @implementation CCInitializerListNode

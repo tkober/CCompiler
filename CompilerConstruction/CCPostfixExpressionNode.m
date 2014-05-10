@@ -8,6 +8,9 @@
 
 #import "CCPostfixExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCPrimaryExpressionNode.h"
+#import "CCArgumentExpressionListNode.h"
+#import "CCPostfixOperatorNode.h"
 
 
 @implementation CCPostfixExpressionNode

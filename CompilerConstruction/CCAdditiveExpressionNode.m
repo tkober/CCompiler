@@ -8,6 +8,8 @@
 
 #import "CCAdditiveExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCMultiplicativeExpressionNode.h"
+#import "CCAdditiveOperatorNode.h"
 
 
 @implementation CCAdditiveExpressionNode

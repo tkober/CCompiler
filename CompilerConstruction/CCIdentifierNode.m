@@ -8,6 +8,7 @@
 
 #import "CCIdentifierNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCSymbolReference.h"
 
 
 @implementation CCIdentifierNode

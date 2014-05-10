@@ -8,6 +8,7 @@
 
 #import "CCInitDeclaratorListNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCInitDeclaratorNode.h"
 
 
 @implementation CCInitDeclaratorListNode

@@ -8,6 +8,9 @@
 
 #import "CCAssignmentExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCConditionalExpressionNode.h"
+#import "CCUnaryExpressionNode.h"
+#import "CCAssignmentOperatorNode.h"
 
 
 @implementation CCAssignmentExpressionNode

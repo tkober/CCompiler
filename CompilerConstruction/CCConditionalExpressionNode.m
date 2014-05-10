@@ -8,6 +8,8 @@
 
 #import "CCConditionalExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCLogicalOrExpressionNode.h"
+#import "CCExpressionNode.h"
 
 
 @implementation CCConditionalExpressionNode

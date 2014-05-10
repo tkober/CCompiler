@@ -8,6 +8,8 @@
 
 #import "CCRelationalExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCShiftExpressionNode.h"
+#import "CCCompareOperatorNode.h"
 
 
 @implementation CCRelationalExpressionNode

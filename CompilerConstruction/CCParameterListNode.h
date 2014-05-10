@@ -9,17 +9,17 @@
 #import "CCSyntaxNode.h"
 
 
-@class CCParameterDeclaration;
+@class CCParameterDeclarationNode;
 
 
 #pragma mark - CCParameterListNode
 @interface CCParameterListNode : CCSyntaxNode
-@property (strong, nonatomic) CCParameterDeclaration *parameterDeclaration;
+@property (strong, nonatomic) CCParameterDeclarationNode *parameterDeclaration;
 @property (strong, nonatomic) CCParameterListNode *parameterList;
 
 
 #pragma mark | Creators
-+ (CCParameterListNode *)parameterListNodeWithParameterDeclaration:(CCParameterDeclaration *)parameterDeclaration
++ (CCParameterListNode *)parameterListNodeWithParameterDeclaration:(CCParameterDeclarationNode *)parameterDeclaration
                                                      parameterList:(CCParameterListNode *)parameterList;
 
 

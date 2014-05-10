@@ -8,6 +8,9 @@
 
 #import "CCUnaryExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCPostfixExpressionNode.h"
+#import "CCPrefixOperatorNode.h"
+#import "CCUnaryOperatorNode.h"
 
 
 @implementation CCUnaryExpressionNode

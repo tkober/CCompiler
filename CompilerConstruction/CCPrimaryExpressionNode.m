@@ -8,6 +8,10 @@
 
 #import "CCPrimaryExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCIdentifierNode.h"
+#import "CCConstNode.h"
+#import "CCStringNode.h"
+#import "CCExpressionNode.h"
 
 
 @implementation CCPrimaryExpressionNode

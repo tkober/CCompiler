@@ -8,6 +8,7 @@
 
 #import "CCParameterListNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCParameterDeclarationNode.h"
 
 
 @implementation CCParameterListNode
@@ -23,7 +24,7 @@
 
 #pragma mark - Public Methods
 #pragma mark | Creators
-+ (CCParameterListNode *)parameterListNodeWithParameterDeclaration:(CCParameterDeclaration *)parameterDeclaration
++ (CCParameterListNode *)parameterListNodeWithParameterDeclaration:(CCParameterDeclarationNode *)parameterDeclaration
                                                      parameterList:(CCParameterListNode *)parameterList
 {
     CCParameterListNode *result = [self new];

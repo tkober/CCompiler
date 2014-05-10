@@ -8,6 +8,8 @@
 
 #import "CCShiftExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCAdditiveExpressionNode.h"
+#import "CCShiftOperatorNode.h"
 
 
 @implementation CCShiftExpressionNode

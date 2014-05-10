@@ -8,6 +8,8 @@
 
 #import "CCEqualityExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCRelationalExpressionNode.h"
+#import "CCEqualityOperatorNode.h"
 
 
 @implementation CCEqualityExpressionNode

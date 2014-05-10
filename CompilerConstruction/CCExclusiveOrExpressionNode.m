@@ -8,6 +8,7 @@
 
 #import "CCExclusiveOrExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCAndExpressionNode.h"
 
 
 @implementation CCExclusiveOrExpressionNode

@@ -8,6 +8,7 @@
 
 #import "CCArgumentExpressionListNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCAssignmentExpressionNode.h"
 
 
 @implementation CCArgumentExpressionListNode

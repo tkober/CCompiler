@@ -8,6 +8,7 @@
 
 #import "CCLogicalOrExpressionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCLogicalAndExpressionNode.h"
 
 
 @implementation CCLogicalOrExpressionNode
