@@ -111,7 +111,7 @@ ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
 [ \t]                                       { }
 \n                                          { }
 
-.                                           { printf("Unkown character %c\n", *yytext); }
+.                                           { [_output printWarning:[NSString stringWithFormat:@"[line %i] warning: Unkown character %c\n", yylineno, *yytext]]; }
 
 
 %%

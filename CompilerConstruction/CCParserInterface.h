@@ -11,7 +11,7 @@
 
 #import "CCOutput.h"
 
-
+extern id<CCOutput> _output;
 extern void start_compiling(const char *input, id<CCOutput> output);
 
 
