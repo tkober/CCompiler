@@ -8,6 +8,8 @@
 
 #import "CCExternalDeclarationNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCFunctionDefinitionNode.h"
+#import "CCDeclarationNode.h"
 
 
 @implementation CCExternalDeclarationNode
@@ -16,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"external_declaration";
 }
 
 
@@ -46,6 +48,16 @@
     [super printLine:self.ruleName
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
+    if (self.functionDefinition) {
+        [self.functionDefinition printToOutput:output
+                                   indentLevel:indentLevel];
+        return;
+    } else if (self.declaration) {
+        [self.declaration printToOutput:output
+                            indentLevel:indentLevel];
+        return;
+    }
 }
 
 @end
