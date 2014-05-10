@@ -668,7 +668,7 @@ void start_compiling(const char *input, id<CCOutput> output)
 #if BISON_DEBUG
     yydebug = 1;
 #endif
-    yylineno = 0;
+    yylineno = 1;
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
     yyparse();
