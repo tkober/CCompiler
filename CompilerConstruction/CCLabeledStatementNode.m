@@ -18,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"labeled_statement";
 }
 
 
@@ -43,6 +43,16 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.identifier printToOutput:output
+                       indentLevel:indentLevel];
+    if (self.identifier &&
+        self.statement) {
+        [self printLine:@""
+               toOutput:output
+            indentLevel:indentLevel];
+    }
+    [self.statement printToOutput:output
+                      indentLevel:indentLevel];
 }
 
 @end
