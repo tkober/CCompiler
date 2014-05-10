@@ -148,7 +148,7 @@
 - (void)printWarning:(NSString *)text
 {
     [self logAttributedString:[[NSAttributedString alloc] initWithString:text
-                                                              attributes:@{NSForegroundColorAttributeName: [NSColor yellowColor]}]];
+                                                              attributes:@{NSForegroundColorAttributeName: [NSColor orangeColor]}]];
 }
 
 
