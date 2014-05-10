@@ -7,6 +7,7 @@
 //
 
 #import "CCSyntaxTree.h"
+#import "CCTranslationUnitNode.h"
 
 
 @interface CCSyntaxTree ()
@@ -89,6 +90,16 @@ static CCSyntaxTree *_sharedInstance = nil;
 - (void)purge
 {
     [self.translationUnitsInternal removeAllObjects];
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+{
+    for (CCTranslationUnitNode *translationUnitNode in self.translationUnitsInternal) {
+        [translationUnitNode printToOutput:output
+                               indentLevel:1];
+    }
 }
 
 @end

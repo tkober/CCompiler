@@ -8,8 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#import "CCOutput.h"
+
 
 #pragma mark | CCSyntaxNode
 @interface CCSyntaxNode : NSObject
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel;
 
 @end

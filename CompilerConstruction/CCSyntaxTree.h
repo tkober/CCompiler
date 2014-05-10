@@ -10,6 +10,7 @@
 
 
 @class CCTranslationUnitNode;
+@protocol CCOutput;
 
 
 #pragma mark - CCSyntaxTree
@@ -40,5 +41,9 @@
 
 #pragma mark | Purging Tree
 - (void)purge;
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output;
 
 @end

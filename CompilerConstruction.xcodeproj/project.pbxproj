@@ -251,6 +251,7 @@
 		F1C7C48718F1864100A4D911 /* CompilerConstructionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CompilerConstructionTests-Info.plist"; sourceTree = "<group>"; };
 		F1C7C48918F1864100A4D911 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F1C7C48B18F1864100A4D911 /* CompilerConstructionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompilerConstructionTests.m; sourceTree = "<group>"; };
+		F1D30AD3191E4FE300AC3B49 /* CCSyntaxNode+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCSyntaxNode+Private.h"; sourceTree = "<group>"; };
 		F1D3EDC718F189A40063EC76 /* CCFlexInput */ = {isa = PBXFileReference; lastKnownFileType = text; path = CCFlexInput; sourceTree = "<group>"; };
 		F1D3EDCA18F189C10063EC76 /* CCScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCScanner.m; sourceTree = "<group>"; };
 		F1D3EDDA18F198020063EC76 /* CCUIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUIController.h; sourceTree = "<group>"; };
@@ -768,6 +769,7 @@
 				F19F050E191CBFC30054DC7B /* CCNodes.h */,
 				F19F0437191C26C60054DC7B /* CCSyntaxNode.h */,
 				F19F0438191C26C60054DC7B /* CCSyntaxNode.m */,
+				F1D30AD3191E4FE300AC3B49 /* CCSyntaxNode+Private.h */,
 				F19F043A191C27EF0054DC7B /* TranslationUnit */,
 				F19F0440191C28720054DC7B /* ExternalDeclaration */,
 				F19F0445191C29640054DC7B /* FunctionDefinition */,

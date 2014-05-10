@@ -21,6 +21,7 @@
 #pragma mark | IB Actions
 - (IBAction)startCompilerButtonPressed:(id)sender;
 - (IBAction)printSymbolTableButtonPressed:(id)sender;
+- (IBAction)printSyntaxTree:(id)sender;
 
 
 #pragma mark | Logging
@@ -51,6 +52,12 @@
 - (IBAction)printSymbolTableButtonPressed:(id)sender
 {
     [[CCSymbolTable sharedInstance] printSymbolTable:self];
+}
+
+
+- (IBAction)printSyntaxTree:(id)sender
+{
+    [[CCSyntaxTree sharedInstance] printToOutput:self];
 }
 
 
