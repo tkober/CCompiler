@@ -26,25 +26,32 @@
 + (CCJumpStatementNode *)gotoStatementWithIdentifier:(CCIdentifierNode *)identifer
 {
     CCJumpStatementNode *result = [self new];
+    [result setJumpStatementType:CCJumpStatementGOTO];
     return result;
 }
 
 
 + (CCJumpStatementNode *)continueStatement
 {
-    return [self new];
+    CCJumpStatementNode *result = [self new];
+    [result setJumpStatementType:CCJumpStatementContinue];
+    return result;
 }
 
 
 + (CCJumpStatementNode *)breakStatement
 {
-    return [self new];
+    CCJumpStatementNode *result = [self new];
+    [result setJumpStatementType:CCJumpStatementBreak];
+    return result;
 }
 
 
 + (CCJumpStatementNode *)returnStatementWithExpression:(CCExpressionNode *)expression
 {
     CCJumpStatementNode *result = [self new];
+    [result setExpression:expression];
+    [result setJumpStatementType:CCJumpStatementReturn];
     return result;
 }
 
