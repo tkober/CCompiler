@@ -8,6 +8,8 @@
 
 #import "CCSelectionStatementNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCExpressionNode.h"
+#import "CCStatementNode.h"
 
 
 @implementation CCSelectionStatementNode
@@ -16,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"selection_statement";
 }
 
 
@@ -43,6 +45,20 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.expression printToOutput:output
+                       indentLevel:indentLevel];
+    [self printLine:@""
+           toOutput:output
+        indentLevel:indentLevel];
+    [self.thenStatement printToOutput:output
+                          indentLevel:indentLevel];
+    if (self.elseStatement) {
+        [self printLine:@""
+               toOutput:output
+            indentLevel:indentLevel];
+        [self.elseStatement printToOutput:output
+                              indentLevel:indentLevel];
+    }
 }
 
 @end
