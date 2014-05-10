@@ -8,6 +8,7 @@
 
 #import "CCDeclarationSpecificationNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCTypeSpecificationNode.h"
 
 
 @implementation CCDeclarationSpecificationNode
@@ -16,7 +17,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"declaration_specification";
 }
 
 
@@ -41,6 +42,14 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.typeSpecification printToOutput:output
+                              indentLevel:indentLevel];
+    if (self.typeSpecification &&
+        self.declarationSpecification) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.declarationSpecification printToOutput:output
+                                     indentLevel:indentLevel];
 }
 
 @end
