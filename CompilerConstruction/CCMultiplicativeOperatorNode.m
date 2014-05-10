@@ -10,13 +10,38 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCMultiplicativeOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *multiplicativeOperatorString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCMultiplicativeOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"multiplicative_operator";
+}
+
+
+- (NSString *)multiplicativeOperatorString
+{
+    switch (self.multiplicativeOperator) {
+        case CC_MUL_OP:
+            return @"'*'";
+            
+        case CC_DIV_OP:
+            return @"'/'";
+            
+        case CC_MOD_OP:
+            return @"'%'";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -51,10 +76,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.multiplicativeOperatorString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

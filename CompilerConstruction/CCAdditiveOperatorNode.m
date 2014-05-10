@@ -10,13 +10,35 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCAdditiveOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *additiveOperatorString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCAdditiveOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"additive_operator";
+}
+
+
+- (NSString *)additiveOperatorString
+{
+    switch (self.additiveOperator) {
+        case CC_ADD_OP:
+            return @"'+'";
+            
+        case CC_SUB_OP:
+            return @"'-'";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -43,10 +65,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.additiveOperatorString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

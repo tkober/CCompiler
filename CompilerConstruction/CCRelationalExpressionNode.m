@@ -18,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"relational_expression";
 }
 
 
@@ -45,6 +45,21 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+
+    [self.relationalExpression printToOutput:output
+                                 indentLevel:indentLevel];
+    if (self.relationalExpression &&
+        self.comareOperator) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.comareOperator printToOutput:output
+                           indentLevel:indentLevel];
+    if (self.comareOperator &&
+        self.shiftExpression) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.shiftExpression printToOutput:output
+                            indentLevel:indentLevel];
 }
 
 @end

@@ -10,13 +10,38 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCConstNode ()
+@property (strong, nonatomic, readonly) NSString *constantString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCConstNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"const";
+}
+
+
+- (NSString *)constantString
+{
+    switch (self.constant) {
+        case CC_CHAR_CONST:
+            return @"char";
+            
+        case CC_INT_CONST:
+            return @"float";
+            
+        case CC_FLOAT_CONST:
+            return @"int";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -51,10 +76,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.constantString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

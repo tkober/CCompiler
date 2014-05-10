@@ -18,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"shift_expression";
 }
 
 
@@ -45,6 +45,20 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.shiftExpression printToOutput:output
+                            indentLevel:indentLevel];
+    if (self.shiftExpression &&
+        self.shiftOperator) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.shiftOperator printToOutput:output
+                          indentLevel:indentLevel];
+    if (self.shiftOperator &&
+        self.additiveExpression) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.additiveExpression printToOutput:output
+                               indentLevel:indentLevel];
 }
 
 @end

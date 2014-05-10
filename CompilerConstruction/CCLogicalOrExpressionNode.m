@@ -17,7 +17,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"logical_or_expression";
 }
 
 
@@ -42,6 +42,14 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.logicalOrExpression printToOutput:output
+                                indentLevel:indentLevel];
+    if (self.logicalOrExpression &&
+        self.logicalAndExpression) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.logicalAndExpression printToOutput:output
+                                 indentLevel:indentLevel];
 }
 
 @end

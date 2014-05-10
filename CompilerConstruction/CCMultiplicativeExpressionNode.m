@@ -18,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"multiplicative_expression";
 }
 
 
@@ -45,6 +45,20 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.multiplicativeExpression printToOutput:output
+                                     indentLevel:indentLevel];
+    if (self.multiplicativeExpression &&
+        self.multiplicativeOperator) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.multiplicativeOperator printToOutput:output
+                                   indentLevel:indentLevel];
+    if (self.multiplicativeOperator &&
+        self.unaryExpression) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.unaryExpression printToOutput:output
+                            indentLevel:indentLevel];
 }
 
 @end

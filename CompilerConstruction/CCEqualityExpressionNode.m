@@ -18,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"equality_expression";
 }
 
 
@@ -45,6 +45,20 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.equalityExpression printToOutput:output
+                               indentLevel:indentLevel];
+    if (self.equalityExpression &&
+        self.equalityOperator) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.equalityOperator printToOutput:output
+                             indentLevel:indentLevel];
+    if (self.equalityOperator &&
+        self.relationalExpression) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.relationalExpression printToOutput:output
+                                 indentLevel:indentLevel];
 }
 
 @end

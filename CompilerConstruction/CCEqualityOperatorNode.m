@@ -10,13 +10,35 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCEqualityOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *equalityOperatorString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCEqualityOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"equality_operator";
+}
+
+
+- (NSString *)equalityOperatorString
+{
+    switch (self.equalityOperator) {
+        case CC_EQUAL_OP:
+            return @"'=='";
+            
+        case CC_NOT_EQUAL_OP:
+            return @"'!='";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -43,10 +65,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.equalityOperatorString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

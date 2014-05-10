@@ -10,13 +10,62 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCAssignmentOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *assignmentOperatorString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCAssignmentOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"assignment_operator";
+}
+
+
+- (NSString *)assignmentOperatorString
+{
+    switch (self.assignmentOperator) {
+        case CC_ASSIGN_OP:
+            return @"'='";
+            
+        case CC_ASSIGN_MUL_OP:
+            return @"'*='";
+            
+        case CC_ASSIGN_DIV_OP:
+            return @"'/='";
+            
+        case CC_ASSIGN_MOD_OP:
+            return @"'%='";
+            
+        case CC_ASSIGN_ADD_OP:
+            return @"'+='";
+            
+        case CC_ASSIGN_SUB_OP:
+            return @"'-='";
+            
+        case CC_ASSIGN_SHIFT_LEFT_OP:
+            return @"'<<='";
+            
+        case CC_ASSIGN_SHIFT_RIGHT_OP:
+            return @"'>>='";
+            
+        case CC_ASSIGN_BITWISE_AND_OP:
+            return @"'&='";
+            
+        case CC_ASSIGN_BITWISE_XOR_OP:
+            return @"'^='";
+            
+        case CC_ASSIGN_BITWISE_OR_OP:
+            return @"'|='";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -115,10 +164,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.assignmentOperatorString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

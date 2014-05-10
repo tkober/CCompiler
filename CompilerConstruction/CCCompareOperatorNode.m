@@ -10,13 +10,41 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCCompareOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *compareOperatorString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCCompareOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"compare_operator";
+}
+
+
+- (NSString *)compareOperatorString
+{
+    switch (self.compareOperator) {
+        case CC_LT:
+            return @"'<'";
+            
+        case CC_GT:
+            return @"'>'";
+            
+        case CC_LE:
+            return @"'<='";
+            
+        case CC_GE:
+            return @"'>='";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -59,10 +87,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.compareOperatorString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

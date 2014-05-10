@@ -10,13 +10,35 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCPrefixOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *operatorTypeString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCPrefixOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"prefix_operator";
+}
+
+
+- (NSString *)operatorTypeString
+{
+    switch (self.operatorType) {
+        case CCPrefixOperatorIncrement:
+            return @"'++'";
+            
+        case CCPrefixOperatorDecrement:
+            return @"'--'";
+            
+        default:
+            return @"UNKOWN";
+    }
 }
 
 
@@ -43,10 +65,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.operatorTypeString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

@@ -10,13 +10,35 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCPostfixOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *postfixOperatorString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCPostfixOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"postfix_operator";
+}
+
+
+- (NSString *)postfixOperatorString
+{
+    switch (self.postfixOperator) {
+        case CC_UNARY_INCREMENT_OP:
+            return @"'++'";
+            
+        case CC_UNARY_DECREMENT_OP:
+            return @"'--'";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -43,10 +65,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.postfixOperatorString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

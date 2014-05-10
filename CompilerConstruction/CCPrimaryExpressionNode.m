@@ -20,7 +20,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"primary_expression";
 }
 
 
@@ -67,6 +67,14 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.identifier printToOutput:output
+                       indentLevel:indentLevel];
+    [self.constant printToOutput:output
+                     indentLevel:indentLevel];
+    [self.string printToOutput:output
+                   indentLevel:indentLevel];
+    [self.expression printToOutput:output
+                       indentLevel:indentLevel];
 }
 
 @end

@@ -10,13 +10,47 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCUnaryOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *unaryOperatorString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCUnaryOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"unary_operator";
+}
+
+
+- (NSString *)unaryOperatorString
+{
+    switch (self.unaryOperator) {
+        case CC_UNARY_AND_OP:
+            return @"'&'";
+            
+        case CC_UNARY_MUL_OP:
+            return @"'*'";
+            
+        case CC_UNARY_ADD_OP:
+            return @"'+'";
+            
+        case CC_UNARY_SUB_OP:
+            return @"'-'";
+            
+        case CC_UNARY_BITWISE_NOT_OP:
+            return @"'~'";
+            
+        case CC_UNARY_NOT_OP:
+            return @"'!'";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -75,10 +109,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.unaryOperatorString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

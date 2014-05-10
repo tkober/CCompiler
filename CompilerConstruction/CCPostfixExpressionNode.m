@@ -19,7 +19,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"postfix_expression";
 }
 
 
@@ -70,6 +70,24 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    if (self.primaryExpression) {
+        [self.primaryExpression printToOutput:output
+                                  indentLevel:indentLevel];
+        return;
+    }
+    if (self.postfixExpression) {
+        [self.postfixExpression printToOutput:output
+                                  indentLevel:indentLevel];
+        if (self.argumentExpressionList) {
+            PRINT_EMPTY_LINE(output, indentLevel);
+            [self.argumentExpressionList printToOutput:output
+                                           indentLevel:indentLevel];
+        } else if (self.postfixOperator) {
+            PRINT_EMPTY_LINE(output, indentLevel);
+            [self.postfixOperator printToOutput:output
+                                    indentLevel:indentLevel];
+        }
+    }
 }
 
 @end

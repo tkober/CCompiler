@@ -10,13 +10,35 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCShiftOperatorNode ()
+@property (strong, nonatomic, readonly) NSString *shiftOperatorString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCShiftOperatorNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"shift_operator";
+}
+
+
+- (NSString *)shiftOperatorString
+{
+    switch (self.shiftOperator) {
+        case CC_SHIFT_LEFT_OP:
+            return @"'<<'";
+            
+        case CC_SHIFT_RIGTH_OP:
+            return @"'>>'";
+            
+        default:
+            return @"UNKNOWN";
+    }
 }
 
 
@@ -43,10 +65,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.shiftOperatorString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end

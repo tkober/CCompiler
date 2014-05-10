@@ -19,7 +19,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"unary_expression";
 }
 
 
@@ -60,6 +60,24 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    if (self.postfixExpression) {
+        [self.postfixExpression printToOutput:output
+                                  indentLevel:indentLevel];
+        return;
+    }
+    if (self.prefixOperator &&
+        self.unaryExpression) {
+        [self.prefixOperator printToOutput:output
+                               indentLevel:indentLevel];
+        PRINT_EMPTY_LINE(output, indentLevel);
+        [self.unaryExpression printToOutput:output
+                                indentLevel:indentLevel];
+        return;
+    }
+    if (self.unaryOperator) {
+        [self.unaryOperator printToOutput:output
+                              indentLevel:indentLevel];
+    }
 }
 
 @end
