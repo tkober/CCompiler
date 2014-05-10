@@ -28,7 +28,7 @@
 + (CCCompoundStatementNode *)compoundStatemetnNodeWithDeclarationList:(CCDeclarationListNode *)declarationList
                                                         statementList:(CCStatementListNode *)statementList
 {
-    CCCompoundStatementNode *result;
+    CCCompoundStatementNode *result = [self new];
     [result setDeclarationList:declarationList];
     [result setStatementList:statementList];
     return result;
