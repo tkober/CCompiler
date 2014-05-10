@@ -8,6 +8,7 @@
 
 #import "CCTranslationUnitNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCExternalDeclarationNode.h"
 
 
 @implementation CCTranslationUnitNode
@@ -16,7 +17,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"translation_unit";
 }
 
 
@@ -40,6 +41,11 @@
     [super printLine:self.ruleName
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
+    [self.translationUnit printToOutput:output
+                            indentLevel:indentLevel];
+    [self.externalDeclaration printToOutput:output
+                                indentLevel:indentLevel];
 }
 
 @end
