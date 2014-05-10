@@ -30,7 +30,7 @@
     for (NSUInteger i = 0; i < indentLevel; i++) {
         [output printResult:@"\t|"];
     }
-    [output printResult:[NSString stringWithFormat:@"%@%@\n", (indentLevel > 0 ? @"--" : @""), line]];
+    [output printResult:[NSString stringWithFormat:@"%@\n", line]];
 }
 
 
