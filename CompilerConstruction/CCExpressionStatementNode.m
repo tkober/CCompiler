@@ -8,6 +8,7 @@
 
 #import "CCExpressionStatementNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCExpressionNode.h"
 
 
 @implementation CCExpressionStatementNode
@@ -39,6 +40,8 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.expression printToOutput:output
+                       indentLevel:indentLevel];
 }
 
 @end
