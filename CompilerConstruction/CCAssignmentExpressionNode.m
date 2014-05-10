@@ -19,7 +19,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"assignment_expression";
 }
 
 
@@ -54,6 +54,19 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    if (self.conditionalExpression) {
+        [self.conditionalExpression printToOutput:output
+                                      indentLevel:indentLevel];
+        return;
+    }
+    [self.unaryExpression printToOutput:output
+                            indentLevel:indentLevel];
+    PRINT_EMPTY_LINE(output, indentLevel);
+    [self.assignmentOperator printToOutput:output
+                               indentLevel:indentLevel];
+    PRINT_EMPTY_LINE(output, indentLevel);
+    [self.assignmentExpression printToOutput:output
+                                 indentLevel:indentLevel];
 }
 
 @end

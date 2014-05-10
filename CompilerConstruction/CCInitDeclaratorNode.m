@@ -18,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"init_declarator";
 }
 
 
@@ -43,6 +43,13 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.declarator printToOutput:output
+                       indentLevel:indentLevel];
+    if (self.initializer) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+        [self.initializer printToOutput:output
+                            indentLevel:indentLevel];
+    }
 }
 
 @end
