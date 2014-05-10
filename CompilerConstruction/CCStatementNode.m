@@ -8,6 +8,12 @@
 
 #import "CCStatementNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCLabeledStatementNode.h"
+#import "CCExpressionStatementNode.h"
+#import "CCCompoundStatementNode.h"
+#import "CCSelectionStatementNode.h"
+#import "CCIterationStatementNode.h"
+#import "CCJumpStatementNode.h"
 
 
 @implementation CCStatementNode
@@ -16,7 +22,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"statement";
 }
 
 
@@ -78,6 +84,19 @@
     [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
+    [self.labeledStatement printToOutput:output
+                             indentLevel:indentLevel];
+    [self.expressionStatement printToOutput:output
+                                indentLevel:indentLevel];
+    [self.compoundStatement printToOutput:output
+                              indentLevel:indentLevel];
+    [self.selectionStatement printToOutput:output
+                               indentLevel:indentLevel];
+    [self.iterationStatement printToOutput:output
+                               indentLevel:indentLevel];
+    [self.jumpStatement printToOutput:output
+                          indentLevel:indentLevel];
 }
 
 @end
