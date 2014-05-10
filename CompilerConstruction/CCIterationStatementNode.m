@@ -8,6 +8,8 @@
 
 #import "CCIterationStatementNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCExpressionNode.h"
+#import "CCStatementNode.h"
 
 
 @implementation CCIterationStatementNode
@@ -16,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"iteration_statement";
 }
 
 
@@ -41,6 +43,14 @@
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.expression printToOutput:output
+                       indentLevel:indentLevel];
+    if (self.expression &&
+        self.statement) {
+        PRINT_EMPTY_LINE(output, indentLevel);
+    }
+    [self.statement printToOutput:output
+                      indentLevel:indentLevel];
 }
 
 @end

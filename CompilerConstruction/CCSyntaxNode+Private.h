@@ -9,6 +9,11 @@
 #import "CCSyntaxNode.h"
 
 
+#define PRINT_EMPTY_LINE(output, indentLevel)       [self printLine:@""     \
+                                                           toOutput:output  \
+                                                        indentLevel:indentLevel]
+
+
 #pragma mark - CCSyntaxNode+Private
 @interface CCSyntaxNode (Private)
 @property (strong, nonatomic, readonly) NSString *ruleName;
