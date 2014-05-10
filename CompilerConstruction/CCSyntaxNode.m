@@ -28,7 +28,7 @@
       indentLevel:(NSUInteger)indentLevel
 {
     for (NSUInteger i = 0; i < indentLevel; i++) {
-        [output printResult:@"\t|"];
+        [output printResult:@"   |"];
     }
     [output printResult:[NSString stringWithFormat:@"%@\n", line]];
 }
