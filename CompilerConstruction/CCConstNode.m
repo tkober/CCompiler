@@ -54,6 +54,7 @@
     [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
 }
 
 @end
