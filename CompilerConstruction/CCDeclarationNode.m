@@ -8,6 +8,8 @@
 
 #import "CCDeclarationNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCDeclarationSpecificationNode.h"
+#import "CCInitDeclaratorListNode.h"
 
 
 @implementation CCDeclarationNode
@@ -28,7 +30,7 @@
 {
     CCDeclarationNode *result = [[self alloc] init];
     [result setDeclarationSpecification:declarationSpecification];
-    [result setInitDeclaratorList:initDeclaratorList];
+    [result setInitializerDeclaratorList:initDeclaratorList];
     return result;
 }
 
@@ -40,6 +42,15 @@
     [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
+    [self.declarationSpecification printToOutput:output
+                                     indentLevel:indentLevel];
+    [self printLine:@""
+           toOutput:output
+        indentLevel:indentLevel];
+    [self.initializerDeclaratorList printToOutput:output
+                                      indentLevel:indentLevel];
+    
 }
 
 @end
