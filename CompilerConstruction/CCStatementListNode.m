@@ -8,6 +8,7 @@
 
 #import "CCStatementListNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCStatementNode.h"
 
 
 @implementation CCStatementListNode
@@ -40,6 +41,17 @@
     [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
+    [self.statementList printToOutput:output
+                          indentLevel:indentLevel];
+    if (self.statementList &&
+        self.statement) {
+        [self printLine:@""
+               toOutput:output
+            indentLevel:indentLevel];
+    }
+    [self.statement printToOutput:output
+                      indentLevel:indentLevel];
 }
 
 @end
