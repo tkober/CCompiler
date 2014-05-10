@@ -8,6 +8,8 @@
 
 #import "CCCompoundStatementNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCDeclarationListNode.h"
+#import "CCStatementListNode.h"
 
 
 @implementation CCCompoundStatementNode
@@ -16,7 +18,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"compound_statement";
 }
 
 
@@ -40,6 +42,16 @@
     [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
+    [self.declarationList printToOutput:output indentLevel:indentLevel];
+    if (self.declarationList &&
+        self.statementList) {
+        [self printLine:@""
+               toOutput:output
+            indentLevel:indentLevel];
+    }
+    [self.statementList printToOutput:output
+                          indentLevel:indentLevel];
 }
 
 @end
