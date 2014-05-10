@@ -91,7 +91,7 @@
 		F1C7C48218F1864100A4D911 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1C7C46118F1864100A4D911 /* Cocoa.framework */; };
 		F1C7C48A18F1864100A4D911 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1C7C48818F1864100A4D911 /* InfoPlist.strings */; };
 		F1C7C48C18F1864100A4D911 /* CompilerConstructionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F1C7C48B18F1864100A4D911 /* CompilerConstructionTests.m */; };
-		F1D3EDCB18F189C10063EC76 /* CCScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3EDCA18F189C10063EC76 /* CCScanner.m */; };
+		F1D3EDCB18F189C10063EC76 /* CCScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3EDCA18F189C10063EC76 /* CCScanner.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F1D3EDDC18F198020063EC76 /* CCUIController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1D3EDDB18F198020063EC76 /* CCUIController.m */; };
 /* End PBXBuildFile section */
 
