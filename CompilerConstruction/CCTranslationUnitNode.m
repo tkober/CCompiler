@@ -44,9 +44,12 @@
     indentLevel++;
     [self.translationUnit printToOutput:output
                             indentLevel:indentLevel];
-    [self printLine:@""
-           toOutput:output
-        indentLevel:indentLevel];
+    if (self.translationUnit &&
+        self.externalDeclaration) {
+        [self printLine:@""
+               toOutput:output
+            indentLevel:indentLevel];
+    }
     [self.externalDeclaration printToOutput:output
                                 indentLevel:indentLevel];
 }
