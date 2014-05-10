@@ -15,7 +15,7 @@
 #pragma mark - CCInitDeclaratorListNode
 @interface CCInitDeclaratorListNode : CCSyntaxNode
 @property (strong, nonatomic) CCInitDeclaratorListNode *initDeclaratorList;
-@property (strong, nonatomic) CCInitDeclaratorNode *initDeclarator;
+@property (strong, nonatomic) CCInitDeclaratorNode *initializerDeclarator;
 
 
 #pragma mark | Creators

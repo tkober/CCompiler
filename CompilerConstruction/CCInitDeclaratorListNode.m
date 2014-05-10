@@ -29,7 +29,7 @@
 {
     CCInitDeclaratorListNode *result = [self new];
     [result setInitDeclaratorList:initDeclaratorList];
-    [result setInitDeclarator:initDeclarator];
+    [result setInitializerDeclarator:initDeclarator];
     return result;
 }
 
@@ -45,11 +45,11 @@
     [self.initDeclaratorList printToOutput:output
                                indentLevel:indentLevel];
     if (self.initDeclaratorList &&
-        self.initDeclarator) {
+        self.initializerDeclarator) {
         PRINT_EMPTY_LINE(output, indentLevel);
     }
-    [self.initDeclarator printToOutput:output
-                           indentLevel:indentLevel];
+    [self.initializerDeclarator printToOutput:output
+                                  indentLevel:indentLevel];
 }
 
 @end
