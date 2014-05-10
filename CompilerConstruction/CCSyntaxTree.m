@@ -98,7 +98,7 @@ static CCSyntaxTree *_sharedInstance = nil;
 {
     for (CCTranslationUnitNode *translationUnitNode in self.translationUnitsInternal) {
         [translationUnitNode printToOutput:output
-                               indentLevel:1];
+                               indentLevel:0];
     }
 }
 
