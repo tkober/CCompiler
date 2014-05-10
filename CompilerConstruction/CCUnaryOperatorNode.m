@@ -7,9 +7,18 @@
 //
 
 #import "CCUnaryOperatorNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCUnaryOperatorNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -59,6 +68,16 @@
     CCUnaryOperatorNode *result = [self new];
     [result setUnaryOperator:CC_UNARY_NOT_OP];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

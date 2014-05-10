@@ -7,9 +7,18 @@
 //
 
 #import "CCInitializerListNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCInitializerListNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -21,6 +30,16 @@
     [result setInitializer:initializer];
     [result setInitializerList:initializerList];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

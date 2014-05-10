@@ -7,9 +7,18 @@
 //
 
 #import "CCPostfixOperatorNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCPostfixOperatorNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -27,6 +36,16 @@
     CCPostfixOperatorNode *result = [self new];
     [result setPostfixOperator:CC_UNARY_DECREMENT_OP];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

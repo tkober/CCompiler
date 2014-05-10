@@ -7,9 +7,18 @@
 //
 
 #import "CCEqualityOperatorNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCEqualityOperatorNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -27,6 +36,16 @@
     CCEqualityOperatorNode *result = [self new];
     [result setEqualityOperator:CC_NOT_EQUAL_OP];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

@@ -7,9 +7,18 @@
 //
 
 #import "CCDeclaratorNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCDeclaratorNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -23,6 +32,16 @@
     [result setIdentifier:identifier];
     [result setParameterList:parameterList];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

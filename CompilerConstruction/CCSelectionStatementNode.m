@@ -7,9 +7,18 @@
 //
 
 #import "CCSelectionStatementNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCSelectionStatementNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -23,6 +32,16 @@
     [result setThenStatement:thenStatement];
     [result setElseStatement:elseStatement];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

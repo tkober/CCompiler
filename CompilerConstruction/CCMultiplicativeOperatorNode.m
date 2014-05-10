@@ -7,9 +7,18 @@
 //
 
 #import "CCMultiplicativeOperatorNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCMultiplicativeOperatorNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -35,6 +44,16 @@
     CCMultiplicativeOperatorNode *result = [self new];
     [result setMultiplicativeOperator:CC_MOD_OP];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

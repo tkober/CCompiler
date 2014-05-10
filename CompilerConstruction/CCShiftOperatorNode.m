@@ -7,9 +7,18 @@
 //
 
 #import "CCShiftOperatorNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCShiftOperatorNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -27,6 +36,16 @@
     CCShiftOperatorNode *result = [self new];
     [result setShiftOperator:CC_SHIFT_RIGTH_OP];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

@@ -43,20 +43,6 @@
     [self printLine:self.ruleName
            toOutput:output
         indentLevel:indentLevel];
-    /*
-     
-     statement
-        |--expression
-        |   |--statemetn
-        |   |   |--noch_etwas
-        |   |
-        |   |--bla
-        |
-        |--assign_op
-            |
-     
-     
-     */
 }
 
 @end

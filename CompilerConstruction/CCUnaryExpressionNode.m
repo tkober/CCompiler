@@ -7,9 +7,18 @@
 //
 
 #import "CCUnaryExpressionNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCUnaryExpressionNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -37,6 +46,16 @@
     CCUnaryExpressionNode *result = [self new];
     [result setUnaryOperator:unaryOperator];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end

@@ -7,9 +7,18 @@
 //
 
 #import "CCLogicalAndExpressionNode.h"
+#import "CCSyntaxNode+Private.h"
 
 
 @implementation CCLogicalAndExpressionNode
+
+
+#pragma mark - Customized Getters
+- (NSString *)ruleName
+{
+    return NSStringFromClass([self class]);
+}
+
 
 
 #pragma mark - Public Methods
@@ -21,6 +30,16 @@
     [result setInclusiveOrExpression:inclusiveOrExpression];
     [result setLogicalAndExpression:logicalAndExpression];
     return result;
+}
+
+
+#pragma mark | Printing
+- (void)printToOutput:(id<CCOutput>)output
+          indentLevel:(NSUInteger)indentLevel
+{
+    [super printLine:self.ruleName
+            toOutput:output
+         indentLevel:indentLevel];
 }
 
 @end
