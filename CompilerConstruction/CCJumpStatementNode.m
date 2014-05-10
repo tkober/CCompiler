@@ -27,6 +27,7 @@
 {
     CCJumpStatementNode *result = [self new];
     [result setJumpStatementType:CCJumpStatementGOTO];
+    [result setIdentifier:identifer];
     return result;
 }
 
