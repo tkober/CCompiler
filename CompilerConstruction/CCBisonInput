@@ -160,12 +160,12 @@ id<CCOutput> _output;
 
 
 translation_unit            : external_declaration                      { 
-                                                                            [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:nil 
-                                                                                                                                                         translationUnit:$1]]; 
+                                                                            [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:$1
+                                                                                                                                                         translationUnit:nil]];
                                                                         }
                             | translation_unit external_declaration     { 
-                                                                            [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:$1
-                                                                                                                                                         translationUnit:$2]];
+                                                                            [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:$2
+                                                                                                                                                         translationUnit:$1]];
                                                                         }
                             ;
 
