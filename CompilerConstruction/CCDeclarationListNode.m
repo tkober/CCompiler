@@ -8,6 +8,7 @@
 
 #import "CCDeclarationListNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCDeclarationNode.h"
 
 
 @implementation CCDeclarationListNode
@@ -16,7 +17,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"declaration_list";
 }
 
 
@@ -40,6 +41,17 @@
     [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
+    [self.declarationList printToOutput:output
+                            indentLevel:indentLevel];
+    if (self.declarationList &&
+        self.declaration) {
+        [self printLine:@""
+               toOutput:output
+            indentLevel:indentLevel];
+    }
+    [self.declaration printToOutput:output
+                        indentLevel:indentLevel];
 }
 
 @end
