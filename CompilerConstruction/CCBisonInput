@@ -158,14 +158,18 @@ id<CCOutput> _output;
 
 %%
 
+document                    :
+                            | translation_unit                          { [[CCSyntaxTree sharedInstance] addTranslationUnit:$1]; }
+                            ;
+
 
 translation_unit            : external_declaration                      { 
-                                                                            [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:$1
-                                                                                                                                                         translationUnit:nil]];
+                                                                            $$ = [CCTranslationUnitNode translationUnitWith:$1
+                                                                                                            translationUnit:nil];
                                                                         }
                             | translation_unit external_declaration     { 
-                                                                            [[CCSyntaxTree sharedInstance] addTranslationUnit:[CCTranslationUnitNode translationUnitWith:$2
-                                                                                                                                                         translationUnit:$1]];
+                                                                            $$ = [CCTranslationUnitNode translationUnitWith:$2
+                                                                                                            translationUnit:$1];
                                                                         }
                             ;
 
