@@ -8,15 +8,45 @@
 
 #import "CCJumpStatementNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCIdentifierNode.h"
+#import "CCExpressionNode.h"
 
 
+@interface CCJumpStatementNode ()
+@property (strong, nonatomic, readonly) NSString *jumpStatementTypeString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCJumpStatementNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"jump_statement";
+}
+
+
+- (NSString *)jumpStatementTypeString
+{
+    switch (self.jumpStatementType) {
+        case CCJumpStatementGOTO:
+            return @"goto";
+            
+        case CCJumpStatementContinue:
+            return @"continue";
+            
+        case CCJumpStatementBreak:
+            return @"break";
+            
+        case CCJumpStatementReturn:
+            return @"return";
+            
+        default:
+            return @"UNKOWN";
+    }
 }
 
 
@@ -61,10 +91,14 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.jumpStatementTypeString]
             toOutput:output
          indentLevel:indentLevel];
     indentLevel++;
+    [self.identifier printToOutput:output
+                       indentLevel:indentLevel];
+    [self.expression printToOutput:output
+                       indentLevel:indentLevel];
 }
 
 @end
