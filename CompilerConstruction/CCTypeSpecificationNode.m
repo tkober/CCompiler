@@ -10,13 +10,56 @@
 #import "CCSyntaxNode+Private.h"
 
 
+@interface CCTypeSpecificationNode ()
+@property (strong, nonatomic, readonly) NSString *typeSpecificationString;
+
+@end
+
+#pragma mark -
+#pragma mark -
 @implementation CCTypeSpecificationNode
 
 
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"type_specification";
+}
+
+
+- (NSString *)typeSpecificationString
+{
+    switch (self.typeSpecification) {
+        case CC_VOID:
+            return @"void";
+            
+        case CC_CHAR:
+            return @"char";
+            
+        case CC_SHORT:
+            return @"short";
+            
+        case CC_INT:
+            return @"int";
+            
+        case CC_LONG:
+            return @"long";
+            
+        case CC_FLOAT:
+            return @"float";
+            
+        case CC_DOUBLE:
+            return @"double";
+            
+        case CC_SIGNED:
+            return @"signed";
+            
+        case CC_UNSIGNED:
+            return @"unsigned";
+            
+        default:
+            return @"UNKOWN";
+    }
 }
 
 
@@ -99,10 +142,9 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@", (indentLevel > 0 ? @"--" : @""), self.ruleName]
+    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.typeSpecificationString]
             toOutput:output
          indentLevel:indentLevel];
-    indentLevel++;
 }
 
 @end
