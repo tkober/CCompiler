@@ -8,6 +8,10 @@
 
 #import "CCFunctionDefinitionNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCDeclarationSpecificationNode.h"
+#import "CCDeclaratorNode.h"
+#import "CCDeclarationListNode.h"
+#import "CCCompoundStatementNode.h"
 
 
 @implementation CCFunctionDefinitionNode
@@ -16,7 +20,7 @@
 #pragma mark - Customized Getters
 - (NSString *)ruleName
 {
-    return NSStringFromClass([self class]);
+    return @"function_definition";
 }
 
 
@@ -44,6 +48,15 @@
     [super printLine:self.ruleName
             toOutput:output
          indentLevel:indentLevel];
+    indentLevel++;
+    [self.declarationSpecification printToOutput:output
+                                     indentLevel:indentLevel];
+    [self.declarator printToOutput:output
+                       indentLevel:indentLevel];
+    [self.declarationList printToOutput:output
+                            indentLevel:indentLevel];
+    [self.compoundStatement printToOutput:output
+                              indentLevel:indentLevel];
 }
 
 @end
