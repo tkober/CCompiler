@@ -11,9 +11,23 @@
 #import "CCOutput.h"
 
 
+typedef NS_ENUM(NSUInteger, CCCompileTimeType) {
+    CCCompileTimeTypeNotDeterminable = 0,
+    CCCompileTimeTypeVoid,
+    CCCompileTimeTypeChar,
+    CCCompileTimeTypeShort,
+    CCCompileTimeTypeInt,
+    CCCompileTimeTypeSigned,
+    CCCompileTimeTypeUnsigned,
+    CCCompileTimeTypeLong,
+    CCCompileTimeTypeFloat,
+    CCCompileTimeTypeDouble,
+};
+
+
 #pragma mark | CCSyntaxNode
 @interface CCSyntaxNode : NSObject
-@property (strong, nonatomic, readonly) NSString *compileTimeType;
+@property (strong, nonatomic, readonly) NSArray *compileTimeType;
 
 
 #pragma mark | Optimization

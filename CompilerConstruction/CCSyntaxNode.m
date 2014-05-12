@@ -20,6 +20,12 @@
 }
 
 
+- (NSArray *)compileTimeType
+{
+    return @[@(CCCompileTimeTypeNotDeterminable)];
+}
+
+
 #pragma mark - Private Methods
 #pragma mark | Printing
 - (void)printLine:(NSString *)line
