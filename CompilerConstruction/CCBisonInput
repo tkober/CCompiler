@@ -403,7 +403,7 @@ initializer_list            : initializer                                   {
                             ;
 
 
-assignment_expression       : conditional_expression                                        { printf("bla");$$ = [CCAssignmentExpressionNode assignmentExpressionNodeWithConditionalExpression:$1]; }
+assignment_expression       : conditional_expression                                        { $$ = [CCAssignmentExpressionNode assignmentExpressionNodeWithConditionalExpression:$1]; }
                             | unary_expression assignment_operator assignment_expression    {
                                                                                                 $$ = [CCAssignmentExpressionNode assignmentExpressionNodeWithUnaryExpression:$1
                                                                                                                                                           assignmentOperator:$2
