@@ -14,6 +14,7 @@
 #endif
 
 id<CCOutput> _output;
+BOOL _success = YES;
 
 %}
 
@@ -667,7 +668,7 @@ unary_operator              : AND_OP                { $$ = [CCUnaryOperatorNode 
 %%
 
 
-void start_compiling(const char *input, id<CCOutput> output)
+BOOL start_compiling(const char *input, id<CCOutput> output)
 {
 #if BISON_DEBUG
     yydebug = 1;
@@ -677,11 +678,13 @@ void start_compiling(const char *input, id<CCOutput> output)
     YY_BUFFER_STATE buffer=yy_scan_string(input);
     yyparse();
     yy_delete_buffer(buffer);
+    return _success;
 }
 
 
 int yyerror(char *s)
 {
+    _success = NO;
     [_output printError:[NSString stringWithFormat:@"[line %i] error: %s\n", yylineno, s]];
     return 0;
 }

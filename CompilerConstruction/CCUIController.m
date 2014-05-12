@@ -51,7 +51,11 @@
     sprintf(input, "%s%s", self.inputTextView.textStorage.string.UTF8String, "\n");
     [[CCSymbolTable sharedInstance] purge];
     [[CCSyntaxTree sharedInstance] purge];
-    start_compiling(input, self);
+    if (start_compiling(input, self)) {
+        [self printResult:@"Compiling succeeded\n"];
+    } else {
+        [self printError:@"Compiling failed\n"];
+    }
 }
 
 
