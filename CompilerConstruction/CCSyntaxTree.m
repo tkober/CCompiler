@@ -103,4 +103,11 @@ static CCSyntaxTree *_sharedInstance = nil;
     }
 }
 
+
+#pragma mark | Optimization
+- (void)optimize
+{
+    
+}
+
 @end

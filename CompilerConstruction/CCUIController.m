@@ -14,6 +14,11 @@
 
 
 @interface CCUIController ()
+@property (weak, nonatomic) IBOutlet NSToolbarItem *startCompilerButton;
+@property (weak, nonatomic) IBOutlet NSToolbarItem *printSymbolTableButton;
+@property (weak, nonatomic) IBOutlet NSToolbarItem *printSyntaxTreeButton;
+@property (weak, nonatomic) IBOutlet NSToolbarItem *optimizeSyntaxTreeButton;
+
 @property (strong, nonatomic) IBOutlet NSTextView *inputTextView;
 @property (strong, nonatomic) IBOutlet NSTextView *outputTextView;
 
@@ -22,6 +27,7 @@
 - (IBAction)startCompilerButtonPressed:(id)sender;
 - (IBAction)printSymbolTableButtonPressed:(id)sender;
 - (IBAction)printSyntaxTree:(id)sender;
+- (IBAction)optimizeSyntaxTreeButtonPressed:(id)sender;
 
 
 #pragma mark | Logging
@@ -58,6 +64,12 @@
 - (IBAction)printSyntaxTree:(id)sender
 {
     [[CCSyntaxTree sharedInstance] printToOutput:self];
+}
+
+
+- (IBAction)optimizeSyntaxTreeButtonPressed:(id)sender
+{
+    [[CCSyntaxTree sharedInstance] optimize];
 }
 
 

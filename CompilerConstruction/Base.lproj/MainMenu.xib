@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -20,7 +20,11 @@
         <customObject id="ncy-4E-PT5" customClass="CCUIController">
             <connections>
                 <outlet property="inputTextView" destination="lt7-Bu-Mlf" id="aRg-YB-2kc"/>
+                <outlet property="optimizeSyntaxTreeButton" destination="ug3-GP-TUQ" id="xav-uo-YEK"/>
                 <outlet property="outputTextView" destination="zZu-Yi-M9w" id="910-UM-xGP"/>
+                <outlet property="printSymbolTableButton" destination="O3W-70-hD6" id="s1f-48-5j4"/>
+                <outlet property="printSyntaxTreeButton" destination="Qz0-ZI-Icu" id="wdw-0a-TWj"/>
+                <outlet property="startCompilerButton" destination="pzx-0h-Veb" id="ePw-Ad-9UV"/>
             </connections>
         </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
@@ -676,7 +680,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="554" height="388"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="554" height="388"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -693,17 +697,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="554" height="258"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <clipView key="contentView" id="zKC-ic-Z6c">
-                                            <rect key="frame" x="1" y="1" width="552" height="256"/>
+                                            <rect key="frame" x="1" y="1" width="537" height="256"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView importsGraphics="NO" richText="NO" findStyle="bar" incrementalSearchingEnabled="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="lt7-Bu-Mlf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="552" height="256"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="537" height="256"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="552" height="256"/>
+                                                    <size key="minSize" width="537" height="256"/>
                                                     <size key="maxSize" width="557" height="10000000"/>
                                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="552" height="256"/>
+                                                    <size key="minSize" width="537" height="256"/>
                                                     <size key="maxSize" width="557" height="10000000"/>
                                                 </textView>
                                             </subviews>
@@ -717,7 +721,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="tjO-DO-w3H">
-                                            <rect key="frame" x="537" y="1" width="16" height="256"/>
+                                            <rect key="frame" x="538" y="1" width="15" height="256"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -737,17 +741,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="554" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <clipView key="contentView" id="vls-Rk-JHr">
-                                            <rect key="frame" x="1" y="1" width="552" height="118"/>
+                                            <rect key="frame" x="1" y="1" width="537" height="118"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" id="zZu-Yi-M9w">
-                                                    <rect key="frame" x="0.0" y="0.0" width="552" height="118"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="537" height="118"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <size key="minSize" width="552" height="118"/>
+                                                    <size key="minSize" width="537" height="118"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="552" height="118"/>
+                                                    <size key="minSize" width="537" height="118"/>
                                                     <size key="maxSize" width="10000000" height="10000000"/>
                                                 </textView>
                                             </subviews>
@@ -761,7 +765,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7Cq-HD-GWr">
-                                            <rect key="frame" x="537" y="1" width="16" height="118"/>
+                                            <rect key="frame" x="538" y="1" width="15" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -804,9 +808,14 @@
                             <action selector="printSymbolTableButtonPressed:" target="ncy-4E-PT5" id="HiG-02-8Wh"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="8DA05B13-4FD1-4BD6-82D2-8A051FECE439" label="Syntax Trees" paletteLabel="Syntax Trees" tag="-1" image="ShowSyntaxTreesButton" id="Qz0-ZI-Icu">
+                    <toolbarItem implicitItemIdentifier="8DA05B13-4FD1-4BD6-82D2-8A051FECE439" label="Syntax Tree" paletteLabel="Syntax Tree" tag="-1" image="ShowSyntaxTreesButton" id="Qz0-ZI-Icu">
                         <connections>
                             <action selector="printSyntaxTree:" target="ncy-4E-PT5" id="bKV-Dl-z61"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="B621D7E4-CE1E-4416-BBCC-0952632D685B" label="Optimize" paletteLabel="Optimize" tag="-1" image="OptimizeSyntaxTree" id="ug3-GP-TUQ">
+                        <connections>
+                            <action selector="optimizeSyntaxTreeButtonPressed:" target="ncy-4E-PT5" id="LgA-wg-C9r"/>
                         </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
@@ -815,11 +824,13 @@
                     <toolbarItem reference="a1g-hP-SlH"/>
                     <toolbarItem reference="O3W-70-hD6"/>
                     <toolbarItem reference="Qz0-ZI-Icu"/>
+                    <toolbarItem reference="ug3-GP-TUQ"/>
                 </defaultToolbarItems>
             </toolbar>
         </window>
     </objects>
     <resources>
+        <image name="OptimizeSyntaxTree" width="25.600000381469727" height="25.600000381469727"/>
         <image name="PrintSymbolTableButton" width="25.600000381469727" height="25.600000381469727"/>
         <image name="RunButton" width="25.600000381469727" height="25.600000381469727"/>
         <image name="ShowSyntaxTreesButton" width="25.600000381469727" height="25.600000381469727"/>

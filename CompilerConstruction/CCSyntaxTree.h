@@ -46,4 +46,8 @@
 #pragma mark | Printing
 - (void)printToOutput:(id<CCOutput>)output;
 
+
+#pragma mark | Optimization
+- (void)optimize;
+
 @end
