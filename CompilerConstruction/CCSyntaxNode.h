@@ -13,6 +13,7 @@
 
 #pragma mark | CCSyntaxNode
 @interface CCSyntaxNode : NSObject
+@property (strong, nonatomic, readonly) NSString *compileTimeType;
 
 
 #pragma mark | Optimization
