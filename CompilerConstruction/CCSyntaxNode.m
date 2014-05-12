@@ -52,4 +52,9 @@
         indentLevel:indentLevel];
 }
 
+- (void)dealloc
+{
+    NSLog(@"%s:: class -> %@", __PRETTY_FUNCTION__, self.className);
+}
+
 @end

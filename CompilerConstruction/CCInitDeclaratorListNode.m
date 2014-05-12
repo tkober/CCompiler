@@ -51,10 +51,7 @@
     indentLevel++;
     [self.initDeclaratorList printToOutput:output
                                indentLevel:indentLevel];
-    if (self.initDeclaratorList &&
-        self.initializerDeclarator) {
         PRINT_EMPTY_LINE(output, indentLevel);
-    }
     [self.initializerDeclarator printToOutput:output
                                   indentLevel:indentLevel];
 }
