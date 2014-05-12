@@ -14,12 +14,12 @@
 
 #pragma mark - CCIdentifierNode
 @interface CCIdentifierNode : CCSyntaxNode
-@property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) CCSymbolReference *reference;
+@property (strong, nonatomic) NSNumber *hash;
+@property (assign, nonatomic) BOOL alreadyDeclared;
 
 
 #pragma mark | Creators
-+ (CCIdentifierNode *)identifierNodeWithName:(char *)name
-                                   reference:(CCSymbolReference *)reference;
++ (CCIdentifierNode *)identifierNodeWithSymbolReference:(CCSymbolReference *)reference;
 
 @end

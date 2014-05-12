@@ -13,6 +13,9 @@
 
 NSUInteger const HASH_TABLE_SIZE = 9997;
 
+NSString *const SYMBOL_HASH = @"symbol_hash";
+NSString *const SYMBOL = @"symbol";
+
 
 @interface CCSymbolTable ()
 
@@ -28,10 +31,14 @@ NSUInteger const HASH_TABLE_SIZE = 9997;
 
 
 #pragma mark | Symbol Table
-- (void)addReferenceWithName:(NSString *)name
-                      inFile:(NSString *)filename
-                      atLine:(NSNumber *)line;
-- (CCSymbol *)lookUpSymbolWithName:(NSString *)name;
+- (CCSymbolReference *)addReferenceWithName:(NSString *)name
+                                     inFile:(NSString *)filename
+                                     atLine:(NSNumber *)line
+                                       hash:(NSNumber **)hash
+                            alreadyDeclared:(BOOL *)alreadyDeclared;
+- (CCSymbol *)lookUpSymbolWithName:(NSString *)name
+                              hash:(NSNumber **)hash
+                   alreadyDeclared:(BOOL *)alreadyDeclared;
 - (NSUInteger)hashForSymbolWithName:(const char *)name;
 
 
@@ -57,37 +64,51 @@ CCSymbol *_symbolTable[HASH_TABLE_SIZE];
 
 
 #pragma mark | Symbol Table
-- (void)addReferenceWithName:(NSString *)name
-                      inFile:(NSString *)filename
-                      atLine:(NSNumber *)line
+- (CCSymbolReference *)addReferenceWithName:(NSString *)name
+                            inFile:(NSString *)filename
+                            atLine:(NSNumber *)line
+                              hash:(NSNumber **)hash
+                   alreadyDeclared:(BOOL *)alreadyDeclared
 {
     CCSymbolReference *reference;
-    CCSymbol *symbol = [self lookUpSymbolWithName:name];
+    CCSymbol *symbol = [self lookUpSymbolWithName:name
+                                             hash:hash
+                                  alreadyDeclared:alreadyDeclared];
     if (symbol.references &&
         [symbol.references.fileName isEqualToString:filename] &&
-        [symbol.references.line isEqualToNumber:line]) return;
+        [symbol.references.line isEqualToNumber:line]) return symbol.references;
     
     reference = [CCSymbolReference symbolReferenceInFile:filename
                                                   atLine:line];
     [reference setSuccessor:symbol.references];
+    [reference setSymbol:symbol];
     [symbol setReferences:reference];
+    return reference;
 }
 
 
 - (CCSymbol *)lookUpSymbolWithName:(NSString *)name
+                              hash:(NSNumber **)hash
+                   alreadyDeclared:(BOOL *)alreadyDeclared
 {
-    NSInteger hash = [self hashForSymbolWithName:name.UTF8String] % HASH_TABLE_SIZE;
+    NSInteger hashedPosition = [self hashForSymbolWithName:name.UTF8String] % HASH_TABLE_SIZE;
     NSInteger symbolCount = HASH_TABLE_SIZE;
     while (--symbolCount >= 0) {
         // Match
-        if ([_symbolTable[hash].name isEqualToString:name]) return _symbolTable[hash];
+        if ([_symbolTable[hashedPosition].name isEqualToString:name]) {
+            *alreadyDeclared = YES;
+            *hash = @(hashedPosition);
+            return _symbolTable[hashedPosition];
+        }
         // New Entry
-        if (!_symbolTable[hash]) {
-            _symbolTable[hash] = [CCSymbol symbolWithName:name];
-            return _symbolTable[hash];
+        if (!_symbolTable[hashedPosition]) {
+            _symbolTable[hashedPosition] = [CCSymbol symbolWithName:name];
+            *alreadyDeclared = NO;
+            *hash = @(hashedPosition);
+            return _symbolTable[hashedPosition];
         };
         // Collision: Next!
-        hash = (hash+1) % HASH_TABLE_SIZE;
+        hashedPosition = (hashedPosition+1) % HASH_TABLE_SIZE;
     }
     @throw [NSException exceptionWithName:@"SymbolTableException"
                                    reason:@"Symbol table is full!"
@@ -128,17 +149,25 @@ CCSymbol *_symbolTable[HASH_TABLE_SIZE];
 
 
 #pragma mark | Adding References
-- (void)addReferenceSymbol:(char *)name
-                      file:(char *)filename
-                      line:(unsigned int)line
+- (CCSymbolReference *)addReferenceSymbol:(char *)name
+                                     file:(char *)filename
+                                     line:(unsigned int)line
+                                     hash:(NSNumber **)hash
+                          alreadyDeclared:(BOOL *)alreadyDeclared
 {
+    CCSymbolReference *result;
     @try {
-        [self addReferenceWithName:[[NSString alloc] initWithUTF8String:name]
-                            inFile:[[NSString alloc] initWithUTF8String:filename]
-                            atLine:@(line)];
+        result = [self addReferenceWithName:[[NSString alloc] initWithUTF8String:name]
+                                     inFile:[[NSString alloc] initWithUTF8String:filename]
+                                     atLine:@(line)
+                                       hash:hash
+                            alreadyDeclared:alreadyDeclared];
     }
     @catch (NSException *exception) {
         [self.output printError:exception.description];
+    }
+    @finally {
+        return result;
     }
 }
 
@@ -158,14 +187,17 @@ CCSymbol *_symbolTable[HASH_TABLE_SIZE];
     output = output ? output : self.output;
     NSMutableArray *symbols = [NSMutableArray array];
     for (NSUInteger i = 0; i < HASH_TABLE_SIZE; i++) {
-        if (_symbolTable[i]) [symbols addObject:_symbolTable[i]];
+        if (_symbolTable[i]) [symbols addObject:@{SYMBOL_HASH: @(i),
+                                                  SYMBOL: _symbolTable[i]}];
     }
     [symbols sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name"
                                                                   ascending:YES]]];
     [output printInfo:@"\nSYMBOL TABLE\n\n"];
-    [output printInfo:@"Symbol\t\tFile\t\t\t\tLines\n"];
+    [output printInfo:@"Hash\t\tSymbol\t\tFile\t\t\t\tLines\n"];
     [output printInfo:@"=======================================================\n"];
-    for (CCSymbol *symbol in symbols) {
+    for (NSDictionary *symbolsAndHashes in symbols) {
+        CCSymbol *symbol = [symbolsAndHashes valueForKey:SYMBOL];
+        [output printInfo:[NSString stringWithFormat:@"%@\t\t", [(NSNumber *)[symbolsAndHashes valueForKey:SYMBOL_HASH] stringValue]]];
         [symbol printSymbolToOutput:output];
         [output printInfo:@"\n-------------------------------------------------------\n"];
     }

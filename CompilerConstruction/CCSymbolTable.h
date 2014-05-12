@@ -11,6 +11,9 @@
 #import "CCOutput.h"
 
 
+@class CCSymbolReference;
+
+
 #pragma mark - CCSymbolTable
 /*!
  * @class CCSymbolTable
@@ -34,9 +37,11 @@
 
 
 #pragma mark | Adding References
-- (void)addReferenceSymbol:(char *)name
-                      file:(char *)filename
-                      line:(unsigned int)line;
+- (CCSymbolReference *)addReferenceSymbol:(char *)name
+                                     file:(char *)filename
+                                     line:(unsigned int)line
+                                     hash:(NSNumber **)hash
+                          alreadyDeclared:(BOOL *)alreadyDeclared;
 
 
 #pragma mark | Purging Table

@@ -11,10 +11,14 @@
 #import "CCOutput.h"
 
 
+@class CCSymbol;
+
+
 #pragma mark - CCSymbolReference
 @interface CCSymbolReference : NSObject
 @property (strong, nonatomic) NSString *fileName;
 @property (strong, nonatomic) NSNumber *line;
+@property (strong, nonatomic) CCSymbol *symbol;
 @property (strong, nonatomic) CCSymbolReference *successor;
 
 

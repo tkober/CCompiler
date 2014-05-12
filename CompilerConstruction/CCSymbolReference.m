@@ -47,7 +47,7 @@
     if ([self.fileName isEqualToString:[self.successor printReferenceInOutput:output]]) {
         [output printInfo:[NSString stringWithFormat:@", %@", self.line]];
     } else {
-        [output printInfo:[NSString stringWithFormat:@"\n\t\t\t%@\t\t\t%@", self.fileName, self.line]];
+        [output printInfo:[NSString stringWithFormat:@"\n\t\t\t\t\t%@\t\t\t%@", self.fileName, self.line]];
     }
     return self.fileName;
 }

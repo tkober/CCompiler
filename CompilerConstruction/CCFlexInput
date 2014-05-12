@@ -6,7 +6,7 @@
 #import "CCConstNode.h"
 
 
-void addSymbolReference(char *name);
+CCIdentifierNode * identifierNodeForSymbolWithName(char *name);
 
 %}
 
@@ -45,9 +45,7 @@ ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
 "while"                                     { return WHILE;     }
 
 [a-zA-Z_][a-zA-Z_0-9]*                      {
-                                                addSymbolReference(yytext);
-                                                yylval.syntax_node = [CCIdentifierNode identifierNodeWithName:yytext
-                                                                                                    reference:nil];
+                                                yylval.syntax_node = identifierNodeForSymbolWithName(yytext);
                                                 return ID;
                                             }
 [0-9]+                                      {   
@@ -120,10 +118,18 @@ ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
 
 %%
 
-void addSymbolReference(char *name)
+CCIdentifierNode * identifierNodeForSymbolWithName(char *name)
 {
-    [[CCSymbolTable sharedInstance] addReferenceSymbol:name
-                                                  file:"<EDITOR>" 
-                                                  line:yylineno];
+    BOOL alreadyDeclared = NO;
+    NSNumber *hash = nil;
+    
+    CCIdentifierNode *result = [CCIdentifierNode identifierNodeWithSymbolReference:[[CCSymbolTable sharedInstance] addReferenceSymbol:name
+                                                                                                                                 file:"<EDITOR>"
+                                                                                                                                 line:yylineno
+                                                                                                                                 hash:&hash
+                                                                                                                      alreadyDeclared:&alreadyDeclared]];
+    [result setHash:hash];
+    [result setAlreadyDeclared:alreadyDeclared];
+    return result;
 }
 

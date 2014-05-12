@@ -8,6 +8,7 @@
 
 #import "CCIdentifierNode.h"
 #import "CCSyntaxNode+Private.h"
+#import "CCSymbol.h"
 #import "CCSymbolReference.h"
 
 
@@ -31,11 +32,9 @@
 
 
 #pragma mark | Creators
-+ (CCIdentifierNode *)identifierNodeWithName:(char *)name
-                                   reference:(CCSymbolReference *)reference
++ (CCIdentifierNode *)identifierNodeWithSymbolReference:(CCSymbolReference *)reference
 {
     CCIdentifierNode *result = [self new];
-    [result setName:[NSString stringWithUTF8String:name]];
     [result setReference:reference];
     return result;
 }
@@ -45,7 +44,7 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.name]
+    [super printLine:[NSString stringWithFormat:@"%@%@<name=%@, already_declared=%@, hash=%@, file=%@ line=%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.reference.symbol.name, @(self.alreadyDeclared), self.hash, self.reference.fileName, self.reference.line]
             toOutput:output
          indentLevel:indentLevel];
 }
