@@ -403,7 +403,7 @@ initializer_list            : initializer                                   {
                             ;
 
 
-assignment_expression       : conditional_expression                                        { $$ = [CCAssignmentExpressionNode assignmentExpressionNodeWithConditionalExpression:$1]; }
+assignment_expression       : conditional_expression                                        { printf("bla");$$ = [CCAssignmentExpressionNode assignmentExpressionNodeWithConditionalExpression:$1]; }
                             | unary_expression assignment_operator assignment_expression    {
                                                                                                 $$ = [CCAssignmentExpressionNode assignmentExpressionNodeWithUnaryExpression:$1
                                                                                                                                                           assignmentOperator:$2
@@ -576,58 +576,58 @@ additive_expression         : multiplicative_expression                         
                             ;
 
 
-additive_operator           : ADD_OP { [CCAdditiveOperatorNode CC_ADD_OP]; }
-                            | SUB_OP { [CCAdditiveOperatorNode CC_SUB_OP]; }
+additive_operator           : ADD_OP { $$ = [CCAdditiveOperatorNode CC_ADD_OP]; }
+                            | SUB_OP { $$ = [CCAdditiveOperatorNode CC_SUB_OP]; }
                             ;
 
 
-multiplicative_expression   : unary_expression                                                      { [CCMultiplicativeExpressionNode multiplicativeExpressionNodeWithUnaryExpression:$1
-                                                                                                                                                               multiplicativeOperator:nil
-                                                                                                                                                             multiplicativeExpression:nil];
+multiplicative_expression   : unary_expression                                                      { $$ = [CCMultiplicativeExpressionNode multiplicativeExpressionNodeWithUnaryExpression:$1
+                                                                                                                                                                    multiplicativeOperator:nil
+                                                                                                                                                                  multiplicativeExpression:nil];
                                                                                                     }
-                            | multiplicative_expression multiplicative_operator unary_expression    { [CCMultiplicativeExpressionNode multiplicativeExpressionNodeWithUnaryExpression:$3
-                                                                                                                                                               multiplicativeOperator:$2
-                                                                                                                                                             multiplicativeExpression:$1];
+                            | multiplicative_expression multiplicative_operator unary_expression    { $$ = [CCMultiplicativeExpressionNode multiplicativeExpressionNodeWithUnaryExpression:$3
+                                                                                                                                                                    multiplicativeOperator:$2
+                                                                                                                                                                  multiplicativeExpression:$1];
                                                                                                     }
                             ;
                             
                             
-multiplicative_operator     : MUL_OP    { [CCMultiplicativeOperatorNode CC_MUL_OP]; }
-                            | DIV_OP    { [CCMultiplicativeOperatorNode CC_DIV_OP]; }
-                            | MOD_OP    { [CCMultiplicativeOperatorNode CC_MOD_OP]; }
+multiplicative_operator     : MUL_OP    { $$ = [CCMultiplicativeOperatorNode CC_MUL_OP]; }
+                            | DIV_OP    { $$ = [CCMultiplicativeOperatorNode CC_DIV_OP]; }
+                            | MOD_OP    { $$ = [CCMultiplicativeOperatorNode CC_MOD_OP]; }
                             ;
 
 
 expression                  : assignment_expression                     { 
-                                                                            [CCExpressionNode expressionNodeWithAssignmentExpression:$1
-                                                                                                                          expression:nil];
+                                                                            $$ = [CCExpressionNode expressionNodeWithAssignmentExpression:$1
+                                                                                                                               expression:nil];
                                                                         }
                             | expression COMMA assignment_expression    { 
-                                                                            [CCExpressionNode expressionNodeWithAssignmentExpression:$3
-                                                                                                                          expression:$1];
+                                                                            $$ = [CCExpressionNode expressionNodeWithAssignmentExpression:$3
+                                                                                                                               expression:$1];
                                                                         }
                             ;
 
 
 postfix_expression          : primary_expression                                 { 
-                                                                                    [CCPostfixExpressionNode postfixExpressionNodeWithPrimaryExpression:$1];
+                                                                                    $$ = [CCPostfixExpressionNode postfixExpressionNodeWithPrimaryExpression:$1];
                                                                                  }
                             | postfix_expression OB argument_expression_list CB  { 
-                                                                                    [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1
-                                                                                                            argumentExpressionList:$3];
+                                                                                    $$ = [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1
+                                                                                                                                      argumentExpressionList:$3];
                                                                                  }
                             | postfix_expression OB CB                           { 
-                                                                                    [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1];
+                                                                                    $$ = [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1];
                                                                                  }
                             | postfix_expression postfix_operator                { 
-                                                                                    [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1
-                                                                                                                   postfixOperator:$2 ];
+                                                                                    $$ = [CCPostfixExpressionNode postfixExpressionNodeWithPostfixExpression:$1
+                                                                                                                                             postfixOperator:$2 ];
                                                                                  }
                             ;
                             
                             
-postfix_operator            : UNARY_INCREMENT_OP { [CCPostfixOperatorNode CC_UNARY_INCREMENT_OP]; }
-                            | UNARY_DECREMENT_OP { [CCPostfixOperatorNode CC_UNARY_DECREMENT_OP]; }
+postfix_operator            : UNARY_INCREMENT_OP { $$ = [CCPostfixOperatorNode CC_UNARY_INCREMENT_OP]; }
+                            | UNARY_DECREMENT_OP { $$ = [CCPostfixOperatorNode CC_UNARY_DECREMENT_OP]; }
                             ;
 
 

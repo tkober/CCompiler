@@ -49,11 +49,7 @@ ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
                                                                                                     reference:nil];
                                                 return ID;
                                             }
-
-
-([0-9]*\.[0-9]+|[0-9]+\.){EXP}?[flFL]? | [0-9]+{EXP}[flFL]?     { return FLOAT_CONST; }
-0[0-7]*{ILEN}? | [1-9][0-9]*{ILEN}? | 0[Xx][0-9a-fA-F]+{ILEN}?  { return INT_CONST; }
-[A-Za-z0-9]                                                     { return CHAR_CONST; }
+[0-9]+                                      { return INT_CONST; }
 
 
 
