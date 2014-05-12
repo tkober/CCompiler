@@ -35,9 +35,9 @@ id<CCOutput> _output;
 // Symbols
 %token <syntax_node>ID
 %token <syntax_node>STRING
-%token CHAR_CONST
-%token INT_CONST
-%token FLOAT_CONST
+%token <syntax_node>CHAR_CONST
+%token <syntax_node>INT_CONST
+%token <syntax_node>FLOAT_CONST
 
 // Assignement Operators
 %token ASSIGN_OP
@@ -649,9 +649,9 @@ argument_expression_list    : assignment_expression                             
                             ;
 
 
-const                       : CHAR_CONST           { $$ = [CCConstNode CC_CHAR_CONST]; }
-                            | INT_CONST            { $$ = [CCConstNode CC_INT_CONST]; }
-                            | FLOAT_CONST          { $$ = [CCConstNode CC_FLOAT_CONST]; }
+const                       : CHAR_CONST
+                            | INT_CONST
+                            | FLOAT_CONST
                             ;
 
 

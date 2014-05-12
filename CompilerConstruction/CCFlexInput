@@ -3,6 +3,7 @@
 #import "CCParser.h"
 #import "CCSymbolTable.h"
 #import "CCIdentifierNode.h"
+#import "CCConstNode.h"
 
 
 void addSymbolReference(char *name);
@@ -49,7 +50,11 @@ ILEN ([Uu](L|l|LL|ll)?|(L|l|LL|ll)[Uu]?)
                                                                                                     reference:nil];
                                                 return ID;
                                             }
-[0-9]+                                      { return INT_CONST; }
+[0-9]+                                      {   
+                                                yylval.syntax_node = [CCConstNode CC_INT_CONST];
+                                                [(CCConstNode *) yylval.syntax_node setValue:@(atoi(yytext))];
+                                                return INT_CONST; 
+                                            }
 
 
 

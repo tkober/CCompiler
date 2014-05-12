@@ -76,7 +76,7 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.constantString]
+    [super printLine:[NSString stringWithFormat:@"%@%@<type=%@, value=%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.constantString, self.value]
             toOutput:output
          indentLevel:indentLevel];
 }
