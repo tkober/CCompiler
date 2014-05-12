@@ -34,10 +34,10 @@
             return @"char";
             
         case CC_INT_CONST:
-            return @"float";
+            return @"int";
             
         case CC_FLOAT_CONST:
-            return @"int";
+            return @"float";
             
         default:
             return @"UNKNOWN";
