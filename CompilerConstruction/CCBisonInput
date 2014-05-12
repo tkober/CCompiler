@@ -674,6 +674,7 @@ BOOL start_compiling(const char *input, id<CCOutput> output)
     yydebug = 1;
 #endif
     yylineno = 1;
+    _success = YES;
     _output = output;
     YY_BUFFER_STATE buffer=yy_scan_string(input);
     yyparse();
