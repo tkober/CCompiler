@@ -105,9 +105,12 @@ static CCSyntaxTree *_sharedInstance = nil;
 
 
 #pragma mark | Optimization
-- (void)optimize
+- (void)optimize:(id<CCOutput>)output
 {
-    
+    for (CCTranslationUnitNode *translationUnitNode in self.translationUnitsInternal) {
+        [translationUnitNode optimize];
+    }
+    [output printResult:@"Optimization completed\n"];
 }
 
 @end

@@ -24,6 +24,13 @@
 
 
 #pragma mark - Public Methods
+#pragma mark | Optimization
+- (CCSyntaxNode *)optimize
+{
+    return self;
+}
+
+
 #pragma mark | Creators
 + (CCParameterDeclarationNode *)parameterDeclarationNodeWithDeclarationSpecification:(CCDeclarationSpecificationNode *)declarationSepcification
                                                                           declarator:(CCDeclaratorNode *)declarator

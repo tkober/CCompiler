@@ -20,7 +20,6 @@
 }
 
 
-
 #pragma mark - Private Methods
 #pragma mark | Printing
 - (void)printLine:(NSString *)line
@@ -36,6 +35,14 @@
 
 
 #pragma mark - Public Methods
+#pragma mark - Public Methods
+#pragma mark | Optimization
+- (CCSyntaxNode *)optimize
+{
+    return self;
+}
+
+
 #pragma mark | Printing
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel

@@ -23,6 +23,13 @@
 
 
 #pragma mark - Public Methods
+#pragma mark | Optimization
+- (CCSyntaxNode *)optimize
+{
+    return self;
+}
+
+
 #pragma mark | Creators
 + (CCExpressionNode *)expressionNodeWithAssignmentExpression:(CCAssignmentExpressionNode *)assignmentExpression
                                                   expression:(CCExpressionNode *)expression

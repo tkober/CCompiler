@@ -47,6 +47,13 @@
 
 
 #pragma mark - Public Methods
+#pragma mark | Optimization
+- (CCSyntaxNode *)optimize
+{
+    return self;
+}
+
+
 #pragma mark | Creators
 + (CCMultiplicativeOperatorNode *)CC_MUL_OP
 {

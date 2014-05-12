@@ -56,6 +56,13 @@
 
 
 #pragma mark - Public Methods
+#pragma mark | Optimization
+- (CCSyntaxNode *)optimize
+{
+    return self;
+}
+
+
 #pragma mark | Creators
 + (CCUnaryOperatorNode *)CC_UNARY_AND_OP
 {

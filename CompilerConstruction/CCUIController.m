@@ -73,7 +73,7 @@
 
 - (IBAction)optimizeSyntaxTreeButtonPressed:(id)sender
 {
-    [[CCSyntaxTree sharedInstance] optimize];
+    [[CCSyntaxTree sharedInstance] optimize:self];
 }
 
 

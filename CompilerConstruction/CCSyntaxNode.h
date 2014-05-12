@@ -15,6 +15,9 @@
 @interface CCSyntaxNode : NSObject
 
 
+#pragma mark | Optimization
+- (CCSyntaxNode *)optimize;
+
 #pragma mark | Printing
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel;

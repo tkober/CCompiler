@@ -48,6 +48,6 @@
 
 
 #pragma mark | Optimization
-- (void)optimize;
+- (void)optimize:(id<CCOutput>)output;
 
 @end

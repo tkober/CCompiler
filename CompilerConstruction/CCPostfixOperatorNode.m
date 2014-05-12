@@ -44,6 +44,13 @@
 
 
 #pragma mark - Public Methods
+#pragma mark | Optimization
+- (CCSyntaxNode *)optimize
+{
+    return self;
+}
+
+
 #pragma mark | Creators
 + (CCPostfixOperatorNode *)CC_UNARY_INCREMENT_OP
 {
