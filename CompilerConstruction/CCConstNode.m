@@ -11,7 +11,6 @@
 
 
 @interface CCConstNode ()
-@property (strong, nonatomic, readonly) NSString *constantString;
 
 @end
 
@@ -29,18 +28,24 @@
 
 - (NSString *)constantString
 {
+    return [self stringFromCompileTimeTypes:self.compileTimeType];
+}
+
+
+- (NSArray *)compileTimeType
+{
     switch (self.constant) {
         case CC_CHAR_CONST:
-            return @"char";
+            return @[@(CCCompileTimeTypeChar)];
             
         case CC_INT_CONST:
-            return @"int";
+            return @[@(CCCompileTimeTypeInt)];
             
         case CC_FLOAT_CONST:
-            return @"float";
+            return @[@(CCCompileTimeTypeFloat)];
             
         default:
-            return @"UNKNOWN";
+            return @[@(CCCompileTimeTypeNotDeterminable)];
     }
 }
 

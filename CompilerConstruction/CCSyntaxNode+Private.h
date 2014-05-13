@@ -24,5 +24,7 @@
          toOutput:(id<CCOutput>)output
       indentLevel:(NSUInteger)indentLevel;
 - (void)printRemovedSelfWarningToOutput:(id<CCOutput>)output;
+- (NSString *)stringFromCompileTimeTypes:(NSArray *)compileTimeTypes;
+- (NSString *)stringFromCompileTimeType:(CCCompileTimeType)compileTimeType;
 
 @end

@@ -45,6 +45,56 @@
 }
 
 
+- (NSString *)stringFromCompileTimeTypes:(NSArray *)compileTimeTypes
+{
+    NSMutableString *result = [NSMutableString string];
+    for (NSUInteger i = 0; i < compileTimeTypes.count; i++) {
+        CCCompileTimeType compileTimeType = (CCCompileTimeType)[(NSNumber *)compileTimeTypes[i] unsignedIntegerValue];
+        [result appendFormat:@"%@%@", (i > 0 ? @" " : @""), [self stringFromCompileTimeType:compileTimeType]];
+    }
+    return result;
+}
+
+
+- (NSString *)stringFromCompileTimeType:(CCCompileTimeType)compileTimeType
+{
+    switch (compileTimeType) {
+        case CCCompileTimeTypeNotDeterminable:
+            return @"not_determinable";
+            
+        case CCCompileTimeTypeVoid:
+            return @"void";
+            
+        case CCCompileTimeTypeChar:
+            return @"char";
+            
+        case CCCompileTimeTypeShort:
+            return @"short";
+            
+        case CCCompileTimeTypeInt:
+            return @"int";
+            
+        case CCCompileTimeTypeSigned:
+            return @"signed";
+            
+        case CCCompileTimeTypeUnsigned:
+            return @"unsigned";
+            
+        case CCCompileTimeTypeLong:
+            return @"long";
+            
+        case CCCompileTimeTypeFloat:
+            return @"float";
+            
+        case CCCompileTimeTypeDouble:
+            return @"double";
+            
+        default:
+            return @"<UNKNOWN>";
+    }
+}
+
+
 
 #pragma mark - Public Methods
 #pragma mark - Public Methods

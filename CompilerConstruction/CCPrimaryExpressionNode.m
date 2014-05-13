@@ -24,6 +24,12 @@
 }
 
 
+- (NSArray *)compileTimeType
+{
+    return <#expression#>
+}
+
+
 
 #pragma mark - Public Methods
 #pragma mark | Optimization

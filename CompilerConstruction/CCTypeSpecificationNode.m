@@ -29,36 +29,42 @@
 
 - (NSString *)typeSpecificationString
 {
+    return [self stringFromCompileTimeTypes:self.compileTimeType];
+}
+
+
+- (NSArray *)compileTimeType
+{
     switch (self.typeSpecification) {
         case CC_VOID:
-            return @"void";
+            return @[@(CCCompileTimeTypeVoid)];
             
         case CC_CHAR:
-            return @"char";
+            return @[@(CCCompileTimeTypeChar)];
             
         case CC_SHORT:
-            return @"short";
+            return @[@(CCCompileTimeTypeShort)];
             
         case CC_INT:
-            return @"int";
+            return @[@(CCCompileTimeTypeInt)];
             
         case CC_LONG:
-            return @"long";
+            return @[@(CCCompileTimeTypeLong)];
             
         case CC_FLOAT:
-            return @"float";
+            return @[@(CCCompileTimeTypeFloat)];
             
         case CC_DOUBLE:
-            return @"double";
+            return @[@(CCCompileTimeTypeDouble)];
             
         case CC_SIGNED:
-            return @"signed";
+            return @[@(CCCompileTimeTypeSigned)];
             
         case CC_UNSIGNED:
-            return @"unsigned";
+            return @[@(CCCompileTimeTypeUnsigned)];
             
         default:
-            return @"UNKOWN";
+            return @[@(CCCompileTimeTypeNotDeterminable)];
     }
 }
 
@@ -149,7 +155,7 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@<%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.typeSpecificationString]
+    [super printLine:[NSString stringWithFormat:@"%@%@<type=%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.typeSpecificationString]
             toOutput:output
          indentLevel:indentLevel];
 }
