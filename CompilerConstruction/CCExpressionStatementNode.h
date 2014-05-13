@@ -14,7 +14,7 @@
 
 #pragma mark - CCExpressionStatementNode
 @interface CCExpressionStatementNode : CCSyntaxNode
-@property (strong, nonatomic) CCExpressionNode *expression;
+@property (strong, nonatomic) CCSyntaxNode *expression;
 
 
 #pragma mark | Creators

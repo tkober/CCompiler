@@ -15,9 +15,9 @@
 
 #pragma mark - CCMultiplicativeExpressionNode
 @interface CCMultiplicativeExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCUnaryExpressionNode *unaryExpression;
-@property (strong, nonatomic) CCMultiplicativeOperatorNode *multiplicativeOperator;
-@property (strong, nonatomic) CCMultiplicativeExpressionNode *multiplicativeExpression;
+@property (strong, nonatomic) CCSyntaxNode *unaryExpression;
+@property (strong, nonatomic) CCSyntaxNode *multiplicativeOperator;
+@property (strong, nonatomic) CCSyntaxNode *multiplicativeExpression;
 
 
 #pragma mark | Creators

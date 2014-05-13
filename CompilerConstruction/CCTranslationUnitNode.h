@@ -14,8 +14,8 @@
 
 #pragma mark - CCTranslationUnitNode
 @interface CCTranslationUnitNode : CCSyntaxNode
-@property (strong, nonatomic) CCTranslationUnitNode *translationUnit;
-@property (strong, nonatomic) CCExternalDeclarationNode *externalDeclaration;
+@property (strong, nonatomic) CCSyntaxNode *translationUnit;
+@property (strong, nonatomic) CCSyntaxNode *externalDeclaration;
 
 
 #pragma mark | Creators

@@ -14,8 +14,8 @@
 
 #pragma mark - CCAndExpressionNode
 @interface CCAndExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCEqualityExpressionNode *equalityExpression;
-@property (strong, nonatomic) CCAndExpressionNode *andExpression;
+@property (strong, nonatomic) CCSyntaxNode *equalityExpression;
+@property (strong, nonatomic) CCSyntaxNode *andExpression;
 
 
 #pragma mark | Creators

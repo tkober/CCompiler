@@ -15,9 +15,9 @@
 
 #pragma mark - CCConditionalExpressionNode
 @interface CCConditionalExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCLogicalOrExpressionNode *logicalOrExpression;
-@property (strong, nonatomic) CCExpressionNode *expression;
-@property (strong, nonatomic) CCConditionalExpressionNode *conditionalExpression;
+@property (strong, nonatomic) CCSyntaxNode *logicalOrExpression;
+@property (strong, nonatomic) CCSyntaxNode *expression;
+@property (strong, nonatomic) CCSyntaxNode *conditionalExpression;
 
 
 #pragma mark | Creators

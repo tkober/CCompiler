@@ -15,8 +15,8 @@
 
 #pragma mark - CCIterationStatementNode
 @interface CCIterationStatementNode : CCSyntaxNode
-@property (strong, nonatomic) CCExpressionNode *expression;
-@property (strong, nonatomic) CCStatementNode *statement;
+@property (strong, nonatomic) CCSyntaxNode *expression;
+@property (strong, nonatomic) CCSyntaxNode *statement;
 
 
 #pragma mark | Creators

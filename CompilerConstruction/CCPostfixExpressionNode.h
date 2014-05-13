@@ -16,10 +16,10 @@
 
 #pragma mark - CCPostfixExpressionNode
 @interface CCPostfixExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCPrimaryExpressionNode *primaryExpression;
-@property (strong, nonatomic) CCArgumentExpressionListNode *argumentExpressionList;
-@property (strong, nonatomic) CCPostfixOperatorNode *postfixOperator;
-@property (strong, nonatomic) CCPostfixExpressionNode *postfixExpression;
+@property (strong, nonatomic) CCSyntaxNode *primaryExpression;
+@property (strong, nonatomic) CCSyntaxNode *argumentExpressionList;
+@property (strong, nonatomic) CCSyntaxNode *postfixOperator;
+@property (strong, nonatomic) CCSyntaxNode *postfixExpression;
 
 
 #pragma mark | Creators

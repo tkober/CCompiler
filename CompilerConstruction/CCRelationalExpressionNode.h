@@ -15,9 +15,9 @@
 
 #pragma mark - CCRelationalExpressionNode
 @interface CCRelationalExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCShiftExpressionNode *shiftExpression;
-@property (strong, nonatomic) CCCompareOperatorNode *comareOperator;
-@property (strong, nonatomic) CCRelationalExpressionNode *relationalExpression;
+@property (strong, nonatomic) CCSyntaxNode *shiftExpression;
+@property (strong, nonatomic) CCSyntaxNode *comareOperator;
+@property (strong, nonatomic) CCSyntaxNode *relationalExpression;
 
 
 #pragma mark | Creators

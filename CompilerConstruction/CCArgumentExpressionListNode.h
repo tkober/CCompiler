@@ -14,8 +14,8 @@
 
 #pragma mark - CCArgumentExpressionListNode
 @interface CCArgumentExpressionListNode : CCSyntaxNode
-@property (strong, nonatomic) CCAssignmentExpressionNode *assignmentExpression;
-@property (strong, nonatomic) CCArgumentExpressionListNode *argumentExpressionList;
+@property (strong, nonatomic) CCSyntaxNode *assignmentExpression;
+@property (strong, nonatomic) CCSyntaxNode *argumentExpressionList;
 
 
 #pragma mark | Creators

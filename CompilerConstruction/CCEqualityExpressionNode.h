@@ -15,9 +15,9 @@
 
 #pragma mark - CCEqualityExpressionNode
 @interface CCEqualityExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCRelationalExpressionNode *relationalExpression;
-@property (strong, nonatomic) CCEqualityOperatorNode *equalityOperator;
-@property (strong, nonatomic) CCEqualityExpressionNode *equalityExpression;
+@property (strong, nonatomic) CCSyntaxNode *relationalExpression;
+@property (strong, nonatomic) CCSyntaxNode *equalityOperator;
+@property (strong, nonatomic) CCSyntaxNode *equalityExpression;
 
 
 #pragma mark | Creators

@@ -17,10 +17,10 @@
 
 #pragma mark - CCFunctionDefinitionNode
 @interface CCFunctionDefinitionNode : CCSyntaxNode
-@property (strong, nonatomic) CCDeclarationSpecificationNode *declarationSpecification;
-@property (strong, nonatomic) CCDeclaratorNode *declarator;
-@property (strong, nonatomic) CCDeclarationListNode *declarationList;
-@property (strong, nonatomic) CCCompoundStatementNode *compoundStatement;
+@property (strong, nonatomic) CCSyntaxNode *declarationSpecification;
+@property (strong, nonatomic) CCSyntaxNode *declarator;
+@property (strong, nonatomic) CCSyntaxNode *declarationList;
+@property (strong, nonatomic) CCSyntaxNode *compoundStatement;
 
 
 #pragma mark | Creators

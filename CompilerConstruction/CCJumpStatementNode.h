@@ -23,8 +23,8 @@ typedef NS_ENUM(NSUInteger, CCJumpStatmentType) {
 
 #pragma mark - CCJumpStatementNode
 @interface CCJumpStatementNode : CCSyntaxNode
-@property (strong, nonatomic) CCIdentifierNode *identifier;
-@property (strong, nonatomic) CCExpressionNode *expression;
+@property (strong, nonatomic) CCSyntaxNode *identifier;
+@property (strong, nonatomic) CCSyntaxNode *expression;
 @property (assign, nonatomic) CCJumpStatmentType jumpStatementType;
 
 

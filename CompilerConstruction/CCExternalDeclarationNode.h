@@ -15,8 +15,8 @@
 
 #pragma mark - CCExternalDeclarationNode
 @interface CCExternalDeclarationNode : CCSyntaxNode
-@property (strong, nonatomic) CCFunctionDefinitionNode *functionDefinition;
-@property (strong, nonatomic) CCDeclarationNode *declaration;
+@property (strong, nonatomic) CCSyntaxNode *functionDefinition;
+@property (strong, nonatomic) CCSyntaxNode *declaration;
 
 
 #pragma mark | Creators

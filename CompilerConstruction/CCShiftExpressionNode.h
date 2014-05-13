@@ -15,9 +15,9 @@
 
 #pragma mark - CCShiftExpressionNode
 @interface CCShiftExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCAdditiveExpressionNode *additiveExpression;
-@property (strong, nonatomic) CCShiftOperatorNode *shiftOperator;
-@property (strong, nonatomic) CCShiftExpressionNode *shiftExpression;
+@property (strong, nonatomic) CCSyntaxNode *additiveExpression;
+@property (strong, nonatomic) CCSyntaxNode *shiftOperator;
+@property (strong, nonatomic) CCSyntaxNode *shiftExpression;
 
 
 #pragma mark | Creators

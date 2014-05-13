@@ -14,8 +14,8 @@
 
 #pragma mark - CCInclusiveOrExpressionNode
 @interface CCInclusiveOrExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCExclusiveOrExpressionNode *exclusiveOrExpression;
-@property (strong, nonatomic) CCInclusiveOrExpressionNode *inclusiveOrExpression;
+@property (strong, nonatomic) CCSyntaxNode *exclusiveOrExpression;
+@property (strong, nonatomic) CCSyntaxNode *inclusiveOrExpression;
 
 
 #pragma mark | Creators

@@ -15,9 +15,9 @@
 
 #pragma mark - CCAdditiveExpressionNode
 @interface CCAdditiveExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCMultiplicativeExpressionNode *multiplicativeExpression;
-@property (strong, nonatomic) CCAdditiveOperatorNode *additiveOperator;
-@property (strong, nonatomic) CCAdditiveExpressionNode *additiveExpression;
+@property (strong, nonatomic) CCSyntaxNode *multiplicativeExpression;
+@property (strong, nonatomic) CCSyntaxNode *additiveOperator;
+@property (strong, nonatomic) CCSyntaxNode *additiveExpression;
 
 
 #pragma mark | Creators

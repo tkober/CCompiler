@@ -17,10 +17,10 @@
 
 #pragma mark - CCUnaryExpressionNode
 @interface CCUnaryExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCPostfixExpressionNode *postfixExpression;
-@property (strong, nonatomic) CCPrefixOperatorNode *prefixOperator;
-@property (strong, nonatomic) CCUnaryOperatorNode *unaryOperator;
-@property (strong, nonatomic) CCUnaryExpressionNode *unaryExpression;
+@property (strong, nonatomic) CCSyntaxNode *postfixExpression;
+@property (strong, nonatomic) CCSyntaxNode *prefixOperator;
+@property (strong, nonatomic) CCSyntaxNode *unaryOperator;
+@property (strong, nonatomic) CCSyntaxNode *unaryExpression;
 
 
 #pragma mark | Creators

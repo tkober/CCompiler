@@ -15,9 +15,9 @@
 
 #pragma mark - CCSelectionStatementNode
 @interface CCSelectionStatementNode : CCSyntaxNode
-@property (strong, nonatomic) CCExpressionNode *expression;
-@property (strong, nonatomic) CCStatementNode *thenStatement;
-@property (strong, nonatomic) CCStatementNode *elseStatement;
+@property (strong, nonatomic) CCSyntaxNode *expression;
+@property (strong, nonatomic) CCSyntaxNode *thenStatement;
+@property (strong, nonatomic) CCSyntaxNode *elseStatement;
 
 
 #pragma mark | Creators

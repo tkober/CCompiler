@@ -15,8 +15,8 @@
 
 #pragma mark - CCInitializerNode
 @interface CCInitializerNode : CCSyntaxNode
-@property (strong, nonatomic) CCAssignmentExpressionNode *assignmentExpression;
-@property (strong, nonatomic) CCInitializerListNode *initializerList;
+@property (strong, nonatomic) CCSyntaxNode *assignmentExpression;
+@property (strong, nonatomic) CCSyntaxNode *initializerList;
 
 
 #pragma mark | Creators

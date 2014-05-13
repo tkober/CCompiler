@@ -17,10 +17,10 @@
 
 #pragma mark - CCPrimaryExpressionNode
 @interface CCPrimaryExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCIdentifierNode *identifier;
-@property (strong, nonatomic) CCConstNode *constant;
-@property (strong, nonatomic) CCStringNode *string;
-@property (strong, nonatomic) CCExpressionNode *expression;
+@property (strong, nonatomic) CCSyntaxNode *identifier;
+@property (strong, nonatomic) CCSyntaxNode *constant;
+@property (strong, nonatomic) CCSyntaxNode *string;
+@property (strong, nonatomic) CCSyntaxNode *expression;
 
 
 #pragma mark | Creators

@@ -15,8 +15,8 @@
 
 #pragma mark - CCParameterDeclarationNode
 @interface CCParameterDeclarationNode : CCSyntaxNode
-@property (strong, nonatomic) CCDeclarationSpecificationNode *declarationSpecification;
-@property (strong, nonatomic) CCDeclaratorNode *declarator;
+@property (strong, nonatomic) CCSyntaxNode *declarationSpecification;
+@property (strong, nonatomic) CCSyntaxNode *declarator;
 
 
 #pragma mark | Creators

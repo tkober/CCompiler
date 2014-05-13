@@ -15,8 +15,8 @@
 
 #pragma mark - CCLabeledStatementNode
 @interface CCLabeledStatementNode : CCSyntaxNode
-@property (strong, nonatomic) CCStatementNode *statement;
-@property (strong, nonatomic) CCIdentifierNode *identifier;
+@property (strong, nonatomic) CCSyntaxNode *statement;
+@property (strong, nonatomic) CCSyntaxNode *identifier;
 
 
 #pragma mark | Creators

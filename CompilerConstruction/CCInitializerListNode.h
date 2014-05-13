@@ -14,8 +14,8 @@
 
 #pragma mark - CCInitializerListNode
 @interface CCInitializerListNode : CCSyntaxNode
-@property (strong, nonatomic) CCInitializerNode *initializer;
-@property (strong, nonatomic) CCInitializerListNode *initializerList;
+@property (strong, nonatomic) CCSyntaxNode *initializer;
+@property (strong, nonatomic) CCSyntaxNode *initializerList;
 
 
 #pragma mark | Creators

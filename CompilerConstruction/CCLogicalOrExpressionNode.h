@@ -14,8 +14,8 @@
 
 #pragma mark - CCLogicalOrExpressionNode
 @interface CCLogicalOrExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCLogicalAndExpressionNode *logicalAndExpression;
-@property (strong, nonatomic) CCLogicalOrExpressionNode *logicalOrExpression;
+@property (strong, nonatomic) CCSyntaxNode *logicalAndExpression;
+@property (strong, nonatomic) CCSyntaxNode *logicalOrExpression;
 
 
 #pragma mark | Creators

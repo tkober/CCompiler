@@ -16,10 +16,10 @@
 
 #pragma mark - CCAssignmentExpressionNode
 @interface CCAssignmentExpressionNode : CCSyntaxNode
-@property (strong, nonatomic) CCConditionalExpressionNode *conditionalExpression;
-@property (strong, nonatomic) CCUnaryExpressionNode *unaryExpression;
-@property (strong, nonatomic) CCAssignmentOperatorNode *assignmentOperator;
-@property (strong, nonatomic) CCAssignmentExpressionNode *assignmentExpression;
+@property (strong, nonatomic) CCSyntaxNode *conditionalExpression;
+@property (strong, nonatomic) CCSyntaxNode *unaryExpression;
+@property (strong, nonatomic) CCSyntaxNode *assignmentOperator;
+@property (strong, nonatomic) CCSyntaxNode *assignmentExpression;
 
 
 #pragma mark | Creators

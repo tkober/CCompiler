@@ -19,12 +19,12 @@
 
 #pragma mark - CCStatementNode
 @interface CCStatementNode : CCSyntaxNode
-@property (strong, nonatomic) CCLabeledStatementNode *labeledStatement;
-@property (strong, nonatomic) CCExpressionStatementNode *expressionStatement;
-@property (strong, nonatomic) CCCompoundStatementNode *compoundStatement;
-@property (strong, nonatomic) CCSelectionStatementNode *selectionStatement;
-@property (strong, nonatomic) CCIterationStatementNode *iterationStatement;
-@property (strong, nonatomic) CCJumpStatementNode *jumpStatement;
+@property (strong, nonatomic) CCSyntaxNode *labeledStatement;
+@property (strong, nonatomic) CCSyntaxNode *expressionStatement;
+@property (strong, nonatomic) CCSyntaxNode *compoundStatement;
+@property (strong, nonatomic) CCSyntaxNode *selectionStatement;
+@property (strong, nonatomic) CCSyntaxNode *iterationStatement;
+@property (strong, nonatomic) CCSyntaxNode *jumpStatement;
 
 
 #pragma mark | Creators
