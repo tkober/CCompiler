@@ -25,8 +25,17 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setShiftExpression:[self.shiftExpression optimize:output]];
+    [self setShiftOperator:[self.shiftOperator optimize:output]];
+    [self setAdditiveExpression:[self.additiveExpression optimize:output]];
+    if (self.additiveExpression &&
+        !self.shiftOperator &&
+        !self.shiftExpression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.additiveExpression;
+    }
     return self;
 }
 

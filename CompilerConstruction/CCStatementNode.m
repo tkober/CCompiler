@@ -29,8 +29,77 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setLabeledStatement:[self.labeledStatement optimize:output]];
+    [self setExpressionStatement:[self.expressionStatement optimize:output]];
+    [self setCompoundStatement:[self.compoundStatement optimize:output]];
+    [self setSelectionStatement:[self.selectionStatement optimize:output]];
+    [self setIterationStatement:[self.iterationStatement optimize:output]];
+    [self setJumpStatement:[self.jumpStatement optimize:output]];
+    if (self.labeledStatement &&
+        !self.expressionStatement &&
+        !self.compoundStatement &&
+        !self.selectionStatement &&
+        !self.iterationStatement &&
+        !self.jumpStatement) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.labeledStatement;
+    }
+    if (!self.labeledStatement &&
+        self.expressionStatement &&
+        !self.compoundStatement &&
+        !self.selectionStatement &&
+        !self.iterationStatement &&
+        !self.jumpStatement) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.expressionStatement;
+    }
+    if (!self.labeledStatement &&
+        !self.expressionStatement &&
+        self.compoundStatement &&
+        !self.selectionStatement &&
+        !self.iterationStatement &&
+        !self.jumpStatement) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.compoundStatement;
+    }
+    if (!self.labeledStatement &&
+        !self.expressionStatement &&
+        !self.compoundStatement &&
+        self.selectionStatement &&
+        !self.iterationStatement &&
+        !self.jumpStatement) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.selectionStatement;
+    }
+    if (!self.labeledStatement &&
+        !self.expressionStatement &&
+        !self.compoundStatement &&
+        !self.selectionStatement &&
+        self.iterationStatement &&
+        !self.jumpStatement) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.iterationStatement;
+    }
+    if (!self.labeledStatement &&
+        !self.expressionStatement &&
+        !self.compoundStatement &&
+        !self.selectionStatement &&
+        !self.iterationStatement &&
+        self.jumpStatement) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.jumpStatement;
+    }
+    if (!self.labeledStatement &&
+        !self.expressionStatement &&
+        !self.compoundStatement &&
+        !self.selectionStatement &&
+        !self.iterationStatement &&
+        !self.jumpStatement) {
+        [self printRemovedSelfWarningToOutput:output];
+        return nil;
+    }
     return self;
 }
 

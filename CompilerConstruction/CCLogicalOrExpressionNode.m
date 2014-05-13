@@ -24,8 +24,15 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setLogicalOrExpression:[self.logicalOrExpression optimize:output]];
+    [self setLogicalAndExpression:[self.logicalAndExpression optimize:output]];
+    if (self.logicalAndExpression &&
+        !self.logicalOrExpression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.logicalAndExpression;
+    }
     return self;
 }
 

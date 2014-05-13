@@ -27,8 +27,40 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setIdentifier:[self.identifier optimize:output]];
+    [self setConstant:[self.constant optimize:output]];
+    [self setString:[self.string optimize:output]];
+    [self setExpression:[self.expression optimize:output]];
+    if (self.identifier &&
+        !self.constant &&
+        !self.string &&
+        !self.expression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.identifier;
+    }
+    if (!self.identifier &&
+        self.constant &&
+        !self.string &&
+        !self.expression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.constant;
+    }
+    if (!self.identifier &&
+        !self.constant &&
+        self.string &&
+        !self.expression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.string;
+    }
+    if (!self.identifier &&
+        !self.constant &&
+        !self.string &&
+        self.expression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.expression;
+    }
     return self;
 }
 

@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, CCCompileTimeType) {
 
 
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize;
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output;
 
 #pragma mark | Printing
 - (void)printToOutput:(id<CCOutput>)output

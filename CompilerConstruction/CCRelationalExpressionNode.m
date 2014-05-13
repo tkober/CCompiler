@@ -25,8 +25,17 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setRelationalExpression:[self.relationalExpression optimize:output]];
+    [self setComareOperator:[self.comareOperator optimize:output]];
+    [self setShiftExpression:[self.shiftExpression optimize:output]];
+    if (self.shiftExpression &&
+        !self.comareOperator &&
+        !self.relationalExpression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.shiftExpression;
+    }
     return self;
 }
 

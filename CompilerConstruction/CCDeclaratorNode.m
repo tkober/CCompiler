@@ -25,8 +25,23 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setIdentifier:[self.identifier optimize:output]];
+    [self setDelcarator:[self.delcarator optimize:output]];
+    [self setParameterList:[self.parameterList optimize:output]];
+    if (self.identifier &&
+        !self.delcarator &&
+        !self.parameterList) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.identifier;
+    }
+    if (!self.identifier &&
+        self.delcarator &&
+        !self.parameterList) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.delcarator;
+    }
     return self;
 }
 

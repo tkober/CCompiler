@@ -24,8 +24,10 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setParameterList:[self.parameterList optimize:output]];
+    [self setParameterDeclaration:[self.parameterDeclaration optimize:output]];
     return self;
 }
 

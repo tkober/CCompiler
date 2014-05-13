@@ -26,8 +26,26 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setPostfixExpression:[self.postfixExpression optimize:output]];
+    [self setPrefixOperator:[self.prefixOperator optimize:output]];
+    [self setUnaryExpression:[self.unaryExpression optimize:output]];
+    [self setUnaryOperator:[self.unaryOperator optimize:output]];
+    if (self.postfixExpression &&
+        !self.prefixOperator &&
+        !self.unaryExpression &&
+        !self.unaryOperator) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.postfixExpression;
+    }
+    if (self.unaryOperator &&
+        !self.prefixOperator &&
+        !self.unaryExpression &&
+        !self.postfixExpression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.unaryOperator;
+    }
     return self;
 }
 

@@ -10,7 +10,8 @@
 #define CompilerConstruction_CCDebug_h
 
 
-#define BISON_DEBUG 0
+#define BISON_DEBUG     0
+#define DEALLOC_DEBUG   0
 
 
 #endif

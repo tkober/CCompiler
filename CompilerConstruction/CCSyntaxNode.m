@@ -39,11 +39,17 @@
 }
 
 
+- (void)printRemovedSelfWarningToOutput:(id<CCOutput>)output
+{
+    [output printWarning:[NSString stringWithFormat:@"Warning: removed node '%@'\n", self.ruleName]];
+}
+
+
 
 #pragma mark - Public Methods
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
     return self;
 }
@@ -58,9 +64,12 @@
         indentLevel:indentLevel];
 }
 
+
+#if DEALLOC_DEBUG
 - (void)dealloc
 {
     NSLog(@"%s:: class -> %@", __PRETTY_FUNCTION__, self.className);
 }
+#endif
 
 @end

@@ -27,8 +27,12 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setDeclarationSpecification:[self.declarationSpecification optimize:output]];
+    [self setDeclarator:[self.declarator optimize:output]];
+    [self setDeclarationList:[self.declarationList optimize:output]];
+    [self setCompoundStatement:[self.compoundStatement optimize:output]];
     return self;
 }
 

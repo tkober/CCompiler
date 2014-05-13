@@ -25,8 +25,17 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setMultiplicativeExpression:[self.multiplicativeExpression optimize:output]];
+    [self setMultiplicativeOperator:[self.multiplicativeOperator optimize:output]];
+    [self setUnaryExpression:[self.unaryExpression optimize:output]];
+    if (self.unaryExpression &&
+        !self.multiplicativeOperator &&
+        !self.multiplicativeExpression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.unaryExpression;
+    }
     return self;
 }
 

@@ -25,8 +25,19 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setAssignmentExpression:[self.assignmentExpression optimize:output]];
+    [self setInitializerList:[self.initializerList optimize:output]];
+    if (self.assignmentExpression &&
+        !self.initializerList) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.assignmentExpression;
+    } else if (self.initializerList &&
+               !self.assignmentExpression) {
+        [self printRemovedSelfWarningToOutput:output];
+        return self.initializerList;
+    }
     return self;
 }
 

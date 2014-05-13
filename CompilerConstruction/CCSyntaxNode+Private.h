@@ -23,5 +23,6 @@
 - (void)printLine:(NSString *)line
          toOutput:(id<CCOutput>)output
       indentLevel:(NSUInteger)indentLevel;
+- (void)printRemovedSelfWarningToOutput:(id<CCOutput>)output;
 
 @end

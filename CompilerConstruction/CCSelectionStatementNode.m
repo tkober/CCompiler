@@ -25,8 +25,11 @@
 
 #pragma mark - Public Methods
 #pragma mark | Optimization
-- (CCSyntaxNode *)optimize
+- (CCSyntaxNode *)optimize:(id<CCOutput>)output
 {
+    [self setExpression:[self.expression optimize:output]];
+    [self setThenStatement:[self.thenStatement optimize:output]];
+    [self setElseStatement:[self.elseStatement optimize:output]];
     return self;
 }
 
