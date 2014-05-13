@@ -8,11 +8,20 @@
 
 #import "CCAppDelegate.h"
 
+
+@interface CCAppDelegate ()
+@property (strong, nonatomic) IBOutlet NSTextView *inputTextView;
+
+@end
+
 @implementation CCAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    [self.inputTextView setAutomaticSpellingCorrectionEnabled:NO];
+    [self.inputTextView setAutomaticTextReplacementEnabled:NO];
+    [self.inputTextView setAutomaticQuoteSubstitutionEnabled:NO];
 }
 
 /*
