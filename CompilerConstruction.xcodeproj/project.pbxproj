@@ -115,6 +115,9 @@
 /* Begin PBXFileReference section */
 		DC088DF3191B76040067486B /* CCParser.output */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CCParser.output; sourceTree = "<group>"; };
 		DC088DF9191B893A0067486B /* CCDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCDebug.h; sourceTree = "<group>"; };
+		DC3AB60C1924F15000A0D681 /* Example1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Example1.c; sourceTree = "<group>"; };
+		DC3AB60D1924F1E800A0D681 /* Example2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Example2.c; sourceTree = "<group>"; };
+		DC3AB60E1924F35A00A0D681 /* Example3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Example3.c; sourceTree = "<group>"; };
 		DC8050A81917BEB600B7C594 /* CCSymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSymbolTable.h; sourceTree = "<group>"; };
 		DC8050A91917BEB600B7C594 /* CCSymbolTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSymbolTable.m; sourceTree = "<group>"; };
 		DCAE2E4E191A57E5006F4F6B /* CCSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSymbol.h; sourceTree = "<group>"; };
@@ -281,6 +284,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC3AB60B1924F14000A0D681 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				DC3AB60C1924F15000A0D681 /* Example1.c */,
+				DC3AB60D1924F1E800A0D681 /* Example2.c */,
+				DC3AB60E1924F35A00A0D681 /* Example3.c */,
+			);
+			name = Examples;
+			sourceTree = "<group>";
+		};
 		DC8050A71917BE9700B7C594 /* SymbolTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,6 +869,7 @@
 		F1C7C45518F1864100A4D911 = {
 			isa = PBXGroup;
 			children = (
+				DC3AB60B1924F14000A0D681 /* Examples */,
 				F1C7C46718F1864100A4D911 /* CompilerConstruction */,
 				F1C7C48518F1864100A4D911 /* CompilerConstructionTests */,
 				F1C7C46018F1864100A4D911 /* Frameworks */,
