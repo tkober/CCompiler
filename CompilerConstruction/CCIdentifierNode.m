@@ -44,7 +44,7 @@
 - (void)printToOutput:(id<CCOutput>)output
           indentLevel:(NSUInteger)indentLevel
 {
-    [super printLine:[NSString stringWithFormat:@"%@%@<name=%@, already_declared=%@, hash=%@, file=%@ line=%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.reference.symbol.name, @(self.alreadyDeclared), self.hash, self.reference.fileName, self.reference.line]
+    [super printLine:[NSString stringWithFormat:@"%@%@<name=%@, already_declared=%@, hash=%@, file=%@ line=%@>", (indentLevel > 0 ? @"--" : @""), self.ruleName, self.reference.symbol.name, @(self.alreadyDeclared), self.identifierHash, self.reference.fileName, self.reference.line]
             toOutput:output
          indentLevel:indentLevel];
 }

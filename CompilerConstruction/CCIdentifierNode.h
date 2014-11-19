@@ -15,7 +15,7 @@
 #pragma mark - CCIdentifierNode
 @interface CCIdentifierNode : CCSyntaxNode
 @property (strong, nonatomic) CCSymbolReference *reference;
-@property (strong, nonatomic) NSNumber *hash;
+@property (strong, nonatomic) NSNumber *identifierHash;
 @property (assign, nonatomic) BOOL alreadyDeclared;
 
 

@@ -171,7 +171,7 @@ CCIdentifierNode * identifierNodeForSymbolWithName(char *name)
                                                                                                                                  line:yylineno
                                                                                                                                  hash:&hash
                                                                                                                       alreadyDeclared:&alreadyDeclared]];
-    [result setHash:hash];
+    [result setIdentifierHash:hash];
     [result setAlreadyDeclared:alreadyDeclared];
     return result;
 }
